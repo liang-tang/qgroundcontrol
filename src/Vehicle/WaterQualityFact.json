@@ -1,0 +1,50 @@
+[
+{
+    "name":             "ldo",
+    "shortDescription": "Ldo",
+    "type":             "double",
+    "decimalPlaces":    1
+},
+{
+    "name":             "turb",
+    "shortDescription": "Turb",
+    "type":             "double",
+    "decimalPlaces":    1
+},
+{
+    "name":             "cond",
+    "shortDescription": "Cond",
+    "type":             "double",
+    "decimalPlaces":    1
+},
+{
+    "name":             "temp",
+    "shortDescription": "Temp",
+    "type":             "double",
+    "decimalPlaces":    1
+},
+{
+    "name":             "ph",
+    "shortDescription": "Ph",
+    "type":             "double",
+    "decimalPlaces":    1
+},
+{
+    "name":             "orp",
+    "shortDescription": "ORP",
+    "type":             "double",
+    "decimalPlaces":    1
+},
+{
+    "name":             "chla",
+    "shortDescription": "Chla",
+    "type":             "double",
+    "decimalPlaces":    1
+},
+{
+    "name":             "cyano",
+    "shortDescription": "Cyano",
+    "type":             "double",
+    "decimalPlaces":    1
+}
+]

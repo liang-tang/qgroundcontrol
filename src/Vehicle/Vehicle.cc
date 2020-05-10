@@ -91,6 +91,7 @@ const char* Vehicle::_temperatureFactGroupName =        "temperature";
 const char* Vehicle::_clockFactGroupName =              "clock";
 const char* Vehicle::_distanceSensorFactGroupName =     "distanceSensor";
 const char* Vehicle::_estimatorStatusFactGroupName =    "estimatorStatus";
+const char* Vehicle::_waterQualityFactGroupName =       "waterQuality";
 
 // Standard connected vehicle
 Vehicle::Vehicle(LinkInterface*             link,
@@ -218,6 +219,7 @@ Vehicle::Vehicle(LinkInterface*             link,
     , _clockFactGroup(this)
     , _distanceSensorFactGroup(this)
     , _estimatorStatusFactGroup(this)
+    , _waterQualityFactGroup(this)
 {
     connect(_joystickManager, &JoystickManager::activeJoystickChanged, this, &Vehicle::_loadSettings);
     connect(qgcApp()->toolbox()->multiVehicleManager(), &MultiVehicleManager::activeVehicleAvailableChanged, this, &Vehicle::_loadSettings);
@@ -416,6 +418,7 @@ Vehicle::Vehicle(MAV_AUTOPILOT              firmwareType,
     , _vibrationFactGroup(this)
     , _clockFactGroup(this)
     , _distanceSensorFactGroup(this)
+    , _waterQualityFactGroup(this)
 {
     _commonInit();
 
@@ -497,6 +500,7 @@ void Vehicle::_commonInit()
     _addFactGroup(&_battery2FactGroup,          _battery2FactGroupName);
     _addFactGroup(&_windFactGroup,              _windFactGroupName);
     _addFactGroup(&_vibrationFactGroup,         _vibrationFactGroupName);
+    _addFactGroup(&_waterQualityFactGroup,      _waterQualityFactGroupName);
     _addFactGroup(&_temperatureFactGroup,       _temperatureFactGroupName);
     _addFactGroup(&_clockFactGroup,             _clockFactGroupName);
     _addFactGroup(&_distanceSensorFactGroup,    _distanceSensorFactGroupName);
@@ -884,6 +888,15 @@ void Vehicle::_handleCameraFeedback(const mavlink_message_t& message)
     QGeoCoordinate imageCoordinate((double)feedback.lat / qPow(10.0, 7.0), (double)feedback.lng / qPow(10.0, 7.0), feedback.alt_msl);
     qCDebug(VehicleLog) << "_handleCameraFeedback coord:index" << imageCoordinate << feedback.img_idx;
     _cameraTriggerPoints.append(new QGCQGeoCoordinate(imageCoordinate, this));
+
+    _waterQualityFactGroup.ldo()->setRawValue(feedback.alt_msl);
+    _waterQualityFactGroup.turb()->setRawValue(feedback.alt_rel);
+    _waterQualityFactGroup.cond()->setRawValue(feedback.roll);
+    _waterQualityFactGroup.temp()->setRawValue(feedback.pitch);
+    _waterQualityFactGroup.ph()->setRawValue(feedback.yaw);
+    _waterQualityFactGroup.orp()->setRawValue(feedback.foc_len);
+    _waterQualityFactGroup.chla()->setRawValue(feedback.flags);
+    _waterQualityFactGroup.cyano()->setRawValue(feedback.completed_captures);
 }
 #endif
 
@@ -4382,6 +4395,36 @@ VehicleVibrationFactGroup::VehicleVibrationFactGroup(QObject* parent)
     _xAxisFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
     _yAxisFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
     _zAxisFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
+}
+
+const char* VehicleWaterQualityFactGroup::_ldoFactName  = "ldo";
+const char* VehicleWaterQualityFactGroup::_turbFactName = "turb";
+const char* VehicleWaterQualityFactGroup::_condFactName = "cond";
+const char* VehicleWaterQualityFactGroup::_tempFactName = "temp";
+const char* VehicleWaterQualityFactGroup::_phFactName   = "ph";
+const char* VehicleWaterQualityFactGroup::_orpFactName  = "orp";
+const char* VehicleWaterQualityFactGroup::_chlaFactName = "chla";
+const char* VehicleWaterQualityFactGroup::_cyanoFactName= "cyano";
+
+VehicleWaterQualityFactGroup::VehicleWaterQualityFactGroup(QObject* parent)
+    : FactGroup(1000, ":/json/Vehicle/WaterQualityFact.json", parent)
+    , _ldoFact    (0, _ldoFactName,   FactMetaData::valueTypeDouble)
+    , _turbFact   (0, _turbFactName,  FactMetaData::valueTypeDouble)
+    , _condFact   (0, _condFactName,  FactMetaData::valueTypeDouble)
+    , _tempFact   (0, _tempFactName,  FactMetaData::valueTypeDouble)
+    , _phFact     (0, _phFactName,    FactMetaData::valueTypeDouble)
+    , _orpFact    (0, _orpFactName,   FactMetaData::valueTypeDouble)
+    , _chlaFact   (0, _chlaFactName,  FactMetaData::valueTypeDouble)
+    , _cyanoFact  (0, _cyanoFactName, FactMetaData::valueTypeDouble)
+{
+    _addFact(&_ldoFact,    _ldoFactName);
+    _addFact(&_turbFact,   _turbFactName);
+    _addFact(&_condFact,   _condFactName);
+    _addFact(&_tempFact,   _tempFactName);
+    _addFact(&_phFact,     _phFactName);
+    _addFact(&_orpFact,    _orpFactName);
+    _addFact(&_chlaFact,   _chlaFactName);
+    _addFact(&_cyanoFact,  _cyanoFactName);
 }
 
 const char* VehicleTemperatureFactGroup::_temperature1FactName =      "temperature1";

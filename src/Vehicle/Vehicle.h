@@ -175,6 +175,51 @@ private:
     Fact        _clipCount3Fact;
 };
 
+class VehicleWaterQualityFactGroup : public FactGroup
+{
+    Q_OBJECT
+
+public:
+    VehicleWaterQualityFactGroup(QObject* parent = nullptr);
+
+    Q_PROPERTY(Fact* ldo       READ ldo      CONSTANT)
+    Q_PROPERTY(Fact* turb      READ turb     CONSTANT)
+    Q_PROPERTY(Fact* cond      READ cond     CONSTANT)
+    Q_PROPERTY(Fact* temp      READ temp     CONSTANT)
+    Q_PROPERTY(Fact* ph        READ ph       CONSTANT)
+    Q_PROPERTY(Fact* orp       READ orp      CONSTANT)
+    Q_PROPERTY(Fact* chla      READ chla     CONSTANT)
+    Q_PROPERTY(Fact* cyano     READ cyano    CONSTANT)
+
+    Fact* ldo          () { return &_ldoFact; }
+    Fact* turb         () { return &_turbFact; }
+    Fact* cond         () { return &_condFact; }
+    Fact* temp         () { return &_tempFact; }
+    Fact* ph           () { return &_phFact; }
+    Fact* orp          () { return &_orpFact; }
+    Fact* chla         () { return &_chlaFact; }
+    Fact* cyano        () { return &_cyanoFact; }
+
+    static const char* _ldoFactName;
+    static const char* _turbFactName;
+    static const char* _condFactName;
+    static const char* _tempFactName;
+    static const char* _phFactName;
+    static const char* _orpFactName;
+    static const char* _chlaFactName;
+    static const char* _cyanoFactName;
+
+private:
+    Fact        _ldoFact;
+    Fact        _turbFact;
+    Fact        _condFact;
+    Fact        _tempFact;
+    Fact        _phFact;
+    Fact        _orpFact;
+    Fact        _chlaFact;
+    Fact        _cyanoFact;
+};
+
 class VehicleWindFactGroup : public FactGroup
 {
     Q_OBJECT
@@ -679,6 +724,7 @@ public:
     Q_PROPERTY(FactGroup* battery2          READ battery2FactGroup          CONSTANT)
     Q_PROPERTY(FactGroup* wind              READ windFactGroup              CONSTANT)
     Q_PROPERTY(FactGroup* vibration         READ vibrationFactGroup         CONSTANT)
+    Q_PROPERTY(FactGroup* waterQuality      READ waterQualityFactGroup      CONSTANT)
     Q_PROPERTY(FactGroup* temperature       READ temperatureFactGroup       CONSTANT)
     Q_PROPERTY(FactGroup* clock             READ clockFactGroup             CONSTANT)
     Q_PROPERTY(FactGroup* setpoint          READ setpointFactGroup          CONSTANT)
@@ -997,6 +1043,7 @@ public:
     FactGroup* setpointFactGroup            () { return &_setpointFactGroup; }
     FactGroup* distanceSensorFactGroup      () { return &_distanceSensorFactGroup; }
     FactGroup* estimatorStatusFactGroup     () { return &_estimatorStatusFactGroup; }
+    FactGroup* waterQualityFactGroup        () { return &_waterQualityFactGroup; }
 
     void setConnectionLostEnabled(bool connectionLostEnabled);
 
@@ -1578,6 +1625,7 @@ private:
     VehicleSetpointFactGroup        _setpointFactGroup;
     VehicleDistanceSensorFactGroup  _distanceSensorFactGroup;
     VehicleEstimatorStatusFactGroup _estimatorStatusFactGroup;
+    VehicleWaterQualityFactGroup    _waterQualityFactGroup;
 
     static const char* _rollFactName;
     static const char* _pitchFactName;
@@ -1608,6 +1656,7 @@ private:
     static const char* _clockFactGroupName;
     static const char* _distanceSensorFactGroupName;
     static const char* _estimatorStatusFactGroupName;
+    static const char* _waterQualityFactGroupName;
 
     static const int _vehicleUIUpdateRateMSecs = 100;
 
