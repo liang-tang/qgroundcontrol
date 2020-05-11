@@ -182,6 +182,8 @@ class VehicleWaterQualityFactGroup : public FactGroup
 public:
     VehicleWaterQualityFactGroup(QObject* parent = nullptr);
 
+    Q_PROPERTY(Fact* lat       READ lat      CONSTANT)
+    Q_PROPERTY(Fact* lon       READ lon      CONSTANT)
     Q_PROPERTY(Fact* ldo       READ ldo      CONSTANT)
     Q_PROPERTY(Fact* turb      READ turb     CONSTANT)
     Q_PROPERTY(Fact* cond      READ cond     CONSTANT)
@@ -191,6 +193,9 @@ public:
     Q_PROPERTY(Fact* chla      READ chla     CONSTANT)
     Q_PROPERTY(Fact* cyano     READ cyano    CONSTANT)
     Q_PROPERTY(Fact* freq      READ freq     CONSTANT)
+
+    Fact* lat          () { return &_latFact; }
+    Fact* lon          () { return &_lonFact; }
 
     Fact* ldo          () { return &_ldoFact; }
     Fact* turb         () { return &_turbFact; }
@@ -202,6 +207,8 @@ public:
     Fact* cyano        () { return &_cyanoFact; }
     Fact* freq         () { return &_freqFact; }
 
+    static const char* _latFactName;
+    static const char* _lonFactName;
     static const char* _ldoFactName;
     static const char* _turbFactName;
     static const char* _condFactName;
@@ -213,6 +220,8 @@ public:
     static const char* _freqFactName;
 
 private:
+    Fact        _latFact;
+    Fact        _lonFact;
     Fact        _ldoFact;
     Fact        _turbFact;
     Fact        _condFact;

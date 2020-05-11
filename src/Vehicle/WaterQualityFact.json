@@ -1,5 +1,17 @@
 [
 {
+    "name":             "lat",
+    "shortDescription": "经度",
+    "type":             "double",
+    "decimalPlaces":    7
+},
+{
+    "name":             "lon",
+    "shortDescription": "纬度",
+    "type":             "double",
+    "decimalPlaces":    7
+},
+{
     "name":             "ldo",
     "shortDescription": "溶解氧值",
     "type":             "double",

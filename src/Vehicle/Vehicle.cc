@@ -495,16 +495,16 @@ void Vehicle::_commonInit()
     _hobbsFact.setRawValue(QVariant(QString("0000:00:00")));
     _addFact(&_hobbsFact,               _hobbsFactName);
 
-    _addFactGroup(&_gpsFactGroup,               _gpsFactGroupName);
-    _addFactGroup(&_battery1FactGroup,          _battery1FactGroupName);
-    _addFactGroup(&_battery2FactGroup,          _battery2FactGroupName);
-    _addFactGroup(&_windFactGroup,              _windFactGroupName);
-    _addFactGroup(&_vibrationFactGroup,         _vibrationFactGroupName);
+    //_addFactGroup(&_gpsFactGroup,               _gpsFactGroupName);
+    //_addFactGroup(&_battery1FactGroup,          _battery1FactGroupName);
+    //_addFactGroup(&_battery2FactGroup,          _battery2FactGroupName);
+    //_addFactGroup(&_windFactGroup,              _windFactGroupName);
+    //_addFactGroup(&_vibrationFactGroup,         _vibrationFactGroupName);
     _addFactGroup(&_waterQualityFactGroup,      _waterQualityFactGroupName);
-    _addFactGroup(&_temperatureFactGroup,       _temperatureFactGroupName);
-    _addFactGroup(&_clockFactGroup,             _clockFactGroupName);
-    _addFactGroup(&_distanceSensorFactGroup,    _distanceSensorFactGroupName);
-    _addFactGroup(&_estimatorStatusFactGroup,   _estimatorStatusFactGroupName);
+    //_addFactGroup(&_temperatureFactGroup,       _temperatureFactGroupName);
+    //_addFactGroup(&_clockFactGroup,             _clockFactGroupName);
+    //_addFactGroup(&_distanceSensorFactGroup,    _distanceSensorFactGroupName);
+    //_addFactGroup(&_estimatorStatusFactGroup,   _estimatorStatusFactGroupName);
 
     // Add firmware-specific fact groups, if provided
     QMap<QString, FactGroup*>* fwFactGroups = _firmwarePlugin->factGroups();
@@ -889,6 +889,8 @@ void Vehicle::_handleCameraFeedback(const mavlink_message_t& message)
     qCDebug(VehicleLog) << "_handleCameraFeedback coord:index" << imageCoordinate << feedback.img_idx;
     _cameraTriggerPoints.append(new QGCQGeoCoordinate(imageCoordinate, this));
 
+    _waterQualityFactGroup.lat()->setRawValue((double)feedback.lat / qPow(10.0, 7.0));
+    _waterQualityFactGroup.lon()->setRawValue((double)feedback.lng / qPow(10.0, 7.0));
     _waterQualityFactGroup.ldo()->setRawValue(feedback.alt_msl);
     _waterQualityFactGroup.turb()->setRawValue(feedback.alt_rel);
     _waterQualityFactGroup.cond()->setRawValue(feedback.roll);
@@ -4429,6 +4431,8 @@ VehicleVibrationFactGroup::VehicleVibrationFactGroup(QObject* parent)
     _zAxisFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
 }
 
+const char* VehicleWaterQualityFactGroup::_latFactName  = "lat";
+const char* VehicleWaterQualityFactGroup::_lonFactName  = "lon";
 const char* VehicleWaterQualityFactGroup::_ldoFactName  = "ldo";
 const char* VehicleWaterQualityFactGroup::_turbFactName = "turb";
 const char* VehicleWaterQualityFactGroup::_condFactName = "cond";
@@ -4441,6 +4445,8 @@ const char* VehicleWaterQualityFactGroup::_freqFactName = "freq";
 
 VehicleWaterQualityFactGroup::VehicleWaterQualityFactGroup(QObject* parent)
     : FactGroup(1000, ":/json/Vehicle/WaterQualityFact.json", parent)
+    , _latFact    (0, _latFactName,   FactMetaData::valueTypeDouble)
+    , _lonFact    (0, _lonFactName,   FactMetaData::valueTypeDouble)
     , _ldoFact    (0, _ldoFactName,   FactMetaData::valueTypeDouble)
     , _turbFact   (0, _turbFactName,  FactMetaData::valueTypeDouble)
     , _condFact   (0, _condFactName,  FactMetaData::valueTypeDouble)
@@ -4451,6 +4457,8 @@ VehicleWaterQualityFactGroup::VehicleWaterQualityFactGroup(QObject* parent)
     , _cyanoFact  (0, _cyanoFactName, FactMetaData::valueTypeDouble)
     , _freqFact   (0, _freqFactName,  FactMetaData::valueTypeDouble)
 {
+    _addFact(&_latFact,    _latFactName);
+    _addFact(&_lonFact,    _lonFactName);
     _addFact(&_ldoFact,    _ldoFactName);
     _addFact(&_turbFact,   _turbFactName);
     _addFact(&_condFact,   _condFactName);
