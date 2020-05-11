@@ -3,25 +3,29 @@
     "name":             "ldo",
     "shortDescription": "溶解氧值",
     "type":             "double",
-    "decimalPlaces":    1
+    "decimalPlaces":    1,
+    "units":            "mg/L"
 },
 {
     "name":             "turb",
     "shortDescription": "浊度值",
     "type":             "double",
-    "decimalPlaces":    1
+    "decimalPlaces":    1,
+    "units":            "NTU"
 },
 {
     "name":             "cond",
     "shortDescription": "电导率值",
     "type":             "double",
-    "decimalPlaces":    1
+    "decimalPlaces":    1,
+    "units":            "uS/cm"
 },
 {
     "name":             "temp",
     "shortDescription": "温度值",
     "type":             "double",
-    "decimalPlaces":    1
+    "decimalPlaces":    1,
+    "units":            "℃"
 },
 {
     "name":             "ph",
@@ -33,19 +37,22 @@
     "name":             "orp",
     "shortDescription": "ORP值",
     "type":             "double",
-    "decimalPlaces":    1
+    "decimalPlaces":    1,
+    "units":            "mV"
 },
 {
     "name":             "chla",
     "shortDescription": "叶绿素值",
     "type":             "double",
-    "decimalPlaces":    1
+    "decimalPlaces":    1,
+    "units":            "ug/L"
 },
 {
     "name":             "cyano",
     "shortDescription": "蓝绿藻值",
     "type":             "double",
-    "decimalPlaces":    1
+    "decimalPlaces":    1,
+    "units":            "cells/mL"
 },
 {
     "name":             "freq",
