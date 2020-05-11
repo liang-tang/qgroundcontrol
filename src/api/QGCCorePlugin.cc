@@ -406,7 +406,8 @@ QString QGCCorePlugin::showAdvancedUIMessage() const
 void QGCCorePlugin::valuesWidgetDefaultSettings(QStringList& largeValues, QStringList& smallValues)
 {
     Q_UNUSED(smallValues);
-    largeValues << "Vehicle.altitudeRelative" << "Vehicle.groundSpeed" << "Vehicle.flightTime";
+    largeValues << "waterQuality.ldo" << "waterQuality.turb" << "waterQuality.cond" << "waterQuality.temp"
+                << "waterQuality.ph" << "waterQuality.orp" << "waterQuality.chla" << "waterQuality.cyano";
 }
 
 QQmlApplicationEngine* QGCCorePlugin::createRootWindow(QObject *parent)
