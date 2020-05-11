@@ -318,7 +318,7 @@ Column {
             //anchors.right:              parent.right
             text:                       qsTr("Stop")
             visible:                    true
-            onClicked:                  activeVehicle.setParam(1, "WQ_FREQ", 0)
+            onClicked:                  activeVehicle.setParam(1, "WQ_FREQ", -1)
             enabled:                    activeVehicle
         }
     }

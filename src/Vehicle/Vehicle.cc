@@ -3714,7 +3714,10 @@ void Vehicle::setParam(int componentId, const QString& paramName, const QVariant
     mavlink_param_union_t   union_value;
     float v = value.toFloat() / 10;
 
-    if (v < 0.1) {
+    if (v < -0.05) {
+        v = 0;
+    }
+    else if (v < 0.1) {
         v = 1;
     }
 
