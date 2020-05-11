@@ -282,12 +282,12 @@ QVariantList& QGCCorePlugin::instrumentPages()
         _p->vibrationPageWidgetInfo = new QmlComponentInfo(tr("Vibration"), QUrl::fromUserInput("qrc:/qml/VibrationPageWidget.qml"));
 
         _p->instrumentPageWidgetList.append(QVariant::fromValue(_p->valuesPageWidgetInfo));
-        _p->instrumentPageWidgetList.append(QVariant::fromValue(_p->cameraPageWidgetInfo));
+        //_p->instrumentPageWidgetList.append(QVariant::fromValue(_p->cameraPageWidgetInfo));
 #if defined(QGC_GST_STREAMING)
         _p->instrumentPageWidgetList.append(QVariant::fromValue(_p->videoPageWidgetInfo));
 #endif
-        _p->instrumentPageWidgetList.append(QVariant::fromValue(_p->healthPageWidgetInfo));
-        _p->instrumentPageWidgetList.append(QVariant::fromValue(_p->vibrationPageWidgetInfo));
+        //_p->instrumentPageWidgetList.append(QVariant::fromValue(_p->healthPageWidgetInfo));
+        //_p->instrumentPageWidgetList.append(QVariant::fromValue(_p->vibrationPageWidgetInfo));
     }
     return _p->instrumentPageWidgetList;
 }
