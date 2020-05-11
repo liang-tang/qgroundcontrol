@@ -1,49 +1,49 @@
 [
 {
     "name":             "ldo",
-    "shortDescription": "Ldo",
+    "shortDescription": "溶解氧值",
     "type":             "double",
     "decimalPlaces":    1
 },
 {
     "name":             "turb",
-    "shortDescription": "Turb",
+    "shortDescription": "浊度值",
     "type":             "double",
     "decimalPlaces":    1
 },
 {
     "name":             "cond",
-    "shortDescription": "Cond",
+    "shortDescription": "电导率值",
     "type":             "double",
     "decimalPlaces":    1
 },
 {
     "name":             "temp",
-    "shortDescription": "Temp",
+    "shortDescription": "温度值",
     "type":             "double",
     "decimalPlaces":    1
 },
 {
     "name":             "ph",
-    "shortDescription": "Ph",
+    "shortDescription": "PH值",
     "type":             "double",
     "decimalPlaces":    1
 },
 {
     "name":             "orp",
-    "shortDescription": "ORP",
+    "shortDescription": "ORP值",
     "type":             "double",
     "decimalPlaces":    1
 },
 {
     "name":             "chla",
-    "shortDescription": "Chla",
+    "shortDescription": "叶绿素值",
     "type":             "double",
     "decimalPlaces":    1
 },
 {
     "name":             "cyano",
-    "shortDescription": "Cyano",
+    "shortDescription": "蓝绿藻值",
     "type":             "double",
     "decimalPlaces":    1
 },

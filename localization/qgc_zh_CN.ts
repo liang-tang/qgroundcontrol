@@ -15161,6 +15161,21 @@ Confirm change?</source>
       <source>Large</source>
       <translation>大</translation>
     </message>
+    <message>
+      <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="302"/>
+      <source>Freq</source>
+      <translation>采样频率</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="312"/>
+      <source>Start</source>
+      <translation>开始采样</translation>
+    </message>
+    <message>
+    <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="319"/>
+    <source>Stop</source>
+    <translation>停止采样</translation>
+    </message>
   </context>
   <context>
     <name>Vehicle</name>
