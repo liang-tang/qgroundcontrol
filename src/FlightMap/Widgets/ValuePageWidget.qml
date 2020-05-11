@@ -292,4 +292,34 @@ Column {
             }
         }
     }
+
+    GridLayout {
+        columns: 2
+
+        property Fact _freq:        _activeVehicle.waterQuality.freq
+
+        QGCLabel {
+            text:                   qsTr("Freq")
+            visible:                true
+        }
+        FactComboBox {
+            fact:                   parent._freq
+            indexModel:             false
+        }
+
+        QGCButton {
+            //anchors.left:               parent.left
+            text:                       qsTr("Start")
+            visible:                    true
+            onClicked:                  activeVehicle.setParam(1, "WQ_FREQ", parent._freq.rawValue)
+            enabled:                    activeVehicle
+        }
+        QGCButton {
+            //anchors.right:              parent.right
+            text:                       qsTr("Stop")
+            visible:                    true
+            onClicked:                  activeVehicle.setParam(1, "WQ_FREQ", 0)
+            enabled:                    activeVehicle
+        }
+    }
 }

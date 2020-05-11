@@ -46,5 +46,13 @@
     "shortDescription": "Cyano",
     "type":             "double",
     "decimalPlaces":    1
+},
+{
+    "name":             "freq",
+    "shortDescription": "Freq",
+    "type":             "int32",
+    "enumStrings":      "0.2hz,0.5hz,1hz,2hz,5hz",
+    "enumValues":       "2,5,0,20,50",
+    "defaultValue":     0
 }
 ]

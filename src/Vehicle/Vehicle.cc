@@ -3707,6 +3707,35 @@ void Vehicle::triggerCamera()
                    1.0);                            // test shot flag
 }
 
+void Vehicle::setParam(int componentId, const QString& paramName, const QVariant& value)
+{
+    qWarning() << "Call to Vehicle::setOfflineEditingDefaultComponentId on vehicle which is not offline";
+    mavlink_param_set_t     p;
+    mavlink_param_union_t   union_value;
+    float v = value.toFloat() / 10;
+
+    if (v < 0.1) {
+        v = 1;
+    }
+
+    memset(&p, 0, sizeof(p));
+    union_value.param_float = v;
+    p.param_value = union_value.param_float;
+    p.param_type = MAV_PARAM_TYPE_REAL32;
+    p.target_system = (uint8_t)id();
+    p.target_component = (uint8_t)componentId;
+
+    strncpy(p.param_id, paramName.toStdString().c_str(), sizeof(p.param_id));
+
+    mavlink_message_t msg;
+    mavlink_msg_param_set_encode_chan(_mavlink->getSystemId(),
+                                      _mavlink->getComponentId(),
+                                      priorityLink()->mavlinkChannel(),
+                                      &msg,
+                                      &p);
+    sendMessageOnLink(priorityLink(), msg);
+}
+
 void Vehicle::setVtolInFwdFlight(bool vtolInFwdFlight)
 {
     if (_vtolInFwdFlight != vtolInFwdFlight) {
@@ -4405,6 +4434,7 @@ const char* VehicleWaterQualityFactGroup::_phFactName   = "ph";
 const char* VehicleWaterQualityFactGroup::_orpFactName  = "orp";
 const char* VehicleWaterQualityFactGroup::_chlaFactName = "chla";
 const char* VehicleWaterQualityFactGroup::_cyanoFactName= "cyano";
+const char* VehicleWaterQualityFactGroup::_freqFactName = "freq";
 
 VehicleWaterQualityFactGroup::VehicleWaterQualityFactGroup(QObject* parent)
     : FactGroup(1000, ":/json/Vehicle/WaterQualityFact.json", parent)
@@ -4416,6 +4446,7 @@ VehicleWaterQualityFactGroup::VehicleWaterQualityFactGroup(QObject* parent)
     , _orpFact    (0, _orpFactName,   FactMetaData::valueTypeDouble)
     , _chlaFact   (0, _chlaFactName,  FactMetaData::valueTypeDouble)
     , _cyanoFact  (0, _cyanoFactName, FactMetaData::valueTypeDouble)
+    , _freqFact   (0, _freqFactName,  FactMetaData::valueTypeDouble)
 {
     _addFact(&_ldoFact,    _ldoFactName);
     _addFact(&_turbFact,   _turbFactName);
@@ -4425,6 +4456,7 @@ VehicleWaterQualityFactGroup::VehicleWaterQualityFactGroup(QObject* parent)
     _addFact(&_orpFact,    _orpFactName);
     _addFact(&_chlaFact,   _chlaFactName);
     _addFact(&_cyanoFact,  _cyanoFactName);
+    _addFact(&_freqFact,   _freqFactName);
 }
 
 const char* VehicleTemperatureFactGroup::_temperature1FactName =      "temperature1";

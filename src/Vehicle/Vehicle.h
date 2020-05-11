@@ -190,6 +190,7 @@ public:
     Q_PROPERTY(Fact* orp       READ orp      CONSTANT)
     Q_PROPERTY(Fact* chla      READ chla     CONSTANT)
     Q_PROPERTY(Fact* cyano     READ cyano    CONSTANT)
+    Q_PROPERTY(Fact* freq      READ freq     CONSTANT)
 
     Fact* ldo          () { return &_ldoFact; }
     Fact* turb         () { return &_turbFact; }
@@ -199,6 +200,7 @@ public:
     Fact* orp          () { return &_orpFact; }
     Fact* chla         () { return &_chlaFact; }
     Fact* cyano        () { return &_cyanoFact; }
+    Fact* freq         () { return &_freqFact; }
 
     static const char* _ldoFactName;
     static const char* _turbFactName;
@@ -208,6 +210,7 @@ public:
     static const char* _orpFactName;
     static const char* _chlaFactName;
     static const char* _cyanoFactName;
+    static const char* _freqFactName;
 
 private:
     Fact        _ldoFact;
@@ -218,6 +221,7 @@ private:
     Fact        _orpFact;
     Fact        _chlaFact;
     Fact        _cyanoFact;
+    Fact        _freqFact;
 };
 
 class VehicleWindFactGroup : public FactGroup
@@ -803,6 +807,7 @@ public:
     Q_INVOKABLE void clearMessages();
 
     Q_INVOKABLE void triggerCamera();
+    Q_INVOKABLE void setParam(int componentId, const QString& paramName, const QVariant& value);
     Q_INVOKABLE void sendPlan(QString planFile);
 
     /// Used to check if running current version is equal or higher than the one being compared.
