@@ -60,6 +60,12 @@ public:
     DEFINE_SETTINGFACT(usePairing)
     DEFINE_SETTINGFACT(saveCsvTelemetry)
 
+    DEFINE_SETTINGFACT(domain1)
+    DEFINE_SETTINGFACT(domain2)
+    DEFINE_SETTINGFACT(domain3)
+    DEFINE_SETTINGFACT(domain4)
+    DEFINE_SETTINGFACT(domain5)
+
     // Although this is a global setting it only affects ArduPilot vehicle since PX4 automatically starts the stream from the vehicle side
     DEFINE_SETTINGFACT(apmStartMavlinkStreams)
 

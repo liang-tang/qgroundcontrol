@@ -322,4 +322,53 @@ Column {
             enabled:                    activeVehicle
         }
     }
+
+    GridLayout {
+        columns: 2
+
+        QGCLabel {
+            text:                   qsTr("domain1")
+            visible:                true
+        }
+        FactTextField {
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
+            fact:                   QGroundControl.settingsManager.appSettings.domain1
+        }
+
+        QGCLabel {
+            text:                   qsTr("domain2")
+            visible:                true
+        }
+        FactTextField {
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
+            fact:                   QGroundControl.settingsManager.appSettings.domain2
+        }
+
+        QGCLabel {
+            text:                   qsTr("domain3")
+            visible:                true
+        }
+        FactTextField {
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
+            fact:                   QGroundControl.settingsManager.appSettings.domain3
+        }
+
+        QGCLabel {
+            text:                   qsTr("domain4")
+            visible:                true
+        }
+        FactTextField {
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
+            fact:                   QGroundControl.settingsManager.appSettings.domain4
+        }
+
+        QGCLabel {
+            text:                   qsTr("domain5")
+            visible:                true
+        }
+        FactTextField {
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
+            fact:                   QGroundControl.settingsManager.appSettings.domain5
+        }
+    }
 }

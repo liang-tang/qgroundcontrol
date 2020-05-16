@@ -276,5 +276,50 @@
     "longDescription":  "If this option is enabled, all Facts will be written to a CSV file with a 1 Hertz frequency.",
     "type":             "bool",
     "defaultValue":     true
+},
+{
+    "name":             "domain1",
+    "shortDescription": "domain1",
+    "longDescription":  "domain1",
+    "type":             "double",
+    "defaultValue":     50.0,
+    "min":              0.0,
+    "decimalPlaces":    1
+},
+{
+    "name":             "domain2",
+    "shortDescription": "domain2",
+    "longDescription":  "domain2",
+    "type":             "double",
+    "defaultValue":     50.0,
+    "min":              0.0,
+    "decimalPlaces":    1
+},
+{
+    "name":             "domain3",
+    "shortDescription": "domain3",
+    "longDescription":  "domain3",
+    "type":             "double",
+    "defaultValue":     50.0,
+    "min":              0.0,
+    "decimalPlaces":    1
+},
+{
+    "name":             "domain4",
+    "shortDescription": "domain4",
+    "longDescription":  "domain4",
+    "type":             "double",
+    "defaultValue":     50.0,
+    "min":              0.0,
+    "decimalPlaces":    1
+},
+{
+    "name":             "domain5",
+    "shortDescription": "domain5",
+    "longDescription":  "domain5",
+    "type":             "double",
+    "defaultValue":     50.0,
+    "min":              0.0,
+    "decimalPlaces":    1
 }
 ]

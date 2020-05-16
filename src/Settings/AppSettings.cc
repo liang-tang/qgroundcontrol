@@ -99,6 +99,11 @@ DECLARE_SETTINGSFACT(AppSettings, language)
 DECLARE_SETTINGSFACT(AppSettings, disableAllPersistence)
 DECLARE_SETTINGSFACT(AppSettings, usePairing)
 DECLARE_SETTINGSFACT(AppSettings, saveCsvTelemetry)
+DECLARE_SETTINGSFACT(AppSettings, domain1)
+DECLARE_SETTINGSFACT(AppSettings, domain2)
+DECLARE_SETTINGSFACT(AppSettings, domain3)
+DECLARE_SETTINGSFACT(AppSettings, domain4)
+DECLARE_SETTINGSFACT(AppSettings, domain5)
 
 DECLARE_SETTINGSFACT_NO_FUNC(AppSettings, indoorPalette)
 {
