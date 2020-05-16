@@ -210,7 +210,7 @@ QString GoogleHybridMapProvider::_getURL(const int x, const int y, const int zoo
     QString sec2; // after &zoom=...
     _getSecGoogleWords(x, y, sec1, sec2);
     _tryCorrectGoogleVersions(networkManager);
-    return QString(QStringLiteral("http://%1%2.google.com/%3/lyrs=%4&hl=%5&x=%6%7&y=%8&z=%9&s=%10"))
+    return QString(QStringLiteral("http://%1%2.google.cn/%3/lyrs=%4&hl=%5&x=%6%7&y=%8&z=%9&s=%10"))
         .arg(server)
         .arg(_getServerNum(x, y, 4))
         .arg(request)

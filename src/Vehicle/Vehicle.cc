@@ -81,6 +81,7 @@ const char* Vehicle::_headingToHomeFactName =       "headingToHome";
 const char* Vehicle::_distanceToGCSFactName =       "distanceToGCS";
 const char* Vehicle::_hobbsFactName =               "hobbs";
 const char* Vehicle::_throttlePctFactName =         "throttlePct";
+const char* Vehicle::_wqFreqFactName =              "wqFreq";
 
 const char* Vehicle::_gpsFactGroupName =                "gps";
 const char* Vehicle::_battery1FactGroupName =           "battery";
@@ -92,6 +93,8 @@ const char* Vehicle::_clockFactGroupName =              "clock";
 const char* Vehicle::_distanceSensorFactGroupName =     "distanceSensor";
 const char* Vehicle::_estimatorStatusFactGroupName =    "estimatorStatus";
 const char* Vehicle::_waterQualityFactGroupName =       "waterQuality";
+
+FactMetaData* Vehicle::_wqFreqMetaData = nullptr;
 
 // Standard connected vehicle
 Vehicle::Vehicle(LinkInterface*             link,
@@ -210,6 +213,7 @@ Vehicle::Vehicle(LinkInterface*             link,
     , _distanceToGCSFact    (0, _distanceToGCSFactName,     FactMetaData::valueTypeDouble)
     , _hobbsFact            (0, _hobbsFactName,             FactMetaData::valueTypeString)
     , _throttlePctFact      (0, _throttlePctFactName,       FactMetaData::valueTypeUint16)
+    , _wqFreqFact           (0, _wqFreqFactName,            FactMetaData::valueTypeUint16)
     , _gpsFactGroup(this)
     , _battery1FactGroup(this)
     , _battery2FactGroup(this)
@@ -411,6 +415,7 @@ Vehicle::Vehicle(MAV_AUTOPILOT              firmwareType,
     , _distanceToGCSFact    (0, _distanceToGCSFactName,     FactMetaData::valueTypeDouble)
     , _hobbsFact            (0, _hobbsFactName,             FactMetaData::valueTypeString)
     , _throttlePctFact      (0, _throttlePctFactName,       FactMetaData::valueTypeUint16)
+    , _wqFreqFact           (0, _wqFreqFactName,            FactMetaData::valueTypeUint16)
     , _gpsFactGroup(this)
     , _battery1FactGroup(this)
     , _battery2FactGroup(this)
@@ -491,6 +496,7 @@ void Vehicle::_commonInit()
     _addFact(&_headingToHomeFact,       _headingToHomeFactName);
     _addFact(&_distanceToGCSFact,       _distanceToGCSFactName);
     _addFact(&_throttlePctFact,         _throttlePctFactName);
+    _addFact(&_wqFreqFact,              _wqFreqFactName);
 
     _hobbsFact.setRawValue(QVariant(QString("0000:00:00")));
     _addFact(&_hobbsFact,               _hobbsFactName);
@@ -500,11 +506,33 @@ void Vehicle::_commonInit()
     //_addFactGroup(&_battery2FactGroup,          _battery2FactGroupName);
     //_addFactGroup(&_windFactGroup,              _windFactGroupName);
     //_addFactGroup(&_vibrationFactGroup,         _vibrationFactGroupName);
-    _addFactGroup(&_waterQualityFactGroup,      _waterQualityFactGroupName);
+    _addFactGroup(&_waterQualityFactGroup,        _waterQualityFactGroupName);
     //_addFactGroup(&_temperatureFactGroup,       _temperatureFactGroupName);
     //_addFactGroup(&_clockFactGroup,             _clockFactGroupName);
     //_addFactGroup(&_distanceSensorFactGroup,    _distanceSensorFactGroupName);
     //_addFactGroup(&_estimatorStatusFactGroup,   _estimatorStatusFactGroupName);
+
+    QStringList enumStrings;
+    QVariantList enumValues;
+
+    if (!_wqFreqMetaData) {
+        _wqFreqMetaData = new FactMetaData(FactMetaData::valueTypeUint16);
+        _wqFreqMetaData->setRawUnits("Hz");
+        _wqFreqMetaData->setRawIncrement(1);
+        _wqFreqMetaData->setDecimalPlaces(2);
+
+        enumStrings.clear();
+        enumValues.clear();
+        QString Strings[5] = {"0.2hz", "0.5hz", "1hz", "2hz", "5hz"};
+        uint16_t Values[5] = {2, 5, 0, 20, 50};
+        for (uint8_t i = 0; i< 5; i++) {
+            enumStrings.append(Strings[i]);
+            enumValues.append(Values[i]);
+        }
+        _wqFreqMetaData->setEnumInfo(enumStrings, enumValues);
+    }
+
+    _wqFreqFact.setMetaData(_wqFreqMetaData);
 
     // Add firmware-specific fact groups, if provided
     QMap<QString, FactGroup*>* fwFactGroups = _firmwarePlugin->factGroups();
@@ -4443,7 +4471,6 @@ const char* VehicleWaterQualityFactGroup::_phFactName   = "ph";
 const char* VehicleWaterQualityFactGroup::_orpFactName  = "orp";
 const char* VehicleWaterQualityFactGroup::_chlaFactName = "chla";
 const char* VehicleWaterQualityFactGroup::_cyanoFactName= "cyano";
-const char* VehicleWaterQualityFactGroup::_freqFactName = "freq";
 
 VehicleWaterQualityFactGroup::VehicleWaterQualityFactGroup(QObject* parent)
     : FactGroup(1000, ":/json/Vehicle/WaterQualityFact.json", parent)
@@ -4457,7 +4484,6 @@ VehicleWaterQualityFactGroup::VehicleWaterQualityFactGroup(QObject* parent)
     , _orpFact    (0, _orpFactName,   FactMetaData::valueTypeDouble)
     , _chlaFact   (0, _chlaFactName,  FactMetaData::valueTypeDouble)
     , _cyanoFact  (0, _cyanoFactName, FactMetaData::valueTypeDouble)
-    , _freqFact   (0, _freqFactName,  FactMetaData::valueTypeDouble)
 {
     _addFact(&_latFact,    _latFactName);
     _addFact(&_lonFact,    _lonFactName);
@@ -4469,7 +4495,6 @@ VehicleWaterQualityFactGroup::VehicleWaterQualityFactGroup(QObject* parent)
     _addFact(&_orpFact,    _orpFactName);
     _addFact(&_chlaFact,   _chlaFactName);
     _addFact(&_cyanoFact,  _cyanoFactName);
-    _addFact(&_freqFact,   _freqFactName);
 }
 
 const char* VehicleTemperatureFactGroup::_temperature1FactName =      "temperature1";

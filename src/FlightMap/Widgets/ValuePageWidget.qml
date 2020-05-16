@@ -296,7 +296,7 @@ Column {
     GridLayout {
         columns: 2
 
-        property Fact _freq:        _activeVehicle.waterQuality.freq
+        property Fact _freq:        _activeVehicle.wqFreq
 
         QGCLabel {
             text:                   qsTr("Freq")

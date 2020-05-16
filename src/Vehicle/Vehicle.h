@@ -192,7 +192,6 @@ public:
     Q_PROPERTY(Fact* orp       READ orp      CONSTANT)
     Q_PROPERTY(Fact* chla      READ chla     CONSTANT)
     Q_PROPERTY(Fact* cyano     READ cyano    CONSTANT)
-    Q_PROPERTY(Fact* freq      READ freq     CONSTANT)
 
     Fact* lat          () { return &_latFact; }
     Fact* lon          () { return &_lonFact; }
@@ -205,7 +204,6 @@ public:
     Fact* orp          () { return &_orpFact; }
     Fact* chla         () { return &_chlaFact; }
     Fact* cyano        () { return &_cyanoFact; }
-    Fact* freq         () { return &_freqFact; }
 
     static const char* _latFactName;
     static const char* _lonFactName;
@@ -217,7 +215,6 @@ public:
     static const char* _orpFactName;
     static const char* _chlaFactName;
     static const char* _cyanoFactName;
-    static const char* _freqFactName;
 
 private:
     Fact        _latFact;
@@ -230,7 +227,6 @@ private:
     Fact        _orpFact;
     Fact        _chlaFact;
     Fact        _cyanoFact;
-    Fact        _freqFact;
 };
 
 class VehicleWindFactGroup : public FactGroup
@@ -731,6 +727,7 @@ public:
     Q_PROPERTY(Fact* distanceToGCS      READ distanceToGCS      CONSTANT)
     Q_PROPERTY(Fact* hobbs              READ hobbs              CONSTANT)
     Q_PROPERTY(Fact* throttlePct        READ throttlePct        CONSTANT)
+    Q_PROPERTY(Fact* wqFreq             READ wqFreq             CONSTANT)
 
     Q_PROPERTY(FactGroup* gps               READ gpsFactGroup               CONSTANT)
     Q_PROPERTY(FactGroup* battery           READ battery1FactGroup          CONSTANT)
@@ -1046,6 +1043,7 @@ public:
     Fact* distanceToGCS                     () { return &_distanceToGCSFact; }
     Fact* hobbs                             () { return &_hobbsFact; }
     Fact* throttlePct                       () { return &_throttlePctFact; }
+    Fact* wqFreq                            () { return &_wqFreqFact; }
 
     FactGroup* gpsFactGroup                 () { return &_gpsFactGroup; }
     FactGroup* battery1FactGroup            () { return &_battery1FactGroup; }
@@ -1628,6 +1626,7 @@ private:
     Fact _distanceToGCSFact;
     Fact _hobbsFact;
     Fact _throttlePctFact;
+    Fact _wqFreqFact;
 
     VehicleGPSFactGroup             _gpsFactGroup;
     VehicleBatteryFactGroup         _battery1FactGroup;
@@ -1660,6 +1659,7 @@ private:
     static const char* _distanceToGCSFactName;
     static const char* _hobbsFactName;
     static const char* _throttlePctFactName;
+    static const char* _wqFreqFactName;
 
     static const char* _gpsFactGroupName;
     static const char* _battery1FactGroupName;
@@ -1679,4 +1679,5 @@ private:
     static const char* _joystickModeSettingsKey;
     static const char* _joystickEnabledSettingsKey;
 
+    static FactMetaData*    _wqFreqMetaData;
 };
