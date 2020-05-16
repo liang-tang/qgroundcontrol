@@ -297,7 +297,7 @@ Vehicle::Vehicle(LinkInterface*             link,
 
     // Start csv logger
     connect(&_csvLogTimer, &QTimer::timeout, this, &Vehicle::_writeCsvLine);
-    _csvLogTimer.start(1000);
+    //_csvLogTimer.start(1000);
     _lastBatteryAnnouncement.start();
 }
 
@@ -899,6 +899,8 @@ void Vehicle::_handleCameraFeedback(const mavlink_message_t& message)
     _waterQualityFactGroup.orp()->setRawValue(feedback.foc_len);
     _waterQualityFactGroup.chla()->setRawValue(feedback.flags);
     _waterQualityFactGroup.cyano()->setRawValue(feedback.completed_captures);
+
+    _writeCsvLine();
 }
 #endif
 
