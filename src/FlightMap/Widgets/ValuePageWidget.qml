@@ -323,8 +323,10 @@ Column {
         }
     }
 
+    property var enabledPalette:    QGCPalette { colorGroupEnabled: true }
+
     GridLayout {
-        columns: 2
+        columns: 3
 
         QGCLabel {
             text:                   qsTr("domain1")
@@ -333,6 +335,11 @@ Column {
         FactTextField {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
             fact:                   QGroundControl.settingsManager.appSettings.domain1
+        }
+        ClickableColor {
+            //id: enabledColorPicker
+            color: "#00e04b"
+            //onColorSelected: enabledPalette = color
         }
 
         QGCLabel {
@@ -343,6 +350,11 @@ Column {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
             fact:                   QGroundControl.settingsManager.appSettings.domain2
         }
+        ClickableColor {
+            //id: enabledColorPicker
+            color: "#de8500"
+            //onColorSelected: enabledPalette = color
+        }
 
         QGCLabel {
             text:                   qsTr("domain3")
@@ -351,6 +363,11 @@ Column {
         FactTextField {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
             fact:                   QGroundControl.settingsManager.appSettings.domain3
+        }
+        ClickableColor {
+            //id: enabledColorPicker
+            color: "#536dff"
+            //onColorSelected: enabledPalette = color
         }
 
         QGCLabel {
@@ -361,6 +378,11 @@ Column {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
             fact:                   QGroundControl.settingsManager.appSettings.domain4
         }
+        ClickableColor {
+            //id: enabledColorPicker
+            color: "#f85761"
+            //onColorSelected: enabledPalette = color
+        }
 
         QGCLabel {
             text:                   qsTr("domain5")
@@ -369,6 +391,11 @@ Column {
         FactTextField {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
             fact:                   QGroundControl.settingsManager.appSettings.domain5
+        }
+        ClickableColor {
+            //id: enabledColorPicker
+            color: "#e10f3f"
+            //onColorSelected: enabledPalette = color
         }
     }
 }
