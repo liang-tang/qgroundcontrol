@@ -912,11 +912,12 @@ void Vehicle::_handleCameraFeedback(const mavlink_message_t& message)
     mavlink_camera_feedback_t feedback;
 
     mavlink_msg_camera_feedback_decode(&message, &feedback);
-
+    static uint8_t t = 0;
     QGeoCoordinate imageCoordinate((double)feedback.lat / qPow(10.0, 7.0), (double)feedback.lng / qPow(10.0, 7.0), feedback.alt_msl);
     qCDebug(VehicleLog) << "_handleCameraFeedback coord:index" << imageCoordinate << feedback.img_idx;
     _cameraTriggerPoints.append(new QGCQGeoCoordinate(imageCoordinate, this));
-    static uint8_t t = 0;
+    //_cameraTriggerPoints.append(_waterQualityFactGroup.temp());
+
     _waterQualityFactGroup.lat()->setRawValue((double)feedback.lat / qPow(10.0, 7.0));
     _waterQualityFactGroup.lon()->setRawValue((double)feedback.lng / qPow(10.0, 7.0));
     _waterQualityFactGroup.ldo()->setRawValue(feedback.alt_msl);

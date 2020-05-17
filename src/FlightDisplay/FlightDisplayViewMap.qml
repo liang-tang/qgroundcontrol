@@ -335,7 +335,9 @@ FlightMap {
         delegate: CameraTriggerIndicator {
             coordinate:     object.coordinate
             z:              QGroundControl.zOrderTopMost
+            //color1:         object.coordinate.temp > 20 ? "green" : "red"
             color1:         activeVehicle.waterQuality.temp.rawValue  > 20?"green":"red"
+            index1:         index
         }
     }
 

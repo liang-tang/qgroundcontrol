@@ -24,40 +24,18 @@ import QGroundControl               1.0
 
 /// Marker for displaying a camera trigger on the map
 MapQuickItem {
-    anchorPoint.x:  sourceItem.width / 2
-    anchorPoint.y:  sourceItem.height / 2
+   // anchorPoint.x:  sourceItem.width
+//    anchorPoint.y:  sourceItem.height
+    anchorPoint.x:  sourceItem.anchorPointX
+    anchorPoint.y:  sourceItem.anchorPointY
     //property var    _activeVehicle: QGroundControl.multiVehicleManager.activeVehicle ? QGroundControl.multiVehicleManager.activeVehicle : QGroundControl.multiVehicleManager.offlineEditingVehicle
     //property var    color1:          //_activeVehicle.waterQuality.temp.rawValue > 20?"green":"red"
     property var    color1                                                  ///< Map control to place item in
+    property var    index1
 
-    // Extra circle to indicate selection
-    sourceItem: Rectangle {
-        width:          15
-        height:         15
-        radius:         7.5
-        color:          color1
-        border.color:   Qt.rgba(1,1,1,0.5)
-        border.width:   1
-        visible:        true
-        //anchors.centerIn: indicator
+    sourceItem: MissionItemIndexLabel {
+        checked:    true
+        index:      index1
+        label:      qsTr("Go here")
     }
-
-    // sourceItem: Rectangle {
-    //     width:      _radius * 2
-    //     height:     _radius * 2
-    //     radius:     _radius
-    //     color:      "black"
-    //     opacity:    0.4
-
-    //     readonly property real _radius: ScreenTools.defaultFontPixelHeight * 0.6
-
-    //     QGCColoredImage {
-    //         anchors.margins:    3
-    //         anchors.fill:       parent
-    //         color:              "white"
-    //         //mipmap:             true
-    //         //fillMode:           Image.PreserveAspectFit
-    //         source:             "/res/cancel.svg"
-    //     }
-    // }
 }
