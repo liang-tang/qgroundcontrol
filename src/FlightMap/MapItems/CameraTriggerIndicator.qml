@@ -25,8 +25,8 @@ MapQuickItem {
 
     sourceItem: MissionItemIndexLabel {
         checked:    true
-        index:      index1
-        label:      value1
+        //index:      index1
+        label:      " " + value1
         color:      color1
     }
 }
