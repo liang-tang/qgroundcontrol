@@ -21,11 +21,12 @@ MapQuickItem {
     anchorPoint.y:  sourceItem.anchorPointY
     property var    color1                                                  ///< Map control to place item in
     property var    index1
+    property var    value1
 
     sourceItem: MissionItemIndexLabel {
         checked:    true
         index:      index1
-        label:      qsTr("Go here")
+        label:      value1
         color:      color1
     }
 }

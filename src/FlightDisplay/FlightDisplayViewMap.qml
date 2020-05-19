@@ -328,7 +328,7 @@ FlightMap {
         }
     }
 
-    function myFunction(val) {
+    function getColorFunction(val) {
         var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
         var index = val * 8 + dataType
 
@@ -346,6 +346,12 @@ FlightMap {
         return "black"
     }
 
+    function getValueFunction(val) {
+        var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
+        var index = val * 8 + dataType
+        return activeVehicle.wqData[index].toFixed(2)
+    }
+
     // Camera trigger points
     MapItemView {
         model: activeVehicle ? activeVehicle.cameraTriggerPoints : 0
@@ -353,8 +359,9 @@ FlightMap {
         delegate: CameraTriggerIndicator {
             coordinate:     object.coordinate
             z:              QGroundControl.zOrderTopMost
-            color1:         myFunction(index)
+            color1:         getColorFunction(index)
             index1:         index
+            value1:         qsTr(getValueFunction(index))
         }
     }
 
