@@ -329,15 +329,18 @@ FlightMap {
     }
 
     function myFunction(val) {
-        if (activeVehicle.wqData[val] < 5) {
-            return "red"
-        } else if (activeVehicle.wqData[val] < 10) {
-            return "blue"
-        } else if (activeVehicle.wqData[val] < 15) {
-            return "black"
+        if (activeVehicle.wqData[val] < QGroundControl.settingsManager.appSettings.domain1.rawValue) {
+            return "#00e04b"
+        } else if (activeVehicle.wqData[val] < QGroundControl.settingsManager.appSettings.domain2.rawValue) {
+            return "#de8500"
+        } else if (activeVehicle.wqData[val] < QGroundControl.settingsManager.appSettings.domain3.rawValue) {
+            return "#536dff"
+        } else if (activeVehicle.wqData[val] < QGroundControl.settingsManager.appSettings.domain4.rawValue) {
+            return "#f85761"
+        } else if (activeVehicle.wqData[val] < QGroundControl.settingsManager.appSettings.domain5.rawValue) {
+            return "#e10f3f"
         }
-
-        return "#de8500"
+        return "black"
     }
 
     // Camera trigger points

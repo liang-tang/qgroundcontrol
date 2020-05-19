@@ -15,63 +15,55 @@
     "name":             "ldo",
     "shortDescription": "溶解氧值",
     "type":             "double",
-    "decimalPlaces":    1,
+    "decimalPlaces":    2,
     "units":            "mg/L"
 },
 {
     "name":             "turb",
     "shortDescription": "浊度值",
     "type":             "double",
-    "decimalPlaces":    1,
+    "decimalPlaces":    2,
     "units":            "NTU"
 },
 {
     "name":             "cond",
     "shortDescription": "电导率值",
     "type":             "double",
-    "decimalPlaces":    1,
+    "decimalPlaces":    2,
     "units":            "uS/cm"
 },
 {
     "name":             "temp",
     "shortDescription": "温度值",
     "type":             "double",
-    "decimalPlaces":    1,
+    "decimalPlaces":    2,
     "units":            "℃"
 },
 {
     "name":             "ph",
     "shortDescription": "PH值",
     "type":             "double",
-    "decimalPlaces":    1
+    "decimalPlaces":    2
 },
 {
     "name":             "orp",
     "shortDescription": "ORP值",
     "type":             "double",
-    "decimalPlaces":    1,
+    "decimalPlaces":    2,
     "units":            "mV"
 },
 {
     "name":             "chla",
     "shortDescription": "叶绿素值",
     "type":             "double",
-    "decimalPlaces":    1,
+    "decimalPlaces":    2,
     "units":            "ug/L"
 },
 {
     "name":             "cyano",
     "shortDescription": "蓝绿藻值",
     "type":             "double",
-    "decimalPlaces":    1,
+    "decimalPlaces":    2,
     "units":            "cells/mL"
-},
-{
-    "name":             "freq",
-    "shortDescription": "Freq",
-    "type":             "int32",
-    "enumStrings":      "0.2hz,0.5hz,1hz,2hz,5hz",
-    "enumValues":       "2,5,0,20,50",
-    "defaultValue":     0
 }
 ]

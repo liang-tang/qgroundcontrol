@@ -282,36 +282,36 @@
     "shortDescription": "domain1",
     "longDescription":  "domain1",
     "type":             "double",
-    "defaultValue":     50.0,
+    "defaultValue":     10.0,
     "min":              0.0,
-    "decimalPlaces":    1
+    "decimalPlaces":    2
 },
 {
     "name":             "domain2",
     "shortDescription": "domain2",
     "longDescription":  "domain2",
     "type":             "double",
-    "defaultValue":     50.0,
+    "defaultValue":     20.0,
     "min":              0.0,
-    "decimalPlaces":    1
+    "decimalPlaces":    2
 },
 {
     "name":             "domain3",
     "shortDescription": "domain3",
     "longDescription":  "domain3",
     "type":             "double",
-    "defaultValue":     50.0,
+    "defaultValue":     30.0,
     "min":              0.0,
-    "decimalPlaces":    1
+    "decimalPlaces":    2
 },
 {
     "name":             "domain4",
     "shortDescription": "domain4",
     "longDescription":  "domain4",
     "type":             "double",
-    "defaultValue":     50.0,
+    "defaultValue":     40.0,
     "min":              0.0,
-    "decimalPlaces":    1
+    "decimalPlaces":    2
 },
 {
     "name":             "domain5",
@@ -320,6 +320,6 @@
     "type":             "double",
     "defaultValue":     50.0,
     "min":              0.0,
-    "decimalPlaces":    1
+    "decimalPlaces":    2
 }
 ]
