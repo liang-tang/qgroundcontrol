@@ -917,7 +917,7 @@ void Vehicle::_handleCameraFeedback(const mavlink_message_t& message)
     qCDebug(VehicleLog) << "_handleCameraFeedback coord:index" << imageCoordinate << feedback.img_idx;
     _cameraTriggerPoints.append(new QGCQGeoCoordinate(imageCoordinate, this));
     //_cameraTriggerPoints.append(_waterQualityFactGroup.temp());
-
+    _wqData.append(t);
     _waterQualityFactGroup.lat()->setRawValue((double)feedback.lat / qPow(10.0, 7.0));
     _waterQualityFactGroup.lon()->setRawValue((double)feedback.lng / qPow(10.0, 7.0));
     _waterQualityFactGroup.ldo()->setRawValue(feedback.alt_msl);
@@ -928,8 +928,8 @@ void Vehicle::_handleCameraFeedback(const mavlink_message_t& message)
     _waterQualityFactGroup.orp()->setRawValue(feedback.foc_len);
     _waterQualityFactGroup.chla()->setRawValue(feedback.flags);
     _waterQualityFactGroup.cyano()->setRawValue(feedback.completed_captures);
-    if(t > 25) {
-        t = 15;
+    if(t > 20) {
+        t = 1;
     }
 
     _writeCsvLine();

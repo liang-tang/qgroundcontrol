@@ -328,6 +328,18 @@ FlightMap {
         }
     }
 
+    function myFunction(val) {
+        if (activeVehicle.wqData[val] < 5) {
+            return "red"
+        } else if (activeVehicle.wqData[val] < 10) {
+            return "blue"
+        } else if (activeVehicle.wqData[val] < 15) {
+            return "black"
+        }
+
+        return "#de8500"
+    }
+
     // Camera trigger points
     MapItemView {
         model: activeVehicle ? activeVehicle.cameraTriggerPoints : 0
@@ -335,8 +347,7 @@ FlightMap {
         delegate: CameraTriggerIndicator {
             coordinate:     object.coordinate
             z:              QGroundControl.zOrderTopMost
-            //color1:         object.coordinate.temp > 20 ? "green" : "red"
-            color1:         activeVehicle.waterQuality.temp.rawValue  > 20?"green":"red"
+            color1:         myFunction(index)
             index1:         index
         }
     }
