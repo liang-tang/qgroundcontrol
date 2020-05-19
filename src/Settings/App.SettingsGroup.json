@@ -321,5 +321,14 @@
     "defaultValue":     50.0,
     "min":              0.0,
     "decimalPlaces":    2
+},
+{
+    "name":             "wqDataType",
+    "shortDescription": "wqDataType",
+    "longDescription":  "wqDataType",
+    "type":             "uint32",
+    "enumStrings":      "溶解氧值,浊度值,电导率值,温度值,PH值,ORP值,叶绿素值,蓝绿藻值",
+    "enumValues":       "0,1,2,3,4,5,6,7",
+    "defaultValue":     0
 }
 ]

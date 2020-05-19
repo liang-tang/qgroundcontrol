@@ -329,15 +329,18 @@ FlightMap {
     }
 
     function myFunction(val) {
-        if (activeVehicle.wqData[val] < QGroundControl.settingsManager.appSettings.domain1.rawValue) {
+        var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
+        var index = val * 8 + dataType
+
+        if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain1.rawValue) {
             return "#00e04b"
-        } else if (activeVehicle.wqData[val] < QGroundControl.settingsManager.appSettings.domain2.rawValue) {
+        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain2.rawValue) {
             return "#de8500"
-        } else if (activeVehicle.wqData[val] < QGroundControl.settingsManager.appSettings.domain3.rawValue) {
+        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain3.rawValue) {
             return "#536dff"
-        } else if (activeVehicle.wqData[val] < QGroundControl.settingsManager.appSettings.domain4.rawValue) {
+        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain4.rawValue) {
             return "#f85761"
-        } else if (activeVehicle.wqData[val] < QGroundControl.settingsManager.appSettings.domain5.rawValue) {
+        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain5.rawValue) {
             return "#e10f3f"
         }
         return "black"

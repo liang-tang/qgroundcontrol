@@ -321,6 +321,15 @@ Column {
             onClicked:                  activeVehicle.setParam(1, "WQ_FREQ", -1)
             enabled:                    activeVehicle
         }
+
+        QGCLabel {
+            text:                   qsTr("Show")
+            visible:                true
+        }
+        FactComboBox {
+            fact:                   QGroundControl.settingsManager.appSettings.wqDataType
+            indexModel:             false
+        }
     }
 
     property var enabledPalette:    QGCPalette { colorGroupEnabled: true }

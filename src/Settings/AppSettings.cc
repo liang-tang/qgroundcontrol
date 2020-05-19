@@ -104,6 +104,7 @@ DECLARE_SETTINGSFACT(AppSettings, domain2)
 DECLARE_SETTINGSFACT(AppSettings, domain3)
 DECLARE_SETTINGSFACT(AppSettings, domain4)
 DECLARE_SETTINGSFACT(AppSettings, domain5)
+DECLARE_SETTINGSFACT(AppSettings, wqDataType)
 
 DECLARE_SETTINGSFACT_NO_FUNC(AppSettings, indoorPalette)
 {
