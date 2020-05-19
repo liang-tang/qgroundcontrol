@@ -15164,7 +15164,7 @@ Confirm change?</source>
     <message>
       <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="302"/>
       <source>Freq</source>
-      <translation>采样频率</translation>
+      <translation>采样频率:</translation>
     </message>
     <message>
       <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="312"/>
@@ -15175,6 +15175,36 @@ Confirm change?</source>
     <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="319"/>
     <source>Stop</source>
     <translation>停止采样</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="326"/>
+      <source>Show</source>
+      <translation>数据选择:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="341"/>
+      <source>domain1</source>
+      <translation>区间1:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="355"/>
+      <source>domain2</source>
+      <translation>区间2:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="369"/>
+      <source>domain3</source>
+      <translation>区间3:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="383"/>
+      <source>domain4</source>
+      <translation>区间4:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="397"/>
+      <source>domain5</source>
+      <translation>区间5:</translation>
     </message>
   </context>
   <context>
