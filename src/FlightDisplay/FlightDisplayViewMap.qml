@@ -332,15 +332,15 @@ FlightMap {
         var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
         var index = val * 8 + dataType
 
-        if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain1.rawValue) {
+        if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain01.rawValue) {
             return "#00e04b"
-        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain2.rawValue) {
+        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain02.rawValue) {
             return "#de8500"
-        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain3.rawValue) {
+        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain03.rawValue) {
             return "#536dff"
-        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain4.rawValue) {
+        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain04.rawValue) {
             return "#f85761"
-        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain5.rawValue) {
+        } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain05.rawValue) {
             return "#e10f3f"
         }
         return "black"

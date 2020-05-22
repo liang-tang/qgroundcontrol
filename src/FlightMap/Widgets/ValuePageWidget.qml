@@ -332,6 +332,100 @@ Column {
         }
     }
 
+    function getFactFunction(index) {
+        var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
+
+        if (dataType == 0) {
+            if (index == 0)
+                return QGroundControl.settingsManager.appSettings.domain01
+            else if (index == 1)
+                return QGroundControl.settingsManager.appSettings.domain02
+            else if (index == 2)
+                return QGroundControl.settingsManager.appSettings.domain03
+            else if (index == 3)
+                return QGroundControl.settingsManager.appSettings.domain04
+            else
+                return QGroundControl.settingsManager.appSettings.domain05
+        } else if (dataType == 1) {
+            if (index == 0)
+                return QGroundControl.settingsManager.appSettings.domain11
+            else if (index == 1)
+                return QGroundControl.settingsManager.appSettings.domain12
+            else if (index == 2)
+                return QGroundControl.settingsManager.appSettings.domain13
+            else if (index == 3)
+                return QGroundControl.settingsManager.appSettings.domain14
+            else
+                return QGroundControl.settingsManager.appSettings.domain15
+        } else if (dataType == 2) {
+            if (index == 0)
+                return QGroundControl.settingsManager.appSettings.domain21
+            else if (index == 1)
+                return QGroundControl.settingsManager.appSettings.domain22
+            else if (index == 2)
+                return QGroundControl.settingsManager.appSettings.domain23
+            else if (index == 3)
+                return QGroundControl.settingsManager.appSettings.domain24
+            else
+                return QGroundControl.settingsManager.appSettings.domain25
+        } else if (dataType == 3) {
+            if (index == 0)
+                return QGroundControl.settingsManager.appSettings.domain31
+            else if (index == 1)
+                return QGroundControl.settingsManager.appSettings.domain32
+            else if (index == 2)
+                return QGroundControl.settingsManager.appSettings.domain33
+            else if (index == 3)
+                return QGroundControl.settingsManager.appSettings.domain34
+            else
+                return QGroundControl.settingsManager.appSettings.domain35
+        } else if (dataType == 4) {
+            if (index == 0)
+                return QGroundControl.settingsManager.appSettings.domain41
+            else if (index == 1)
+                return QGroundControl.settingsManager.appSettings.domain42
+            else if (index == 2)
+                return QGroundControl.settingsManager.appSettings.domain43
+            else if (index == 3)
+                return QGroundControl.settingsManager.appSettings.domain44
+            else
+                return QGroundControl.settingsManager.appSettings.domain45
+        } else if (dataType == 5) {
+            if (index == 0)
+                return QGroundControl.settingsManager.appSettings.domain51
+            else if (index == 1)
+                return QGroundControl.settingsManager.appSettings.domain52
+            else if (index == 2)
+                return QGroundControl.settingsManager.appSettings.domain53
+            else if (index == 3)
+                return QGroundControl.settingsManager.appSettings.domain54
+            else
+                return QGroundControl.settingsManager.appSettings.domain55
+        } else if (dataType == 6) {
+            if (index == 0)
+                return QGroundControl.settingsManager.appSettings.domain61
+            else if (index == 1)
+                return QGroundControl.settingsManager.appSettings.domain62
+            else if (index == 2)
+                return QGroundControl.settingsManager.appSettings.domain63
+            else if (index == 3)
+                return QGroundControl.settingsManager.appSettings.domain64
+            else
+                return QGroundControl.settingsManager.appSettings.domain65
+        } else {
+            if (index == 0)
+                return QGroundControl.settingsManager.appSettings.domain71
+            else if (index == 1)
+                return QGroundControl.settingsManager.appSettings.domain72
+            else if (index == 2)
+                return QGroundControl.settingsManager.appSettings.domain73
+            else if (index == 3)
+                return QGroundControl.settingsManager.appSettings.domain74
+            else
+                return QGroundControl.settingsManager.appSettings.domain75
+        }
+    }
+
     property var enabledPalette:    QGCPalette { colorGroupEnabled: true }
 
     GridLayout {
@@ -343,7 +437,7 @@ Column {
         }
         FactTextField {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
-            fact:                   QGroundControl.settingsManager.appSettings.domain1
+            fact:                   getFactFunction(0)
         }
         ClickableColor {
             //id: enabledColorPicker
@@ -357,7 +451,7 @@ Column {
         }
         FactTextField {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
-            fact:                   QGroundControl.settingsManager.appSettings.domain2
+            fact:                   getFactFunction(1)
         }
         ClickableColor {
             //id: enabledColorPicker
@@ -371,7 +465,7 @@ Column {
         }
         FactTextField {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
-            fact:                   QGroundControl.settingsManager.appSettings.domain3
+            fact:                  getFactFunction(2)
         }
         ClickableColor {
             //id: enabledColorPicker
@@ -385,7 +479,7 @@ Column {
         }
         FactTextField {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
-            fact:                   QGroundControl.settingsManager.appSettings.domain4
+            fact:                   getFactFunction(3)
         }
         ClickableColor {
             //id: enabledColorPicker
@@ -399,7 +493,7 @@ Column {
         }
         FactTextField {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
-            fact:                   QGroundControl.settingsManager.appSettings.domain5
+            fact:                   getFactFunction(4)
         }
         ClickableColor {
             //id: enabledColorPicker
