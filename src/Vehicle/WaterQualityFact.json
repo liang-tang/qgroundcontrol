@@ -12,6 +12,27 @@
     "decimalPlaces":    7
 },
 {
+    "name":             "cod",
+    "shortDescription": "COD",
+    "type":             "double",
+    "decimalPlaces":    2,
+    "units":            "???"
+},
+{
+    "name":             "toc",
+    "shortDescription": "TOC",
+    "type":             "double",
+    "decimalPlaces":    2,
+    "units":            "???"
+},
+{
+    "name":             "nh3n",
+    "shortDescription": "氨氮",
+    "type":             "double",
+    "decimalPlaces":    2,
+    "units":            "???"
+},
+{
     "name":             "ldo",
     "shortDescription": "溶解氧值",
     "type":             "double",
@@ -31,13 +52,6 @@
     "type":             "double",
     "decimalPlaces":    2,
     "units":            "uS/cm"
-},
-{
-    "name":             "temp",
-    "shortDescription": "温度值",
-    "type":             "double",
-    "decimalPlaces":    2,
-    "units":            "℃"
 },
 {
     "name":             "ph",
@@ -65,5 +79,19 @@
     "type":             "double",
     "decimalPlaces":    2,
     "units":            "cells/mL"
+},
+{
+    "name":             "oil",
+    "shortDescription": "水中油",
+    "type":             "double",
+    "decimalPlaces":    2,
+    "units":            "???"
+},
+{
+    "name":             "temp",
+    "shortDescription": "温度值",
+    "type":             "double",
+    "decimalPlaces":    2,
+    "units":            "℃"
 }
 ]

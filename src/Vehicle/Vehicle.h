@@ -184,49 +184,64 @@ public:
 
     Q_PROPERTY(Fact* lat       READ lat      CONSTANT)
     Q_PROPERTY(Fact* lon       READ lon      CONSTANT)
+    Q_PROPERTY(Fact* cod       READ cod      CONSTANT)
+    Q_PROPERTY(Fact* toc       READ toc      CONSTANT)
+    Q_PROPERTY(Fact* nh3n      READ nh3n     CONSTANT)
     Q_PROPERTY(Fact* ldo       READ ldo      CONSTANT)
     Q_PROPERTY(Fact* turb      READ turb     CONSTANT)
     Q_PROPERTY(Fact* cond      READ cond     CONSTANT)
-    Q_PROPERTY(Fact* temp      READ temp     CONSTANT)
     Q_PROPERTY(Fact* ph        READ ph       CONSTANT)
     Q_PROPERTY(Fact* orp       READ orp      CONSTANT)
     Q_PROPERTY(Fact* chla      READ chla     CONSTANT)
     Q_PROPERTY(Fact* cyano     READ cyano    CONSTANT)
+    Q_PROPERTY(Fact* oil       READ oil      CONSTANT)
+    Q_PROPERTY(Fact* temp      READ temp     CONSTANT)
 
     Fact* lat          () { return &_latFact; }
     Fact* lon          () { return &_lonFact; }
 
+    Fact* cod          () { return &_codFact; }
+    Fact* toc          () { return &_tocFact; }
+    Fact* nh3n         () { return &_nh3nFact; }
     Fact* ldo          () { return &_ldoFact; }
     Fact* turb         () { return &_turbFact; }
     Fact* cond         () { return &_condFact; }
-    Fact* temp         () { return &_tempFact; }
     Fact* ph           () { return &_phFact; }
     Fact* orp          () { return &_orpFact; }
     Fact* chla         () { return &_chlaFact; }
     Fact* cyano        () { return &_cyanoFact; }
+    Fact* oil          () { return &_oilFact; }
+    Fact* temp         () { return &_tempFact; }
 
     static const char* _latFactName;
     static const char* _lonFactName;
+    static const char* _codFactName;
+    static const char* _tocFactName;
+    static const char* _nh3nFactName;
     static const char* _ldoFactName;
     static const char* _turbFactName;
     static const char* _condFactName;
-    static const char* _tempFactName;
     static const char* _phFactName;
     static const char* _orpFactName;
     static const char* _chlaFactName;
     static const char* _cyanoFactName;
-
+    static const char* _oilFactName;
+    static const char* _tempFactName;
 private:
     Fact        _latFact;
     Fact        _lonFact;
+    Fact        _codFact;
+    Fact        _tocFact;
+    Fact        _nh3nFact;
     Fact        _ldoFact;
     Fact        _turbFact;
     Fact        _condFact;
-    Fact        _tempFact;
     Fact        _phFact;
     Fact        _orpFact;
     Fact        _chlaFact;
     Fact        _cyanoFact;
+    Fact        _oilFact;
+    Fact        _tempFact;
 };
 
 class VehicleWindFactGroup : public FactGroup
@@ -1376,6 +1391,7 @@ private:
     void _handleMessageInterval         (const mavlink_message_t& message);
     void _handleGimbalOrientation       (const mavlink_message_t& message);
     void _handleObstacleDistance        (const mavlink_message_t& message);
+    void _handleData96                  (const mavlink_message_t& message);
     // ArduPilot dialect messages
 #if !defined(NO_ARDUPILOT_DIALECT)
     void _handleCameraFeedback          (const mavlink_message_t& message);

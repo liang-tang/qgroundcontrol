@@ -888,6 +888,10 @@ void Vehicle::_mavlinkMessageReceived(LinkInterface* link, mavlink_message_t mes
     }
         break;
 
+    case MAVLINK_MSG_ID_DATA96:
+        _handleData96(message);
+        break;
+
         // Following are ArduPilot dialect messages
 #if !defined(NO_ARDUPILOT_DIALECT)
     case MAVLINK_MSG_ID_CAMERA_FEEDBACK:
@@ -906,6 +910,64 @@ void Vehicle::_mavlinkMessageReceived(LinkInterface* link, mavlink_message_t mes
     _uas->receiveMessage(message);
 }
 
+void Vehicle::_handleData96(const mavlink_message_t& message)
+{
+    mavlink_data96_t m;
+    mavlink_msg_data96_decode(&message, &m);
+    if (m.type == 56) {
+        double lat = (double)((int32_t)((uint32_t)m.data[0] << 0 | (uint32_t)m.data[1] << 8 |
+                                        (uint32_t)m.data[2] << 16 | (uint32_t)m.data[3] << 24));
+        double lng = (double)((int32_t)((uint32_t)m.data[4] << 0 | (uint32_t)m.data[5] << 8 |
+                                        (uint32_t)m.data[6] << 16 | (uint32_t)m.data[7] << 24));
+        QGeoCoordinate imageCoordinate(lat / qPow(10.0, 7.0), lng / qPow(10.0, 7.0), 0);
+        _cameraTriggerPoints.append(new QGCQGeoCoordinate(imageCoordinate, this));
+
+        double var[12] = {};
+        for (uint8_t i = 0; i < 12; i++) {
+            uint32_t addr =(uint32_t)m.data[8 + i * 4] << 0 | (uint32_t)m.data[9 + i * 4] << 8 |
+                           (uint32_t)m.data[10 + i * 4] << 16 | (uint32_t)m.data[11 + i * 4] << 24;
+            var[i] = *(float *)&addr;
+            //qDebug() << var[i];
+        }
+
+        _waterQualityFactGroup.lat()->setRawValue(lat / qPow(10.0, 7.0));
+        _waterQualityFactGroup.lon()->setRawValue(lng / qPow(10.0, 7.0));
+
+        // Cod
+        _waterQualityFactGroup.cod()->setRawValue(var[0]);
+        // Toc
+        _waterQualityFactGroup.toc()->setRawValue(var[1]);
+        // NH3-N
+        _waterQualityFactGroup.nh3n()->setRawValue(var[2]);
+
+        _waterQualityFactGroup.ldo()->setRawValue(var[3]);
+        _waterQualityFactGroup.turb()->setRawValue(var[4]);
+        _waterQualityFactGroup.cond()->setRawValue(var[5] * 1000);
+        _waterQualityFactGroup.ph()->setRawValue(var[6]);
+        _waterQualityFactGroup.orp()->setRawValue(var[7]);
+        _waterQualityFactGroup.chla()->setRawValue(var[8]);
+        _waterQualityFactGroup.cyano()->setRawValue(var[9]);
+        // OIL
+        _waterQualityFactGroup.oil()->setRawValue(var[10]);
+        _waterQualityFactGroup.temp()->setRawValue(var[11]);
+
+        _wqData.append(var[0]);
+        _wqData.append(var[1]);
+        _wqData.append(var[2]);
+        _wqData.append(var[3]);
+        _wqData.append(var[4]);
+        _wqData.append(var[5] * 1000);
+        _wqData.append(var[6]);
+        _wqData.append(var[7]);
+        _wqData.append(var[8]);
+        _wqData.append(var[9]);
+        _wqData.append(var[10]);
+        _wqData.append(var[11]);
+
+        _writeCsvLine();
+    }
+}
+
 #if !defined(NO_ARDUPILOT_DIALECT)
 void Vehicle::_handleCameraFeedback(const mavlink_message_t& message)
 {
@@ -916,29 +978,7 @@ void Vehicle::_handleCameraFeedback(const mavlink_message_t& message)
     QGeoCoordinate imageCoordinate((double)feedback.lat / qPow(10.0, 7.0), (double)feedback.lng / qPow(10.0, 7.0), feedback.alt_msl);
     qCDebug(VehicleLog) << "_handleCameraFeedback coord:index" << imageCoordinate << feedback.img_idx;
 
-    _waterQualityFactGroup.lat()->setRawValue((double)feedback.lat / qPow(10.0, 7.0));
-    _waterQualityFactGroup.lon()->setRawValue((double)feedback.lng / qPow(10.0, 7.0));
-    _waterQualityFactGroup.ldo()->setRawValue(feedback.alt_msl);
-    _waterQualityFactGroup.turb()->setRawValue(feedback.alt_rel);
-    _waterQualityFactGroup.cond()->setRawValue(feedback.roll);
-    _waterQualityFactGroup.temp()->setRawValue(feedback.pitch); // temp
-    _waterQualityFactGroup.ph()->setRawValue(feedback.yaw);
-    _waterQualityFactGroup.orp()->setRawValue(feedback.foc_len);
-    _waterQualityFactGroup.chla()->setRawValue(feedback.flags);
-    _waterQualityFactGroup.cyano()->setRawValue(feedback.completed_captures);
-
-    _wqData.append(feedback.alt_msl);
-    _wqData.append(feedback.alt_rel);
-    _wqData.append(feedback.roll);
-    _wqData.append(feedback.pitch); // temp
-    _wqData.append(feedback.yaw);
-    _wqData.append(feedback.foc_len);
-    _wqData.append(feedback.flags);
-    _wqData.append(feedback.completed_captures);
-
     _cameraTriggerPoints.append(new QGCQGeoCoordinate(imageCoordinate, this));
-
-    _writeCsvLine();
 }
 #endif
 
@@ -4474,38 +4514,50 @@ VehicleVibrationFactGroup::VehicleVibrationFactGroup(QObject* parent)
 
 const char* VehicleWaterQualityFactGroup::_latFactName  = "lat";
 const char* VehicleWaterQualityFactGroup::_lonFactName  = "lon";
+const char* VehicleWaterQualityFactGroup::_codFactName  = "cod";
+const char* VehicleWaterQualityFactGroup::_tocFactName  = "toc";
+const char* VehicleWaterQualityFactGroup::_nh3nFactName = "nh3n";
 const char* VehicleWaterQualityFactGroup::_ldoFactName  = "ldo";
 const char* VehicleWaterQualityFactGroup::_turbFactName = "turb";
 const char* VehicleWaterQualityFactGroup::_condFactName = "cond";
-const char* VehicleWaterQualityFactGroup::_tempFactName = "temp";
 const char* VehicleWaterQualityFactGroup::_phFactName   = "ph";
 const char* VehicleWaterQualityFactGroup::_orpFactName  = "orp";
 const char* VehicleWaterQualityFactGroup::_chlaFactName = "chla";
 const char* VehicleWaterQualityFactGroup::_cyanoFactName= "cyano";
+const char* VehicleWaterQualityFactGroup::_oilFactName  = "oil";
+const char* VehicleWaterQualityFactGroup::_tempFactName = "temp";
 
 VehicleWaterQualityFactGroup::VehicleWaterQualityFactGroup(QObject* parent)
     : FactGroup(1000, ":/json/Vehicle/WaterQualityFact.json", parent)
     , _latFact    (0, _latFactName,   FactMetaData::valueTypeDouble)
     , _lonFact    (0, _lonFactName,   FactMetaData::valueTypeDouble)
+    , _codFact    (0, _codFactName,   FactMetaData::valueTypeDouble)
+    , _tocFact    (0, _tocFactName,   FactMetaData::valueTypeDouble)
+    , _nh3nFact   (0, _nh3nFactName,  FactMetaData::valueTypeDouble)
     , _ldoFact    (0, _ldoFactName,   FactMetaData::valueTypeDouble)
     , _turbFact   (0, _turbFactName,  FactMetaData::valueTypeDouble)
     , _condFact   (0, _condFactName,  FactMetaData::valueTypeDouble)
-    , _tempFact   (0, _tempFactName,  FactMetaData::valueTypeDouble)
     , _phFact     (0, _phFactName,    FactMetaData::valueTypeDouble)
     , _orpFact    (0, _orpFactName,   FactMetaData::valueTypeDouble)
     , _chlaFact   (0, _chlaFactName,  FactMetaData::valueTypeDouble)
     , _cyanoFact  (0, _cyanoFactName, FactMetaData::valueTypeDouble)
+    , _oilFact    (0, _oilFactName,   FactMetaData::valueTypeDouble)
+    , _tempFact   (0, _tempFactName,  FactMetaData::valueTypeDouble)
 {
     _addFact(&_latFact,    _latFactName);
     _addFact(&_lonFact,    _lonFactName);
+    _addFact(&_codFact,    _codFactName);
+    _addFact(&_tocFact,    _tocFactName);
+    _addFact(&_nh3nFact,   _nh3nFactName);
     _addFact(&_ldoFact,    _ldoFactName);
     _addFact(&_turbFact,   _turbFactName);
     _addFact(&_condFact,   _condFactName);
-    _addFact(&_tempFact,   _tempFactName);
     _addFact(&_phFact,     _phFactName);
     _addFact(&_orpFact,    _orpFactName);
     _addFact(&_chlaFact,   _chlaFactName);
     _addFact(&_cyanoFact,  _cyanoFactName);
+    _addFact(&_oilFact,    _oilFactName);
+    _addFact(&_tempFact,   _tempFactName);
 }
 
 const char* VehicleTemperatureFactGroup::_temperature1FactName =      "temperature1";
