@@ -279,21 +279,20 @@
 },
 {
     "name":             "wqDataType",
-    "shortDescription": "wqDataType",
-    "longDescription":  "wqDataType",
     "type":             "uint32",
     "enumStrings":      "COD值,TOC值,氨氮值,溶解氧值,浊度值,电导率值,PH值,ORP值,叶绿素值,蓝绿藻值,水中油值,温度值",
     "enumValues":       "0,1,2,3,4,5,6,7,8,9,10,11",
     "defaultValue":     0
-}
-,
+},
+{
+    "name":             "wqDataSelected",
+    "type":             "uint32",
+    "defaultValue":     4095
+},
 {
     "name":             "domain01",
-    "shortDescription": "domain01",
-    "longDescription":  "domain01",
     "type":             "double",
     "defaultValue":     10.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {

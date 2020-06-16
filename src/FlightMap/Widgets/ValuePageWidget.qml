@@ -263,6 +263,66 @@ Column {
                                 controller.largeValues = removeFromList(controller.largeValues, propertyName)
                                 controller.smallValues = removeFromList(controller.smallValues, propertyName)
                             }
+                            if (listContains(controller.smallValues, "waterQuality.cod") || listContains(controller.largeValues, "waterQuality.cod")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x1
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xfffffffe
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.toc") || listContains(controller.largeValues, "waterQuality.toc")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x2
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xfffffffd
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.nh3n") || listContains(controller.largeValues, "waterQuality.nh3n")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x4
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xfffffffb
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.ldo") || listContains(controller.largeValues, "waterQuality.ldo")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x8
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xfffffff7
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.turb") || listContains(controller.largeValues, "waterQuality.turb")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x10
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xffffffef
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.cond") || listContains(controller.largeValues, "waterQuality.cond")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x20
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xffffffdf
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.ph") || listContains(controller.largeValues, "waterQuality.ph")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x40
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xffffffbf
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.orp") || listContains(controller.largeValues, "waterQuality.orp")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x80
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xffffff7f
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.chla") || listContains(controller.largeValues, "waterQuality.chla")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x100
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xfffffeff
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.cyano") || listContains(controller.largeValues, "waterQuality.cyano")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x200
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xfffffdff
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.oil") || listContains(controller.largeValues, "waterQuality.oil")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x400
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xfffffbff
+                            }
+                            if (listContains(controller.smallValues, "waterQuality.temp") || listContains(controller.largeValues, "waterQuality.temp")) {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue |= 0x800
+                            } else {
+                                QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue &= 0xfffff7ff
+                            }
                         }
 
                         QGCCheckBox {

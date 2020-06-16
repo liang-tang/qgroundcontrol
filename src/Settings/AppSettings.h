@@ -60,6 +60,7 @@ public:
     DEFINE_SETTINGFACT(usePairing)
     DEFINE_SETTINGFACT(saveCsvTelemetry)
     DEFINE_SETTINGFACT(wqDataType)
+    DEFINE_SETTINGFACT(wqDataSelected)
 
     DEFINE_SETTINGFACT(domain01)
     DEFINE_SETTINGFACT(domain02)

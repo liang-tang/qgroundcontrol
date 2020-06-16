@@ -406,8 +406,9 @@ QString QGCCorePlugin::showAdvancedUIMessage() const
 void QGCCorePlugin::valuesWidgetDefaultSettings(QStringList& largeValues, QStringList& smallValues)
 {
     Q_UNUSED(smallValues);
-    largeValues << "waterQuality.ldo" << "waterQuality.turb" << "waterQuality.cond" << "waterQuality.temp"
-                << "waterQuality.ph" << "waterQuality.orp" << "waterQuality.chla" << "waterQuality.cyano";
+    largeValues << "waterQuality.cod" << "waterQuality.toc" << "waterQuality.nh3n" << "waterQuality.ldo"
+                << "waterQuality.turb" << "waterQuality.cond" << "waterQuality.ph" << "waterQuality.orp"
+                << "waterQuality.chla" << "waterQuality.cyano" << "waterQuality.oil" << "waterQuality.temp";
 }
 
 QQmlApplicationEngine* QGCCorePlugin::createRootWindow(QObject *parent)

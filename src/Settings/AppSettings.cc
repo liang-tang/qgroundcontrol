@@ -100,6 +100,7 @@ DECLARE_SETTINGSFACT(AppSettings, disableAllPersistence)
 DECLARE_SETTINGSFACT(AppSettings, usePairing)
 DECLARE_SETTINGSFACT(AppSettings, saveCsvTelemetry)
 DECLARE_SETTINGSFACT(AppSettings, wqDataType)
+DECLARE_SETTINGSFACT(AppSettings, wqDataSelected)
 
 DECLARE_SETTINGSFACT(AppSettings, domain01)
 DECLARE_SETTINGSFACT(AppSettings, domain02)

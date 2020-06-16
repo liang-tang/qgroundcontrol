@@ -330,6 +330,8 @@ FlightMap {
 
     function getColorFunction(val) {
         var colorIndex = 0
+        var selected = QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue
+        //var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
 
         // for (var dataType = 0; dataType < 8; dataType++) {
         //     var index = val * 8 + dataType
@@ -457,34 +459,19 @@ FlightMap {
         //     }
         // }
 
-        if (listContains(QGroundControl.ValuesWidgetController.largeValues, "waterQuality.cod")) {
-            // var index = val * 12 + 0 // index 0
-            // if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain01.rawValue) {
-            //     colorIndex = colorIndex > 0 ? colorIndex : 0
-            // } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain02.rawValue) {
-            //     colorIndex = colorIndex > 1 ? colorIndex : 1
-            // } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain03.rawValue) {
-            //     colorIndex = colorIndex > 2 ? colorIndex : 2
-            // } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain04.rawValue) {
-            //     colorIndex = colorIndex > 3 ? colorIndex : 3
-            // } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain05.rawValue) {
-            //     colorIndex = colorIndex > 4 ? colorIndex : 4
-            // } else {
-            //     colorIndex = 5
-            //     break
-            // }
-            colorIndex = 3
+        if (selected === 1010) {
+            return "black"
         }
 
-        if (colorIndex == 0) {
+        if (colorIndex === 0) {
             return "#00e04b"
-        } else if (colorIndex == 1) {
+        } else if (colorIndex === 1) {
             return "#de8500"
-        } else if (colorIndex == 2) {
+        } else if (colorIndex === 2) {
             return "#536dff"
-        } else if (colorIndex == 3) {
+        } else if (colorIndex === 3) {
             return "#f85761"
-        } else if (colorIndex == 4) {
+        } else if (colorIndex === 4) {
             return "#e10f3f"
         } else {
             return "black"
