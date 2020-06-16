@@ -356,39 +356,38 @@ Column {
     GridLayout {
         columns: 2
 
-        property Fact _freq:        _activeVehicle.wqFreq
-
         QGCLabel {
-            text:                   qsTr("Freq")
-            visible:                true
+            text:               qsTr("Dist")
+            visible:            true
         }
-        FactComboBox {
-            fact:                   parent._freq
-            indexModel:             false
+
+        QGCTextField {
+            id:                 dist
+            text:               qsTr("0.0")
+            unitsLabel:         qsTr("m")
+            showUnits:          true
         }
 
         QGCButton {
-            //anchors.left:               parent.left
-            text:                       qsTr("Start")
-            visible:                    true
-            onClicked:                  activeVehicle.setParam(1, "WQ_FREQ", parent._freq.rawValue)
-            enabled:                    activeVehicle
+            text:               qsTr("Start")
+            visible:            true
+            onClicked:          activeVehicle.setParam(1, "WQ_FREQ", parseFloat(dist.text))
+            enabled:            activeVehicle
         }
         QGCButton {
-            //anchors.right:              parent.right
-            text:                       qsTr("Stop")
-            visible:                    true
-            onClicked:                  activeVehicle.setParam(1, "WQ_FREQ", -1)
-            enabled:                    activeVehicle
+            text:               qsTr("Stop")
+            visible:            true
+            onClicked:          activeVehicle.setParam(1, "WQ_FREQ", 0)
+            enabled:            activeVehicle
         }
 
         QGCLabel {
-            text:                   qsTr("Show")
-            visible:                true
+            text:               qsTr("Show")
+            visible:            true
         }
         FactComboBox {
-            fact:                   QGroundControl.settingsManager.appSettings.wqDataType
-            indexModel:             false
+            fact:               QGroundControl.settingsManager.appSettings.wqDataType
+            indexModel:         false
         }
     }
 

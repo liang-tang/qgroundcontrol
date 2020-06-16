@@ -15163,8 +15163,8 @@ Confirm change?</source>
     </message>
     <message>
       <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="302"/>
-      <source>Freq</source>
-      <translation>采样频率:</translation>
+      <source>Dist</source>
+      <translation>采样距离:</translation>
     </message>
     <message>
       <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="312"/>
@@ -15179,7 +15179,7 @@ Confirm change?</source>
     <message>
       <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="326"/>
       <source>Show</source>
-      <translation>数据选择:</translation>
+      <translation>区间设置:</translation>
     </message>
     <message>
       <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="341"/>
