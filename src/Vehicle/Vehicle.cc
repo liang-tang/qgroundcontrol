@@ -3762,6 +3762,17 @@ void Vehicle::triggerCamera()
                    1.0);                            // test shot flag
 }
 
+void Vehicle::triggerWq()
+{
+    sendMavCommand(defaultComponentId(),
+                MAV_CMD_USER_1,
+                true,                            // show errors
+                0.0, 0.0, 0.0, 0.0,              // param 1-4 unused
+                1.0,                             // trigger wq
+                0.0,                             // param 6 unused
+                0.0);                            // test shot flag
+}
+
 void Vehicle::setParam(int componentId, const QString& paramName, const QVariant& value)
 {
     qWarning() << "Call to Vehicle::setOfflineEditingDefaultComponentId on vehicle which is not offline";

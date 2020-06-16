@@ -828,6 +828,7 @@ public:
     Q_INVOKABLE void clearMessages();
 
     Q_INVOKABLE void triggerCamera();
+    Q_INVOKABLE void triggerWq();
     Q_INVOKABLE void setParam(int componentId, const QString& paramName, const QVariant& value);
     Q_INVOKABLE void sendPlan(QString planFile);
 
