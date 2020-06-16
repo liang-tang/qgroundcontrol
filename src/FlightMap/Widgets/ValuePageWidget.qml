@@ -646,7 +646,7 @@ Column {
                 title:              qsTr("Start")
                 text:               qsTr("Are you sure to Start?")
                 onYes: {
-                    activeVehicle.setParam(1, "WQ_FREQ", parseFloat(dist.text))
+                    activeVehicle.setParam(1, "WQ_TRIGG_DIST", parseFloat(dist.text))
                     confirmStart.close()
                 }
                 onNo: {
@@ -668,7 +668,7 @@ Column {
                 title:              qsTr("Stop")
                 text:               qsTr("Are you sure to Stop?")
                 onYes: {
-                    activeVehicle.setParam(1, "WQ_FREQ", 0)
+                    activeVehicle.setParam(1, "WQ_TRIGG_DIST", 0)
                     confirmStop.close()
                 }
                 onNo: {
