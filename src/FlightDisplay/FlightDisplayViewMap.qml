@@ -331,136 +331,189 @@ FlightMap {
     function getColorFunction(val) {
         var colorIndex = 0
         var selected = QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue
-        //var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
 
-        // for (var dataType = 0; dataType < 8; dataType++) {
-        //     var index = val * 8 + dataType
+        for (var dataType = 0; dataType < 12; dataType++) {
+            var bitmask = 0x1 << dataType
+            if ((selected & bitmask) === bitmask) {
+                var index = val * 12 + dataType
+                var low1 = 0, low2 = 0, low3 = 0, low4 = 0, low5 = 0
+                var high1 = 0, high2 = 0, high3 = 0, high4 = 0, high5 = 0
+                if (dataType === 0) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain01.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain02.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain03.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain04.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain05.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain06.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain07.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain08.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain09.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain010.rawValue
+                }
 
-        //     if (dataType == 0) {
-        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain01.rawValue) {
-        //             colorIndex = colorIndex > 0 ? colorIndex : 0
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain02.rawValue) {
-        //             colorIndex = colorIndex > 1 ? colorIndex : 1
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain03.rawValue) {
-        //             colorIndex = colorIndex > 2 ? colorIndex : 2
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain04.rawValue) {
-        //             colorIndex = colorIndex > 3 ? colorIndex : 3
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain05.rawValue) {
-        //             colorIndex = colorIndex > 4 ? colorIndex : 4
-        //         } else {
-        //             colorIndex = 5
-        //             break
-        //         }
-        //     } else if (dataType == 1) {
-        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain11.rawValue) {
-        //             colorIndex = colorIndex > 0 ? colorIndex : 0
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain12.rawValue) {
-        //             colorIndex = colorIndex > 1 ? colorIndex : 1
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain13.rawValue) {
-        //             colorIndex = colorIndex > 2 ? colorIndex : 2
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain14.rawValue) {
-        //             colorIndex = colorIndex > 3 ? colorIndex : 3
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain15.rawValue) {
-        //             colorIndex = colorIndex > 4 ? colorIndex : 4
-        //         } else {
-        //             colorIndex = 5
-        //             break
-        //         }
-        //     } else if (dataType == 2) {
-        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain21.rawValue) {
-        //             colorIndex = colorIndex > 0 ? colorIndex : 0
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain22.rawValue) {
-        //             colorIndex = colorIndex > 1 ? colorIndex : 1
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain23.rawValue) {
-        //             colorIndex = colorIndex > 2 ? colorIndex : 2
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain24.rawValue) {
-        //             colorIndex = colorIndex > 3 ? colorIndex : 3
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain25.rawValue) {
-        //             colorIndex = colorIndex > 4 ? colorIndex : 4
-        //         } else {
-        //             colorIndex = 5
-        //             break
-        //         }
-        //     } else if (dataType == 3) {
-        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain31.rawValue) {
-        //             colorIndex = colorIndex > 0 ? colorIndex : 0
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain32.rawValue) {
-        //             colorIndex = colorIndex > 1 ? colorIndex : 1
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain33.rawValue) {
-        //             colorIndex = colorIndex > 2 ? colorIndex : 2
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain34.rawValue) {
-        //             colorIndex = colorIndex > 3 ? colorIndex : 3
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain35.rawValue) {
-        //             colorIndex = colorIndex > 4 ? colorIndex : 4
-        //         } else {
-        //             colorIndex = 5
-        //             break
-        //         }
-        //     } else if (dataType == 4) {
-        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain41.rawValue) {
-        //             colorIndex = colorIndex > 0 ? colorIndex : 0
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain42.rawValue) {
-        //             colorIndex = colorIndex > 1 ? colorIndex : 1
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain43.rawValue) {
-        //             colorIndex = colorIndex > 2 ? colorIndex : 2
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain44.rawValue) {
-        //             colorIndex = colorIndex > 3 ? colorIndex : 3
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain45.rawValue) {
-        //             colorIndex = colorIndex > 4 ? colorIndex : 4
-        //         } else {
-        //             colorIndex = 5
-        //             break
-        //         }
-        //     } else if (dataType == 5) {
-        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain51.rawValue) {
-        //             colorIndex = colorIndex > 0 ? colorIndex : 0
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain52.rawValue) {
-        //             colorIndex = colorIndex > 1 ? colorIndex : 1
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain53.rawValue) {
-        //             colorIndex = colorIndex > 2 ? colorIndex : 2
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain54.rawValue) {
-        //             colorIndex = colorIndex > 3 ? colorIndex : 3
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain55.rawValue) {
-        //             colorIndex = colorIndex > 4 ? colorIndex : 4
-        //         } else {
-        //             colorIndex = 5
-        //             break
-        //         }
-        //     } else if (dataType == 6) {
-        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain61.rawValue) {
-        //             colorIndex = colorIndex > 0 ? colorIndex : 0
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain62.rawValue) {
-        //             colorIndex = colorIndex > 1 ? colorIndex : 1
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain63.rawValue) {
-        //             colorIndex = colorIndex > 2 ? colorIndex : 2
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain64.rawValue) {
-        //             colorIndex = colorIndex > 3 ? colorIndex : 3
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain65.rawValue) {
-        //             colorIndex = colorIndex > 4 ? colorIndex : 4
-        //         } else {
-        //             colorIndex = 5
-        //             break
-        //         }
-        //     } else {
-        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain71.rawValue) {
-        //             colorIndex = colorIndex > 0 ? colorIndex : 0
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain72.rawValue) {
-        //             colorIndex = colorIndex > 1 ? colorIndex : 1
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain73.rawValue) {
-        //             colorIndex = colorIndex > 2 ? colorIndex : 2
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain74.rawValue) {
-        //             colorIndex = colorIndex > 3 ? colorIndex : 3
-        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain75.rawValue) {
-        //             colorIndex = colorIndex > 4 ? colorIndex : 4
-        //         } else {
-        //             colorIndex = 5
-        //             break
-        //         }
-        //     }
-        // }
+                if (dataType === 1) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain11.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain12.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain13.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain14.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain15.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain16.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain17.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain18.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain19.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain110.rawValue
+                }
 
-        if (selected === 1010) {
-            return "black"
+                if (dataType === 2) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain21.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain22.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain23.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain24.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain25.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain26.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain27.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain28.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain29.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain210.rawValue
+                }
+
+                if (dataType === 3) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain31.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain32.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain33.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain34.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain35.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain36.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain37.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain38.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain39.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain310.rawValue
+                }
+
+                if (dataType === 4) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain41.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain42.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain43.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain44.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain45.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain46.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain47.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain48.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain49.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain410.rawValue
+                }
+
+                if (dataType === 5) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain51.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain52.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain53.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain54.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain55.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain56.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain57.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain58.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain59.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain510.rawValue
+                }
+
+                if (dataType === 6) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain61.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain62.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain63.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain64.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain65.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain66.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain67.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain68.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain69.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain610.rawValue
+                }
+
+                if (dataType === 7) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain71.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain72.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain73.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain74.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain75.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain76.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain77.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain78.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain79.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain710.rawValue
+                }
+
+                if (dataType === 8) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain81.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain82.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain83.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain84.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain85.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain86.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain87.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain88.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain89.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain810.rawValue
+                }
+
+                if (dataType === 9) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain91.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain92.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain93.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain94.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain95.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain96.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain97.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain98.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain99.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain910.rawValue
+                }
+
+                if (dataType === 10) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain101.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain102.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain103.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain104.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain105.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain106.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain107.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain108.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain109.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain1010.rawValue
+                }
+
+                if (dataType === 11) {
+                    low1 = QGroundControl.settingsManager.appSettings.domain111.rawValue
+                    high1 = QGroundControl.settingsManager.appSettings.domain112.rawValue
+                    low2 = QGroundControl.settingsManager.appSettings.domain113.rawValue
+                    high2 = QGroundControl.settingsManager.appSettings.domain114.rawValue
+                    low3 = QGroundControl.settingsManager.appSettings.domain115.rawValue
+                    high3 = QGroundControl.settingsManager.appSettings.domain116.rawValue
+                    low4 = QGroundControl.settingsManager.appSettings.domain117.rawValue
+                    high4 = QGroundControl.settingsManager.appSettings.domain118.rawValue
+                    low5 = QGroundControl.settingsManager.appSettings.domain119.rawValue
+                    high5 = QGroundControl.settingsManager.appSettings.domain1110.rawValue
+                }
+
+                if (activeVehicle.wqData[index] >= low1 &&
+                    activeVehicle.wqData[index] < high1) {
+                    colorIndex = colorIndex > 0 ? colorIndex : 0
+                } else if (activeVehicle.wqData[index] >= low2 &&
+                           activeVehicle.wqData[index] < high2) {
+                    colorIndex = colorIndex > 1 ? colorIndex : 1
+                } else if (activeVehicle.wqData[index] >= low3 &&
+                           activeVehicle.wqData[index] <= high3) {
+                    colorIndex = colorIndex > 2 ? colorIndex : 2
+                } else if (activeVehicle.wqData[index] > low4 &&
+                           activeVehicle.wqData[index] <= high4) {
+                    colorIndex = colorIndex > 3 ? colorIndex : 3
+                } else if (activeVehicle.wqData[index] > low5 &&
+                           activeVehicle.wqData[index] <= high5) {
+                    colorIndex = colorIndex > 4 ? colorIndex : 4
+                } else {
+                    colorIndex = 5
+                    break;
+                }
+            }
         }
 
         if (colorIndex === 0) {
@@ -474,7 +527,8 @@ FlightMap {
         } else if (colorIndex === 4) {
             return "#e10f3f"
         } else {
-            return "black"
+            return "white"
+            // Qt.rgba(1,1,1,0)
         }
     }
 
