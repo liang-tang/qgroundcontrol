@@ -335,170 +335,398 @@ Column {
     function getFactFunction(index) {
         var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
 
-        if (dataType == 0) {
-            if (index == 0)
+        if (dataType === 0) {
+            if (index === 1)
                 return QGroundControl.settingsManager.appSettings.domain01
-            else if (index == 1)
+            else if (index === 2)
                 return QGroundControl.settingsManager.appSettings.domain02
-            else if (index == 2)
+            else if (index === 3)
                 return QGroundControl.settingsManager.appSettings.domain03
-            else if (index == 3)
+            else if (index === 4)
                 return QGroundControl.settingsManager.appSettings.domain04
-            else
+            else if (index === 5)
                 return QGroundControl.settingsManager.appSettings.domain05
-        } else if (dataType == 1) {
-            if (index == 0)
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain06
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain07
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain08
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain09
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain010
+        } else if (dataType === 1) {
+            if (index === 1)
                 return QGroundControl.settingsManager.appSettings.domain11
-            else if (index == 1)
+            else if (index === 2)
                 return QGroundControl.settingsManager.appSettings.domain12
-            else if (index == 2)
+            else if (index === 3)
                 return QGroundControl.settingsManager.appSettings.domain13
-            else if (index == 3)
+            else if (index === 4)
                 return QGroundControl.settingsManager.appSettings.domain14
-            else
+            else if (index === 5)
                 return QGroundControl.settingsManager.appSettings.domain15
-        } else if (dataType == 2) {
-            if (index == 0)
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain16
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain17
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain18
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain19
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain110
+        } else if (dataType === 2) {
+            if (index === 1)
                 return QGroundControl.settingsManager.appSettings.domain21
-            else if (index == 1)
+            else if (index === 2)
                 return QGroundControl.settingsManager.appSettings.domain22
-            else if (index == 2)
+            else if (index === 3)
                 return QGroundControl.settingsManager.appSettings.domain23
-            else if (index == 3)
+            else if (index === 4)
                 return QGroundControl.settingsManager.appSettings.domain24
-            else
+            else if (index === 5)
                 return QGroundControl.settingsManager.appSettings.domain25
-        } else if (dataType == 3) {
-            if (index == 0)
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain26
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain27
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain28
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain29
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain210
+        } else if (dataType === 3) {
+            if (index === 1)
                 return QGroundControl.settingsManager.appSettings.domain31
-            else if (index == 1)
+            else if (index === 2)
                 return QGroundControl.settingsManager.appSettings.domain32
-            else if (index == 2)
+            else if (index === 3)
                 return QGroundControl.settingsManager.appSettings.domain33
-            else if (index == 3)
+            else if (index === 4)
                 return QGroundControl.settingsManager.appSettings.domain34
-            else
+            else if (index === 5)
                 return QGroundControl.settingsManager.appSettings.domain35
-        } else if (dataType == 4) {
-            if (index == 0)
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain36
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain37
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain38
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain39
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain310
+        } else if (dataType === 4) {
+            if (index === 1)
                 return QGroundControl.settingsManager.appSettings.domain41
-            else if (index == 1)
+            else if (index === 2)
                 return QGroundControl.settingsManager.appSettings.domain42
-            else if (index == 2)
+            else if (index === 3)
                 return QGroundControl.settingsManager.appSettings.domain43
-            else if (index == 3)
+            else if (index === 4)
                 return QGroundControl.settingsManager.appSettings.domain44
-            else
+            else if (index === 5)
                 return QGroundControl.settingsManager.appSettings.domain45
-        } else if (dataType == 5) {
-            if (index == 0)
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain46
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain47
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain48
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain49
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain410
+        } else if (dataType === 5) {
+            if (index === 1)
                 return QGroundControl.settingsManager.appSettings.domain51
-            else if (index == 1)
+            else if (index === 2)
                 return QGroundControl.settingsManager.appSettings.domain52
-            else if (index == 2)
+            else if (index === 3)
                 return QGroundControl.settingsManager.appSettings.domain53
-            else if (index == 3)
+            else if (index === 4)
                 return QGroundControl.settingsManager.appSettings.domain54
-            else
+            else if (index === 5)
                 return QGroundControl.settingsManager.appSettings.domain55
-        } else if (dataType == 6) {
-            if (index == 0)
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain56
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain57
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain58
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain59
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain510
+        } else if (dataType === 6) {
+            if (index === 1)
                 return QGroundControl.settingsManager.appSettings.domain61
-            else if (index == 1)
+            else if (index === 2)
                 return QGroundControl.settingsManager.appSettings.domain62
-            else if (index == 2)
+            else if (index === 3)
                 return QGroundControl.settingsManager.appSettings.domain63
-            else if (index == 3)
+            else if (index === 4)
                 return QGroundControl.settingsManager.appSettings.domain64
-            else
+            else if (index === 5)
                 return QGroundControl.settingsManager.appSettings.domain65
-        } else {
-            if (index == 0)
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain66
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain67
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain68
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain69
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain610
+        } else if (dataType === 7) {
+            if (index === 1)
                 return QGroundControl.settingsManager.appSettings.domain71
-            else if (index == 1)
+            else if (index === 2)
                 return QGroundControl.settingsManager.appSettings.domain72
-            else if (index == 2)
+            else if (index === 3)
                 return QGroundControl.settingsManager.appSettings.domain73
-            else if (index == 3)
+            else if (index === 4)
                 return QGroundControl.settingsManager.appSettings.domain74
-            else
+            else if (index === 5)
                 return QGroundControl.settingsManager.appSettings.domain75
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain76
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain77
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain78
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain79
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain710
+        } else if (dataType === 8) {
+            if (index === 1)
+                return QGroundControl.settingsManager.appSettings.domain81
+            else if (index === 2)
+                return QGroundControl.settingsManager.appSettings.domain82
+            else if (index === 3)
+                return QGroundControl.settingsManager.appSettings.domain83
+            else if (index === 4)
+                return QGroundControl.settingsManager.appSettings.domain84
+            else if (index === 5)
+                return QGroundControl.settingsManager.appSettings.domain85
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain86
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain87
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain88
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain89
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain810
+        } else if (dataType === 9) {
+            if (index === 1)
+                return QGroundControl.settingsManager.appSettings.domain91
+            else if (index === 2)
+                return QGroundControl.settingsManager.appSettings.domain92
+            else if (index === 3)
+                return QGroundControl.settingsManager.appSettings.domain93
+            else if (index === 4)
+                return QGroundControl.settingsManager.appSettings.domain94
+            else if (index === 5)
+                return QGroundControl.settingsManager.appSettings.domain95
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain96
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain97
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain98
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain99
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain910
+        } else if (dataType === 10) {
+            if (index === 1)
+                return QGroundControl.settingsManager.appSettings.domain101
+            else if (index === 2)
+                return QGroundControl.settingsManager.appSettings.domain102
+            else if (index === 3)
+                return QGroundControl.settingsManager.appSettings.domain103
+            else if (index === 4)
+                return QGroundControl.settingsManager.appSettings.domain104
+            else if (index === 5)
+                return QGroundControl.settingsManager.appSettings.domain105
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain106
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain107
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain108
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain109
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain1010
+        } else if (dataType === 11) {
+            if (index === 1)
+                return QGroundControl.settingsManager.appSettings.domain111
+            else if (index === 2)
+                return QGroundControl.settingsManager.appSettings.domain112
+            else if (index === 3)
+                return QGroundControl.settingsManager.appSettings.domain113
+            else if (index === 4)
+                return QGroundControl.settingsManager.appSettings.domain114
+            else if (index === 5)
+                return QGroundControl.settingsManager.appSettings.domain115
+            else if (index === 6)
+                return QGroundControl.settingsManager.appSettings.domain116
+            else if (index === 7)
+                return QGroundControl.settingsManager.appSettings.domain117
+            else if (index === 8)
+                return QGroundControl.settingsManager.appSettings.domain118
+            else if (index === 9)
+                return QGroundControl.settingsManager.appSettings.domain119
+            else if (index === 10)
+                return QGroundControl.settingsManager.appSettings.domain1110
         }
     }
 
-    property var enabledPalette:    QGCPalette { colorGroupEnabled: true }
-
-    GridLayout {
-        columns: 3
+    RowLayout {
+        spacing: 2
 
         QGCLabel {
             text:                   qsTr("domain1")
-            visible:                true
         }
+
         FactTextField {
-            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
-            fact:                   getFactFunction(0)
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 7
+            fact:                   getFactFunction(1)
         }
-        ClickableColor {
-            //id: enabledColorPicker
-            color: "#00e04b"
-            //onColorSelected: enabledPalette = color
+
+        Text { text: "≤"; font.bold: true; color: "white"}
+
+        Rectangle {
+            width:  ScreenTools.defaultFontPixelWidth * 3
+            height: ScreenTools.defaultFontPixelHeight * 1.5
+            color:  "#00e04b"
         }
+
+        Text { text: " <"; font.bold: true; color: "white"}
+
+        FactTextField {
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 7
+            fact:                   getFactFunction(2)
+        }
+    }
+
+    RowLayout {
+        spacing: 2
 
         QGCLabel {
             text:                   qsTr("domain2")
-            visible:                true
         }
+
         FactTextField {
-            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
-            fact:                   getFactFunction(1)
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 7
+            fact:                   getFactFunction(3)
         }
-        ClickableColor {
-            //id: enabledColorPicker
-            color: "#de8500"
-            //onColorSelected: enabledPalette = color
+
+        Text { text: "≤"; font.bold: true; color: "white"}
+
+        Rectangle {
+            width:  ScreenTools.defaultFontPixelWidth * 3
+            height: ScreenTools.defaultFontPixelHeight * 1.5
+            color:  "#de8500"
         }
+
+        Text { text: " <"; font.bold: true; color: "white"}
+
+        FactTextField {
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 7
+            fact:                   getFactFunction(4)
+        }
+    }
+
+    RowLayout {
+        spacing: 2
 
         QGCLabel {
             text:                   qsTr("domain3")
-            visible:                true
         }
+
         FactTextField {
-            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
-            fact:                  getFactFunction(2)
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 7
+            fact:                   getFactFunction(5)
         }
-        ClickableColor {
-            //id: enabledColorPicker
-            color: "#536dff"
-            //onColorSelected: enabledPalette = color
+
+        Text { text: "≤"; font.bold: true; color: "white"}
+
+        Rectangle {
+            width:  ScreenTools.defaultFontPixelWidth * 3
+            height: ScreenTools.defaultFontPixelHeight * 1.5
+            color:  "#536dff"
         }
+
+        Text { text: "≤"; font.bold: true; color: "white"}
+
+        FactTextField {
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 7
+            fact:                   getFactFunction(6)
+        }
+    }
+
+    RowLayout {
+        spacing: 2
 
         QGCLabel {
             text:                   qsTr("domain4")
-            visible:                true
         }
+
         FactTextField {
-            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
-            fact:                   getFactFunction(3)
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 7
+            fact:                   getFactFunction(7)
         }
-        ClickableColor {
-            //id: enabledColorPicker
-            color: "#f85761"
-            //onColorSelected: enabledPalette = color
+
+        Text { text: "< "; font.bold: true; color: "white"}
+
+        Rectangle {
+            width:  ScreenTools.defaultFontPixelWidth * 3
+            height: ScreenTools.defaultFontPixelHeight * 1.5
+            color:  "#f85761"
         }
+
+        Text { text: "≤"; font.bold: true; color: "white"}
+
+        FactTextField {
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 7
+            fact:                   getFactFunction(8)
+        }
+    }
+
+    RowLayout {
+        spacing: 2
 
         QGCLabel {
             text:                   qsTr("domain5")
-            visible:                true
         }
+
         FactTextField {
-            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 10
-            fact:                   getFactFunction(4)
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 7
+            fact:                   getFactFunction(9)
         }
-        ClickableColor {
-            //id: enabledColorPicker
-            color: "#e10f3f"
-            //onColorSelected: enabledPalette = color
+
+        Text { text: "< "; font.bold: true; color: "white"}
+
+        Rectangle {
+            width:  ScreenTools.defaultFontPixelWidth * 3
+            height: ScreenTools.defaultFontPixelHeight * 1.5
+            color:  "#e10f3f"
+        }
+
+        Text { text: "≤"; font.bold: true; color: "white"}
+
+        FactTextField {
+            Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * 7
+            fact:                   getFactFunction(10)
         }
     }
 }

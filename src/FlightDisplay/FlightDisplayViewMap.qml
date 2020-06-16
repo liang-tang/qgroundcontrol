@@ -329,132 +329,151 @@ FlightMap {
     }
 
     function getColorFunction(val) {
-        //var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
         var colorIndex = 0
-        for (var dataType=0; dataType<7; dataType++) {
-            var index = val * 8 + dataType
 
-            if (dataType == 0) {
-                if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain01.rawValue) {
-                    colorIndex = colorIndex > 0 ? colorIndex : 0
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain02.rawValue) {
-                    colorIndex = colorIndex > 1 ? colorIndex : 1
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain03.rawValue) {
-                    colorIndex = colorIndex > 2 ? colorIndex : 2
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain04.rawValue) {
-                    colorIndex = colorIndex > 3 ? colorIndex : 3
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain05.rawValue) {
-                    colorIndex = colorIndex > 4 ? colorIndex : 4
-                } else {
-                    colorIndex = 5
-                    break
-                }
-            } else if (dataType == 1) {
-                if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain11.rawValue) {
-                    colorIndex = colorIndex > 0 ? colorIndex : 0
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain12.rawValue) {
-                    colorIndex = colorIndex > 1 ? colorIndex : 1
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain13.rawValue) {
-                    colorIndex = colorIndex > 2 ? colorIndex : 2
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain14.rawValue) {
-                    colorIndex = colorIndex > 3 ? colorIndex : 3
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain15.rawValue) {
-                    colorIndex = colorIndex > 4 ? colorIndex : 4
-                } else {
-                    colorIndex = 5
-                    break
-                }
-            } else if (dataType == 2) {
-                if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain21.rawValue) {
-                    colorIndex = colorIndex > 0 ? colorIndex : 0
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain22.rawValue) {
-                    colorIndex = colorIndex > 1 ? colorIndex : 1
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain23.rawValue) {
-                    colorIndex = colorIndex > 2 ? colorIndex : 2
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain24.rawValue) {
-                    colorIndex = colorIndex > 3 ? colorIndex : 3
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain25.rawValue) {
-                    colorIndex = colorIndex > 4 ? colorIndex : 4
-                } else {
-                    colorIndex = 5
-                    break
-                }
-            } else if (dataType == 3) {
-                if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain31.rawValue) {
-                    colorIndex = colorIndex > 0 ? colorIndex : 0
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain32.rawValue) {
-                    colorIndex = colorIndex > 1 ? colorIndex : 1
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain33.rawValue) {
-                    colorIndex = colorIndex > 2 ? colorIndex : 2
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain34.rawValue) {
-                    colorIndex = colorIndex > 3 ? colorIndex : 3
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain35.rawValue) {
-                    colorIndex = colorIndex > 4 ? colorIndex : 4
-                } else {
-                    colorIndex = 5
-                    break
-                }
-            } else if (dataType == 4) {
-                if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain41.rawValue) {
-                    colorIndex = colorIndex > 0 ? colorIndex : 0
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain42.rawValue) {
-                    colorIndex = colorIndex > 1 ? colorIndex : 1
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain43.rawValue) {
-                    colorIndex = colorIndex > 2 ? colorIndex : 2
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain44.rawValue) {
-                    colorIndex = colorIndex > 3 ? colorIndex : 3
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain45.rawValue) {
-                    colorIndex = colorIndex > 4 ? colorIndex : 4
-                } else {
-                    colorIndex = 5
-                    break
-                }
-            } else if (dataType == 5) {
-                if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain51.rawValue) {
-                    colorIndex = colorIndex > 0 ? colorIndex : 0
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain52.rawValue) {
-                    colorIndex = colorIndex > 1 ? colorIndex : 1
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain53.rawValue) {
-                    colorIndex = colorIndex > 2 ? colorIndex : 2
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain54.rawValue) {
-                    colorIndex = colorIndex > 3 ? colorIndex : 3
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain55.rawValue) {
-                    colorIndex = colorIndex > 4 ? colorIndex : 4
-                } else {
-                    colorIndex = 5
-                    break
-                }
-            } else if (dataType == 6) {
-                if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain61.rawValue) {
-                    colorIndex = colorIndex > 0 ? colorIndex : 0
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain62.rawValue) {
-                    colorIndex = colorIndex > 1 ? colorIndex : 1
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain63.rawValue) {
-                    colorIndex = colorIndex > 2 ? colorIndex : 2
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain64.rawValue) {
-                    colorIndex = colorIndex > 3 ? colorIndex : 3
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain65.rawValue) {
-                    colorIndex = colorIndex > 4 ? colorIndex : 4
-                } else {
-                    colorIndex = 5
-                    break
-                }
-            } else {
-                if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain71.rawValue) {
-                    colorIndex = colorIndex > 0 ? colorIndex : 0
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain72.rawValue) {
-                    colorIndex = colorIndex > 1 ? colorIndex : 1
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain73.rawValue) {
-                    colorIndex = colorIndex > 2 ? colorIndex : 2
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain74.rawValue) {
-                    colorIndex = colorIndex > 3 ? colorIndex : 3
-                } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain75.rawValue) {
-                    colorIndex = colorIndex > 4 ? colorIndex : 4
-                } else {
-                    colorIndex = 5
-                    break
-                }
-            }
+        // for (var dataType = 0; dataType < 8; dataType++) {
+        //     var index = val * 8 + dataType
+
+        //     if (dataType == 0) {
+        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain01.rawValue) {
+        //             colorIndex = colorIndex > 0 ? colorIndex : 0
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain02.rawValue) {
+        //             colorIndex = colorIndex > 1 ? colorIndex : 1
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain03.rawValue) {
+        //             colorIndex = colorIndex > 2 ? colorIndex : 2
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain04.rawValue) {
+        //             colorIndex = colorIndex > 3 ? colorIndex : 3
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain05.rawValue) {
+        //             colorIndex = colorIndex > 4 ? colorIndex : 4
+        //         } else {
+        //             colorIndex = 5
+        //             break
+        //         }
+        //     } else if (dataType == 1) {
+        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain11.rawValue) {
+        //             colorIndex = colorIndex > 0 ? colorIndex : 0
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain12.rawValue) {
+        //             colorIndex = colorIndex > 1 ? colorIndex : 1
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain13.rawValue) {
+        //             colorIndex = colorIndex > 2 ? colorIndex : 2
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain14.rawValue) {
+        //             colorIndex = colorIndex > 3 ? colorIndex : 3
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain15.rawValue) {
+        //             colorIndex = colorIndex > 4 ? colorIndex : 4
+        //         } else {
+        //             colorIndex = 5
+        //             break
+        //         }
+        //     } else if (dataType == 2) {
+        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain21.rawValue) {
+        //             colorIndex = colorIndex > 0 ? colorIndex : 0
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain22.rawValue) {
+        //             colorIndex = colorIndex > 1 ? colorIndex : 1
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain23.rawValue) {
+        //             colorIndex = colorIndex > 2 ? colorIndex : 2
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain24.rawValue) {
+        //             colorIndex = colorIndex > 3 ? colorIndex : 3
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain25.rawValue) {
+        //             colorIndex = colorIndex > 4 ? colorIndex : 4
+        //         } else {
+        //             colorIndex = 5
+        //             break
+        //         }
+        //     } else if (dataType == 3) {
+        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain31.rawValue) {
+        //             colorIndex = colorIndex > 0 ? colorIndex : 0
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain32.rawValue) {
+        //             colorIndex = colorIndex > 1 ? colorIndex : 1
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain33.rawValue) {
+        //             colorIndex = colorIndex > 2 ? colorIndex : 2
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain34.rawValue) {
+        //             colorIndex = colorIndex > 3 ? colorIndex : 3
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain35.rawValue) {
+        //             colorIndex = colorIndex > 4 ? colorIndex : 4
+        //         } else {
+        //             colorIndex = 5
+        //             break
+        //         }
+        //     } else if (dataType == 4) {
+        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain41.rawValue) {
+        //             colorIndex = colorIndex > 0 ? colorIndex : 0
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain42.rawValue) {
+        //             colorIndex = colorIndex > 1 ? colorIndex : 1
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain43.rawValue) {
+        //             colorIndex = colorIndex > 2 ? colorIndex : 2
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain44.rawValue) {
+        //             colorIndex = colorIndex > 3 ? colorIndex : 3
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain45.rawValue) {
+        //             colorIndex = colorIndex > 4 ? colorIndex : 4
+        //         } else {
+        //             colorIndex = 5
+        //             break
+        //         }
+        //     } else if (dataType == 5) {
+        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain51.rawValue) {
+        //             colorIndex = colorIndex > 0 ? colorIndex : 0
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain52.rawValue) {
+        //             colorIndex = colorIndex > 1 ? colorIndex : 1
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain53.rawValue) {
+        //             colorIndex = colorIndex > 2 ? colorIndex : 2
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain54.rawValue) {
+        //             colorIndex = colorIndex > 3 ? colorIndex : 3
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain55.rawValue) {
+        //             colorIndex = colorIndex > 4 ? colorIndex : 4
+        //         } else {
+        //             colorIndex = 5
+        //             break
+        //         }
+        //     } else if (dataType == 6) {
+        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain61.rawValue) {
+        //             colorIndex = colorIndex > 0 ? colorIndex : 0
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain62.rawValue) {
+        //             colorIndex = colorIndex > 1 ? colorIndex : 1
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain63.rawValue) {
+        //             colorIndex = colorIndex > 2 ? colorIndex : 2
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain64.rawValue) {
+        //             colorIndex = colorIndex > 3 ? colorIndex : 3
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain65.rawValue) {
+        //             colorIndex = colorIndex > 4 ? colorIndex : 4
+        //         } else {
+        //             colorIndex = 5
+        //             break
+        //         }
+        //     } else {
+        //         if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain71.rawValue) {
+        //             colorIndex = colorIndex > 0 ? colorIndex : 0
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain72.rawValue) {
+        //             colorIndex = colorIndex > 1 ? colorIndex : 1
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain73.rawValue) {
+        //             colorIndex = colorIndex > 2 ? colorIndex : 2
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain74.rawValue) {
+        //             colorIndex = colorIndex > 3 ? colorIndex : 3
+        //         } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain75.rawValue) {
+        //             colorIndex = colorIndex > 4 ? colorIndex : 4
+        //         } else {
+        //             colorIndex = 5
+        //             break
+        //         }
+        //     }
+        // }
+
+        if (listContains(QGroundControl.ValuesWidgetController.largeValues, "waterQuality.cod")) {
+            // var index = val * 12 + 0 // index 0
+            // if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain01.rawValue) {
+            //     colorIndex = colorIndex > 0 ? colorIndex : 0
+            // } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain02.rawValue) {
+            //     colorIndex = colorIndex > 1 ? colorIndex : 1
+            // } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain03.rawValue) {
+            //     colorIndex = colorIndex > 2 ? colorIndex : 2
+            // } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain04.rawValue) {
+            //     colorIndex = colorIndex > 3 ? colorIndex : 3
+            // } else if (activeVehicle.wqData[index] < QGroundControl.settingsManager.appSettings.domain05.rawValue) {
+            //     colorIndex = colorIndex > 4 ? colorIndex : 4
+            // } else {
+            //     colorIndex = 5
+            //     break
+            // }
+            colorIndex = 3
         }
 
         if (colorIndex == 0) {
@@ -474,7 +493,7 @@ FlightMap {
 
     function getValueFunction(val) {
         var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
-        var index = val * 8 + dataType
+        var index = val * 12 + dataType
         return activeVehicle.wqData[index].toFixed(2)
     }
 

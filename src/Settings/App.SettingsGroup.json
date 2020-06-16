@@ -278,6 +278,16 @@
     "defaultValue":     true
 },
 {
+    "name":             "wqDataType",
+    "shortDescription": "wqDataType",
+    "longDescription":  "wqDataType",
+    "type":             "uint32",
+    "enumStrings":      "COD值,TOC值,氨氮值,溶解氧值,浊度值,电导率值,PH值,ORP值,叶绿素值,蓝绿藻值,水中油值,温度值",
+    "enumValues":       "0,1,2,3,4,5,6,7,8,9,10,11",
+    "defaultValue":     0
+}
+,
+{
     "name":             "domain01",
     "shortDescription": "domain01",
     "longDescription":  "domain01",
@@ -288,362 +298,716 @@
 },
 {
     "name":             "domain02",
-    "shortDescription": "domain02",
-    "longDescription":  "domain02",
     "type":             "double",
     "defaultValue":     20.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain03",
-    "shortDescription": "domain03",
-    "longDescription":  "domain03",
     "type":             "double",
     "defaultValue":     30.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain04",
-    "shortDescription": "domain04",
-    "longDescription":  "domain04",
     "type":             "double",
     "defaultValue":     40.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain05",
-    "shortDescription": "domain05",
-    "longDescription":  "domain05",
     "type":             "double",
     "defaultValue":     50.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
-    "name":             "wqDataType",
-    "shortDescription": "wqDataType",
-    "longDescription":  "wqDataType",
-    "type":             "uint32",
-    "enumStrings":      "溶解氧值,浊度值,电导率值,温度值,PH值,ORP值,叶绿素值,蓝绿藻值",
-    "enumValues":       "0,1,2,3,4,5,6,7",
-    "defaultValue":     0
+    "name":             "domain06",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain07",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain08",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain09",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain010",
+    "type":             "double",
+    "defaultValue":     100.0,
+    "decimalPlaces":    2
 },
 {
     "name":             "domain11",
-    "shortDescription": "domain11",
-    "longDescription":  "domain11",
     "type":             "double",
     "defaultValue":     10.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain12",
-    "shortDescription": "domain12",
-    "longDescription":  "domain12",
     "type":             "double",
     "defaultValue":     20.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain13",
-    "shortDescription": "domain13",
-    "longDescription":  "domain13",
     "type":             "double",
     "defaultValue":     30.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain14",
-    "shortDescription": "domain14",
-    "longDescription":  "domain14",
     "type":             "double",
     "defaultValue":     40.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain15",
-    "shortDescription": "domain15",
-    "longDescription":  "domain15",
     "type":             "double",
     "defaultValue":     50.0,
-    "min":              0.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain16",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain17",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain18",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain19",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain110",
+    "type":             "double",
+    "defaultValue":     100.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain21",
-    "shortDescription": "domain21",
-    "longDescription":  "domain21",
     "type":             "double",
     "defaultValue":     10.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain22",
-    "shortDescription": "domain22",
-    "longDescription":  "domain22",
     "type":             "double",
     "defaultValue":     20.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain23",
-    "shortDescription": "domain23",
-    "longDescription":  "domain23",
     "type":             "double",
     "defaultValue":     30.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain24",
-    "shortDescription": "domain24",
-    "longDescription":  "domain24",
     "type":             "double",
     "defaultValue":     40.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain25",
-    "shortDescription": "domain25",
-    "longDescription":  "domain25",
     "type":             "double",
     "defaultValue":     50.0,
-    "min":              0.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain26",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain27",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain28",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain29",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain210",
+    "type":             "double",
+    "defaultValue":     100.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain31",
-    "shortDescription": "domain31",
-    "longDescription":  "domain31",
     "type":             "double",
     "defaultValue":     10.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain32",
-    "shortDescription": "domain32",
-    "longDescription":  "domain32",
     "type":             "double",
     "defaultValue":     20.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain33",
-    "shortDescription": "domain33",
-    "longDescription":  "domain33",
     "type":             "double",
     "defaultValue":     30.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain34",
-    "shortDescription": "domain34",
-    "longDescription":  "domain34",
     "type":             "double",
     "defaultValue":     40.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain35",
-    "shortDescription": "domain35",
-    "longDescription":  "domain35",
     "type":             "double",
     "defaultValue":     50.0,
-    "min":              0.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain36",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain37",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain38",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain39",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain310",
+    "type":             "double",
+    "defaultValue":     100.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain41",
-    "shortDescription": "domain41",
-    "longDescription":  "domain41",
     "type":             "double",
     "defaultValue":     10.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain42",
-    "shortDescription": "domain42",
-    "longDescription":  "domain42",
     "type":             "double",
     "defaultValue":     20.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain43",
-    "shortDescription": "domain43",
-    "longDescription":  "domain43",
     "type":             "double",
     "defaultValue":     30.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain44",
-    "shortDescription": "domain44",
-    "longDescription":  "domain44",
     "type":             "double",
     "defaultValue":     40.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain45",
-    "shortDescription": "domain45",
-    "longDescription":  "domain45",
     "type":             "double",
     "defaultValue":     50.0,
-    "min":              0.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain46",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain47",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain48",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain49",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain410",
+    "type":             "double",
+    "defaultValue":     100.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain51",
-    "shortDescription": "domain51",
-    "longDescription":  "domain51",
     "type":             "double",
     "defaultValue":     10.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain52",
-    "shortDescription": "domain52",
-    "longDescription":  "domain52",
     "type":             "double",
     "defaultValue":     20.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain53",
-    "shortDescription": "domain53",
-    "longDescription":  "domain53",
     "type":             "double",
     "defaultValue":     30.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain54",
-    "shortDescription": "domain54",
-    "longDescription":  "domain54",
     "type":             "double",
     "defaultValue":     40.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain55",
-    "shortDescription": "domain55",
-    "longDescription":  "domain55",
     "type":             "double",
     "defaultValue":     50.0,
-    "min":              0.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain56",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain57",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain58",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain59",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain510",
+    "type":             "double",
+    "defaultValue":     100.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain61",
-    "shortDescription": "domain61",
-    "longDescription":  "domain61",
     "type":             "double",
     "defaultValue":     10.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain62",
-    "shortDescription": "domain62",
-    "longDescription":  "domain62",
     "type":             "double",
     "defaultValue":     20.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain63",
-    "shortDescription": "domain63",
-    "longDescription":  "domain63",
     "type":             "double",
     "defaultValue":     30.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain64",
-    "shortDescription": "domain64",
-    "longDescription":  "domain64",
     "type":             "double",
     "defaultValue":     40.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain65",
-    "shortDescription": "domain65",
-    "longDescription":  "domain65",
     "type":             "double",
     "defaultValue":     50.0,
-    "min":              0.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain66",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain67",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain68",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain69",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain610",
+    "type":             "double",
+    "defaultValue":     100.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain71",
-    "shortDescription": "domain71",
-    "longDescription":  "domain71",
     "type":             "double",
     "defaultValue":     10.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain72",
-    "shortDescription": "domain72",
-    "longDescription":  "domain72",
     "type":             "double",
     "defaultValue":     20.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain73",
-    "shortDescription": "domain73",
-    "longDescription":  "domain73",
     "type":             "double",
     "defaultValue":     30.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain74",
-    "shortDescription": "domain74",
-    "longDescription":  "domain74",
     "type":             "double",
     "defaultValue":     40.0,
-    "min":              0.0,
     "decimalPlaces":    2
 },
 {
     "name":             "domain75",
-    "shortDescription": "domain75",
-    "longDescription":  "domain75",
     "type":             "double",
     "defaultValue":     50.0,
-    "min":              0.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain76",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain77",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain78",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain79",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain710",
+    "type":             "double",
+    "defaultValue":     100.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain81",
+    "type":             "double",
+    "defaultValue":     10.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain82",
+    "type":             "double",
+    "defaultValue":     20.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain83",
+    "type":             "double",
+    "defaultValue":     30.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain84",
+    "type":             "double",
+    "defaultValue":     40.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain85",
+    "type":             "double",
+    "defaultValue":     50.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain86",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain87",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain88",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain89",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain810",
+    "type":             "double",
+    "defaultValue":     100.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain91",
+    "type":             "double",
+    "defaultValue":     10.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain92",
+    "type":             "double",
+    "defaultValue":     20.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain93",
+    "type":             "double",
+    "defaultValue":     30.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain94",
+    "type":             "double",
+    "defaultValue":     40.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain95",
+    "type":             "double",
+    "defaultValue":     50.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain96",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain97",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain98",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain99",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain910",
+    "type":             "double",
+    "defaultValue":     100.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain101",
+    "type":             "double",
+    "defaultValue":     10.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain102",
+    "type":             "double",
+    "defaultValue":     20.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain103",
+    "type":             "double",
+    "defaultValue":     30.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain104",
+    "type":             "double",
+    "defaultValue":     40.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain105",
+    "type":             "double",
+    "defaultValue":     50.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain106",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain107",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain108",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain109",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain1010",
+    "type":             "double",
+    "defaultValue":     100.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain111",
+    "type":             "double",
+    "defaultValue":     10.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain112",
+    "type":             "double",
+    "defaultValue":     20.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain113",
+    "type":             "double",
+    "defaultValue":     30.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain114",
+    "type":             "double",
+    "defaultValue":     40.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain115",
+    "type":             "double",
+    "defaultValue":     50.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain116",
+    "type":             "double",
+    "defaultValue":     60.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain117",
+    "type":             "double",
+    "defaultValue":     70.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain118",
+    "type":             "double",
+    "defaultValue":     80.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain119",
+    "type":             "double",
+    "defaultValue":     90.0,
+    "decimalPlaces":    2
+},
+{
+    "name":             "domain1110",
+    "type":             "double",
+    "defaultValue":     100.0,
     "decimalPlaces":    2
 }
 ]
