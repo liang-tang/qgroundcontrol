@@ -353,44 +353,6 @@ Column {
         }
     }
 
-    GridLayout {
-        columns: 2
-
-        QGCLabel {
-            text:               qsTr("Dist")
-            visible:            true
-        }
-
-        QGCTextField {
-            id:                 dist
-            text:               qsTr("0.0")
-            unitsLabel:         qsTr("m")
-            showUnits:          true
-        }
-
-        QGCButton {
-            text:               qsTr("Start")
-            visible:            true
-            onClicked:          activeVehicle.setParam(1, "WQ_FREQ", parseFloat(dist.text))
-            enabled:            activeVehicle
-        }
-        QGCButton {
-            text:               qsTr("Stop")
-            visible:            true
-            onClicked:          activeVehicle.setParam(1, "WQ_FREQ", 0)
-            enabled:            activeVehicle
-        }
-
-        QGCLabel {
-            text:               qsTr("Show")
-            visible:            true
-        }
-        FactComboBox {
-            fact:               QGroundControl.settingsManager.appSettings.wqDataType
-            indexModel:         false
-        }
-    }
-
     function getFactFunction(index) {
         var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
 
@@ -646,6 +608,86 @@ Column {
                 return QGroundControl.settingsManager.appSettings.domain119
             else if (index === 10)
                 return QGroundControl.settingsManager.appSettings.domain1110
+        }
+    }
+
+    RowLayout {
+        spacing: 10
+
+        QGCLabel {
+            text:               qsTr("Dist")
+            visible:            true
+        }
+
+        QGCTextField {
+            id:                 dist
+            width:              12
+            text:               qsTr("0.0")
+            unitsLabel:         qsTr("m")
+            showUnits:          true
+            //maximumLength:      5
+        }
+    }
+
+    RowLayout {
+        spacing: 10
+
+        QGCButton {
+            text:               qsTr("Start")
+            visible:            true
+            onClicked:          confirmStart.open()
+            enabled:            activeVehicle
+
+            MessageDialog {
+                id:                 confirmStart
+                visible:            false
+                icon:               StandardIcon.NoIcon
+                standardButtons:    StandardButton.Yes | StandardButton.No
+                title:              qsTr("Start")
+                text:               qsTr("Are you sure to Start?")
+                onYes: {
+                    activeVehicle.setParam(1, "WQ_FREQ", parseFloat(dist.text))
+                    confirmStart.close()
+                }
+                onNo: {
+                    confirmStart.close()
+                }
+            }
+        }
+        QGCButton {
+            text:               qsTr("Stop")
+            visible:            true
+            onClicked:          confirmStop.open()
+            enabled:            activeVehicle
+
+            MessageDialog {
+                id:                 confirmStop
+                visible:            false
+                icon:               StandardIcon.NoIcon
+                standardButtons:    StandardButton.Yes | StandardButton.No
+                title:              qsTr("Stop")
+                text:               qsTr("Are you sure to Stop?")
+                onYes: {
+                    activeVehicle.setParam(1, "WQ_FREQ", 0)
+                    confirmStop.close()
+                }
+                onNo: {
+                    confirmStop.close()
+                }
+            }
+        }
+    }
+
+    RowLayout {
+        spacing: 10
+
+        QGCLabel {
+            text:               qsTr("Show")
+            visible:            true
+        }
+        FactComboBox {
+            fact:               QGroundControl.settingsManager.appSettings.wqDataType
+            indexModel:         false
         }
     }
 
