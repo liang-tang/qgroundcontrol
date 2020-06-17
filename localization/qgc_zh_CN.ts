@@ -7149,6 +7149,11 @@ Blue Robotics的设备设计使用水来润滑，并非可以空转。但是可�
       <translation>垂直起降转换</translation>
     </message>
     <message>
+      <location filename="../src/FlightDisplay/GuidedActionsController.qml" line="76"/>
+      <source>Show</source>
+      <translation>数据详情</translation>
+    </message>
+    <message>
       <location filename="../src/FlightDisplay/GuidedActionsController.qml" line="55"/>
       <source>Arm the vehicle.</source>
       <translation>解锁飞机</translation>
