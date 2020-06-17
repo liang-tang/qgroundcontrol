@@ -27,6 +27,6 @@ MapQuickItem {
         checked:    false
         highlightSelected:  true
         color:      color1
-        onClicked: guidedActionsController.confirmAction(guidedActionsController.actionShow, qsTr("123456.3"))
+        onClicked: guidedActionsController.confirmAction(guidedActionsController.actionShow, value1)
     }
 }

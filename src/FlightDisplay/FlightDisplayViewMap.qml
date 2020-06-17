@@ -532,10 +532,63 @@ FlightMap {
         }
     }
 
+    readonly property string codTitle:                      qsTr("cod")
+    readonly property string tocTitle:                      qsTr("toc")
+    readonly property string nh3nTitle:                     qsTr("nh3n")
+    readonly property string ldoTitle:                      qsTr("ldo")
+    readonly property string turbTitle:                     qsTr("turb")
+    readonly property string condTitle:                     qsTr("cond")
+    readonly property string phTitle:                       qsTr("ph")
+    readonly property string orpTitle:                      qsTr("orp")
+    readonly property string chlaTitle:                     qsTr("chla")
+    readonly property string cyanoTitle:                    qsTr("cyano")
+    readonly property string oilTitle:                      qsTr("oil")
+    readonly property string tempTitle:                     qsTr("temp")
+
     function getValueFunction(val) {
-        var dataType = QGroundControl.settingsManager.appSettings.wqDataType.rawValue
-        var index = val * 12 + dataType
-        return activeVehicle.wqData[index].toFixed(2)
+        var selected = QGroundControl.settingsManager.appSettings.wqDataSelected.rawValue
+        var str = ""
+        var cnt = 0
+        for (var dataType = 0; dataType < 12; dataType++) {
+            var bitmask = 0x1 << dataType
+            if ((selected & bitmask) === bitmask) {
+                var index = val * 12 + dataType
+                if (dataType === 0) {
+                    str += codTitle
+                } else if (dataType === 1) {
+                    str += tocTitle
+                } else if (dataType === 2) {
+                    str += nh3nTitle
+                } else if (dataType === 3) {
+                    str += ldoTitle
+                } else if (dataType === 4) {
+                    str += turbTitle
+                } else if (dataType === 5) {
+                    str += condTitle
+                } else if (dataType === 6) {
+                    str += phTitle
+                } else if (dataType === 7) {
+                    str += orpTitle
+                } else if (dataType === 8) {
+                    str += chlaTitle
+                } else if (dataType === 9) {
+                    str += cyanoTitle
+                } else if (dataType === 10) {
+                    str += oilTitle
+                } else if (dataType === 11) {
+                    str += tempTitle
+                }
+
+                str += activeVehicle.wqData[index].toFixed(2)
+                cnt ++
+                if (cnt % 2 === 0) {
+                    str += "\n"
+                } else {
+                    str += " "
+                }
+            }
+        }
+        return str
     }
 
     // Camera trigger points

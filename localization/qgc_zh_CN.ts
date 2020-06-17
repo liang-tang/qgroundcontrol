@@ -6121,6 +6121,66 @@ Blue Robotics的设备设计使用水来润滑，并非可以空转。但是可�
   <context>
     <name>FlightDisplayViewMap</name>
     <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="541"/>
+      <source>cod</source>
+      <translation>COD值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="542"/>
+      <source>toc</source>
+      <translation>TOC值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="543"/>
+      <source>nh3n</source>
+      <translation>氨氮值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="544"/>
+      <source>ldo</source>
+      <translation>溶解氧值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="545"/>
+      <source>turb</source>
+      <translation>浊度值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="546"/>
+      <source>cond</source>
+      <translation>电导率值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="547"/>
+      <source>ph</source>
+      <translation>PH值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="548"/>
+      <source>orp</source>
+      <translation>ORP值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="549"/>
+      <source>chla</source>
+      <translation>叶绿素值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="550"/>
+      <source>cyano</source>
+      <translation>蓝绿藻值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="551"/>
+      <source>oil</source>
+      <translation>水中油值:</translation>
+    </message>
+    <message>
+      <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="552"/>
+      <source>temp</source>
+      <translation>温度值:</translation>
+    </message>
+    <message>
       <location filename="../src/FlightDisplay/FlightDisplayViewMap.qml" line="279"/>
       <source>R</source>
       <comment>rally point map item label</comment>
