@@ -141,9 +141,18 @@ Canvas {
 
     QGCMouseArea {
         fillItem:   mouseAreaFill
+        hoverEnabled: true
         onClicked: {
+            if (index === 0 || index === -1) {
+                checked = true
+            }
             focus = true
             parent.clicked()
+        }
+        onExited: {
+            if (index === 0 || index === -1) {
+                checked = false
+            }
         }
     }
 }

@@ -705,62 +705,62 @@ FlightMap {
     }
 
     // Handle guided mode clicks
-    MouseArea {
-        anchors.fill: parent
+    // MouseArea {
+    //     anchors.fill: parent
 
-        QGCMenu {
-            id: clickMenu
-            property var coord
-            QGCMenuItem {
-                text:           qsTr("Go to location")
-                visible:        guidedActionsController.showGotoLocation
+    //     QGCMenu {
+    //         id: clickMenu
+    //         property var coord
+    //         QGCMenuItem {
+    //             text:           qsTr("Go to location")
+    //             visible:        guidedActionsController.showGotoLocation
 
-                onTriggered: {
-                    gotoLocationItem.show(clickMenu.coord)
-                    orbitMapCircle.hide()
-                    guidedActionsController.confirmAction(guidedActionsController.actionGoto, clickMenu.coord, gotoLocationItem)
-                }
-            }
-            QGCMenuItem {
-                text:           qsTr("Orbit at location")
-                visible:        guidedActionsController.showOrbit
+    //             onTriggered: {
+    //                 gotoLocationItem.show(clickMenu.coord)
+    //                 orbitMapCircle.hide()
+    //                 guidedActionsController.confirmAction(guidedActionsController.actionGoto, clickMenu.coord, gotoLocationItem)
+    //             }
+    //         }
+    //         QGCMenuItem {
+    //             text:           qsTr("Orbit at location")
+    //             visible:        guidedActionsController.showOrbit
 
-                onTriggered: {
-                    orbitMapCircle.show(clickMenu.coord)
-                    gotoLocationItem.hide()
-                    guidedActionsController.confirmAction(guidedActionsController.actionOrbit, clickMenu.coord, orbitMapCircle)
-                }
-            }
-            QGCMenuItem {
-                text:           qsTr("ROI at location")
-                visible:        guidedActionsController.showROI
+    //             onTriggered: {
+    //                 orbitMapCircle.show(clickMenu.coord)
+    //                 gotoLocationItem.hide()
+    //                 guidedActionsController.confirmAction(guidedActionsController.actionOrbit, clickMenu.coord, orbitMapCircle)
+    //             }
+    //         }
+    //         QGCMenuItem {
+    //             text:           qsTr("ROI at location")
+    //             visible:        guidedActionsController.showROI
 
-                onTriggered: {
-                    roiLocationItem.show(clickMenu.coord)
-                    guidedActionsController.confirmAction(guidedActionsController.actionROI, clickMenu.coord, orbitMapCircle)
-                }
-            }
-        }
+    //             onTriggered: {
+    //                 roiLocationItem.show(clickMenu.coord)
+    //                 guidedActionsController.confirmAction(guidedActionsController.actionROI, clickMenu.coord, orbitMapCircle)
+    //             }
+    //         }
+    //     }
 
-        onClicked: {
-            if (guidedActionsController.guidedUIVisible || (!guidedActionsController.showGotoLocation && !guidedActionsController.showOrbit)) {
-                return
-            }
-            orbitMapCircle.hide()
-            gotoLocationItem.hide()
-            var clickCoord = flightMap.toCoordinate(Qt.point(mouse.x, mouse.y), false /* clipToViewPort */)
-            if (guidedActionsController.showGotoLocation && guidedActionsController.showOrbit) {
-                clickMenu.coord = clickCoord
-                clickMenu.popup()
-            } else if (guidedActionsController.showGotoLocation) {
-                gotoLocationItem.show(clickCoord)
-                guidedActionsController.confirmAction(guidedActionsController.actionGoto, clickCoord)
-            } else if (guidedActionsController.showOrbit) {
-                orbitMapCircle.show(clickCoord)
-                guidedActionsController.confirmAction(guidedActionsController.actionOrbit, clickCoord)
-            }
-        }
-    }
+    //     onClicked: {
+    //         if (guidedActionsController.guidedUIVisible || (!guidedActionsController.showGotoLocation && !guidedActionsController.showOrbit)) {
+    //             return
+    //         }
+    //         orbitMapCircle.hide()
+    //         gotoLocationItem.hide()
+    //         var clickCoord = flightMap.toCoordinate(Qt.point(mouse.x, mouse.y), false /* clipToViewPort */)
+    //         if (guidedActionsController.showGotoLocation && guidedActionsController.showOrbit) {
+    //             clickMenu.coord = clickCoord
+    //             clickMenu.popup()
+    //         } else if (guidedActionsController.showGotoLocation) {
+    //             gotoLocationItem.show(clickCoord)
+    //             guidedActionsController.confirmAction(guidedActionsController.actionGoto, clickCoord)
+    //         } else if (guidedActionsController.showOrbit) {
+    //             orbitMapCircle.show(clickCoord)
+    //             guidedActionsController.confirmAction(guidedActionsController.actionOrbit, clickCoord)
+    //         }
+    //     }
+    // }
 
     MapScale {
         id:                     mapScale

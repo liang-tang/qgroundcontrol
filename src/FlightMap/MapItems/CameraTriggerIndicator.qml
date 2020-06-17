@@ -26,7 +26,7 @@ MapQuickItem {
     sourceItem: MissionItemIndexLabel {
         checked:    false
         highlightSelected:  true
-        label:      " " + value1
         color:      color1
+        onClicked: guidedActionsController.confirmAction(guidedActionsController.actionShow, qsTr("123456.3"))
     }
 }
