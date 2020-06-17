@@ -16,21 +16,21 @@
     "shortDescription": "COD",
     "type":             "double",
     "decimalPlaces":    2,
-    "units":            "???"
+    "units":            "mg/L"
 },
 {
     "name":             "toc",
     "shortDescription": "TOC",
     "type":             "double",
     "decimalPlaces":    2,
-    "units":            "???"
+    "units":            "mg/L"
 },
 {
     "name":             "nh3n",
     "shortDescription": "氨氮",
     "type":             "double",
     "decimalPlaces":    2,
-    "units":            "???"
+    "units":            "mg/L"
 },
 {
     "name":             "ldo",
@@ -85,7 +85,7 @@
     "shortDescription": "水中油",
     "type":             "double",
     "decimalPlaces":    2,
-    "units":            "???"
+    "units":            "mg/L"
 },
 {
     "name":             "temp",
