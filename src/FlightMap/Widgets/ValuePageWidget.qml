@@ -629,60 +629,64 @@ Column {
         }
     }
 
-    QGCButton {
-        anchors.horizontalCenter:   parent.horizontalCenter
-        text:               qsTr("Start")
-        visible:            true
-        onClicked:          confirmStart.open()
-        enabled:            activeVehicle
+    RowLayout {
+        spacing: 23
 
-        MessageDialog {
-            id:                 confirmStart
-            visible:            false
-            icon:               StandardIcon.NoIcon
-            standardButtons:    StandardButton.Yes | StandardButton.No
-            title:              qsTr("Start")
-            text:               qsTr("Are you sure to Start?")
-            onYes: {
-                activeVehicle.setParam(1, "WQ_TRIGG_DIST", parseFloat(dist.text))
-                confirmStart.close()
-            }
-            onNo: {
-                confirmStart.close()
+        QGCButton {
+            //anchors.horizontalCenter:   parent.horizontalLeft
+            text:                       qsTr("Once")
+            visible:                    true
+            onClicked:                  activeVehicle.triggerWq()
+            enabled:                    activeVehicle
+        }
+
+        QGCButton {
+            //anchors.horizontalCenter:   parent.horizontalCenter
+            text:               qsTr("Start")
+            visible:            true
+            onClicked:          confirmStart.open()
+            enabled:            activeVehicle
+
+            MessageDialog {
+                id:                 confirmStart
+                visible:            false
+                icon:               StandardIcon.NoIcon
+                standardButtons:    StandardButton.Yes | StandardButton.No
+                title:              qsTr("Start")
+                text:               qsTr("Are you sure to Start?")
+                onYes: {
+                    activeVehicle.setParam(1, "WQ_TRIGG_DIST", parseFloat(dist.text))
+                    confirmStart.close()
+                }
+                onNo: {
+                    confirmStart.close()
+                }
             }
         }
-    }
 
-    QGCButton {
-        anchors.horizontalCenter:   parent.horizontalCenter
-        text:               qsTr("Stop")
-        visible:            true
-        onClicked:          confirmStop.open()
-        enabled:            activeVehicle
+        QGCButton {
+            //anchors.horizontalCenter:   parent.horizontalRight
+            text:               qsTr("Stop")
+            visible:            true
+            onClicked:          confirmStop.open()
+            enabled:            activeVehicle
 
-        MessageDialog {
-            id:                 confirmStop
-            visible:            false
-            icon:               StandardIcon.NoIcon
-            standardButtons:    StandardButton.Yes | StandardButton.No
-            title:              qsTr("Stop")
-            text:               qsTr("Are you sure to Stop?")
-            onYes: {
-                activeVehicle.setParam(1, "WQ_TRIGG_DIST", 0)
-                confirmStop.close()
-            }
-            onNo: {
-                confirmStop.close()
+            MessageDialog {
+                id:                 confirmStop
+                visible:            false
+                icon:               StandardIcon.NoIcon
+                standardButtons:    StandardButton.Yes | StandardButton.No
+                title:              qsTr("Stop")
+                text:               qsTr("Are you sure to Stop?")
+                onYes: {
+                    activeVehicle.setParam(1, "WQ_TRIGG_DIST", 0)
+                    confirmStop.close()
+                }
+                onNo: {
+                    confirmStop.close()
+                }
             }
         }
-    }
-
-    QGCButton {
-        anchors.horizontalCenter:   parent.horizontalCenter
-        text:                       qsTr("Once")
-        visible:                    true
-        onClicked:                  activeVehicle.triggerWq()
-        enabled:                    activeVehicle
     }
 
     RowLayout {

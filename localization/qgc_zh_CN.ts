@@ -15234,17 +15234,17 @@ Confirm change?</source>
     <message>
       <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="312"/>
       <source>Start</source>
-      <translation>开始采样</translation>
+      <translation>开始</translation>
     </message>
     <message>
       <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="319"/>
       <source>Stop</source>
-      <translation>停止采样</translation>
+      <translation>停止</translation>
     </message>
     <message>
       <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="682"/>
       <source>Once</source>
-      <translation>单次采样</translation>
+      <translation>测试</translation>
     </message>
     <message>
       <location filename="../src/FlightMap/Widgets/ValuePageWidget.qml" line="326"/>
