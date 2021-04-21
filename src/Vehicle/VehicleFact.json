@@ -114,5 +114,136 @@
     "name":             "hobbs",
     "shortDescription": "Hobbs Meter",
     "type":             "string"
+},
+{
+    "name":             "windvane_time",
+    "shortDescription": "Windvane_time",
+    "type":             "uint64"
+},
+{
+    "name":             "windvane_lat",
+    "shortDescription": "Windvane_lat",
+    "type":             "double",
+    "decimalPlaces":    7,
+    "units":            "°"
+},
+{
+    "name":             "windvane_lon",
+    "shortDescription": "Windvane_lon",
+    "type":             "double",
+    "decimalPlaces":    7,
+    "units":            "°"
+},
+{
+    "name":             "windvane_alt",
+    "shortDescription": "Windvane_alt",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "m"
+},
+{
+    "name":             "windvane_groundspeed_x",
+    "shortDescription": "Windvane_groundspeed_x",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "m/s"
+},
+{
+    "name":             "windvane_groundspeed_y",
+    "shortDescription": "Windvane_groundspeed_y",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "m/s"
+},
+{
+    "name":             "windvane_groundspeed_z",
+    "shortDescription": "Windvane_groundspeed_z",
+    "type":             "double",
+    "decimalPlaces":    1,
+    "units":            "m/s"
+},
+{
+    "name":             "windvane_roll",
+    "shortDescription": "Windvane_roll",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "deg"
+},
+{
+    "name":             "windvane_pitch",
+    "shortDescription": "Windvane_pitch",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "deg"
+},
+{
+    "name":             "windvane_yaw",
+    "shortDescription": "Windvane_yaw",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "deg"
+},
+{
+    "name":             "windvane_speed_horiz_sensor",
+    "shortDescription": "Windvane_speed_horiz_sensor",
+    "type":             "double",
+    "decimalPlaces":    1,
+    "units":            "m/s"
+},
+{
+    "name":             "windvane_angle_horiz_sensor",
+    "shortDescription": "Windvane_angle_horiz_sensor",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "deg/s"
+},
+{
+    "name":             "windvane_speed_vert_sensor",
+    "shortDescription": "Windvane_speed_vert_sensor",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "m/s"
+},
+{
+    "name":             "windvane_angle_vert_sensor",
+    "shortDescription": "Windvane_angle_vert_sensor",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "deg"
+},
+{
+    "name":             "windvane_wind_speed_3d_x",
+    "shortDescription": "Windvane_wind_speed_3d_x",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "m/s"
+},
+{
+    "name":             "windvane_wind_speed_3d_y",
+    "shortDescription": "Windvane_wind_speed_3d_y",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "m/s"
+},
+{
+    "name":             "windvane_wind_speed_3d_z",
+    "shortDescription": "Windvane_wind_speed_3d_z",
+    "type":             "float",
+    "decimalPlaces":    1,
+    "units":            "m/s"
+},
+{
+    "name":             "windvane_wind_speed_horiz",
+    "shortDescription": "Windvane_wind_speed_horiz",
+    "type":             "float",
+    "decimalPlaces":    2,
+    "units":            "m/s"
+},
+{
+    "name":             "windvane_wind_angle_horiz",
+    "shortDescription": "Windvane_wind_angle_horiz",
+    "type":             "float",
+    "decimalPlaces":    2,
+    "units":            "deg"
 }
 ]

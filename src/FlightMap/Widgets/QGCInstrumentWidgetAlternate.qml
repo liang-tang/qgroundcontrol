@@ -20,7 +20,7 @@ import QGroundControl.Palette       1.0
 Rectangle {
     id:             root
     width:          getPreferredInstrumentWidth()
-    height:         _outerRadius * 2
+    height:         _outerRadius * 10
     radius:         _outerRadius
     color:          qgcPal.window
     border.width:   1
@@ -50,18 +50,254 @@ Rectangle {
         id:                 attitude
         anchors.leftMargin: _topBottomMargin
         anchors.left:       parent.left
+        anchors.topMargin: _topBottomMargin
+        anchors.top:        parent.top
         size:               _innerRadius * 2
         vehicle:            _activeVehicle
-        anchors.verticalCenter: parent.verticalCenter
     }
 
     QGCCompassWidget {
         id:                 compass
         anchors.leftMargin: _spacing
         anchors.left:       attitude.right
+        anchors.topMargin: _topBottomMargin
+        anchors.top:        parent.top
         size:               _innerRadius * 2
         vehicle:            _activeVehicle
-        anchors.verticalCenter: parent.verticalCenter
+    }
+
+    QGCWindAngleWidget {
+        id:                 windangle
+        anchors.leftMargin: _spacing
+        anchors.left:       parent.left
+        anchors.topMargin: _topBottomMargin
+        anchors.top:        attitude.bottom
+        size:               _innerRadius * 2
+        vehicle:            _activeVehicle
+    }
+
+    QGCLabel {
+        id:                 windvane_wind_speed_horiz
+        anchors.leftMargin: _spacing
+        anchors.left:       windangle.right
+        anchors.topMargin:  _topBottomMargin + sensorver.height / 2
+        anchors.top:        attitude.bottom
+        text:               "WHor"
+        font.family:        ScreenTools.normalFontFamily
+        font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+        color:              qgcPal.text
+    }
+
+    Rectangle {
+        anchors.leftMargin: _spacing
+        anchors.left:      windvane_wind_speed_horiz.right
+        anchors.topMargin: _topBottomMargin + sensorver.height / 2
+        anchors.top:        attitude.bottom
+        width:              _defaultSize * 0.35
+        height:             _defaultSize * 0.2
+        border.color:       qgcPal.text
+        color:              qgcPal.window
+        opacity:            0.65
+
+        QGCLabel {
+            text:               _windvane_wind_speed_horizString
+            font.family:        ScreenTools.normalFontFamily
+            font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+            color:              qgcPal.text
+            anchors.centerIn:   parent
+
+            property string _windvane_wind_speed_horizString: _activeVehicle ? _activeVehicle.windvane_wind_speed_horiz.rawValue.toFixed(1) : "0"
+        }
+    }
+
+    QGCSensorHorWidget{
+        id:                 sensorhor
+        anchors.leftMargin: _spacing
+        anchors.left:       parent.left
+        anchors.topMargin: _topBottomMargin
+        anchors.top:        windangle.bottom
+        size:               _innerRadius * 2
+        vehicle:            _activeVehicle
+    }
+
+    QGCLabel {
+        id:                 windvane_speed_horiz_sensor
+        anchors.leftMargin: _topBottomMargin
+        anchors.left:       sensorhor.right
+        anchors.topMargin: _topBottomMargin + sensorver.height / 2
+        anchors.top:        windangle.bottom
+        text:               "SHor"
+        font.family:        ScreenTools.normalFontFamily
+        font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+        color:              qgcPal.text
+    }
+
+    Rectangle {
+        anchors.leftMargin: _topBottomMargin
+        anchors.left:       windvane_speed_horiz_sensor.right
+        anchors.topMargin: _topBottomMargin + sensorver.height / 2
+        anchors.top:        windangle.bottom
+        width:              _defaultSize * 0.35
+        height:             _defaultSize * 0.2
+        border.color:       qgcPal.text
+        color:              qgcPal.window
+        opacity:            0.65
+
+        QGCLabel {
+            text:               _windvane_wind_speed_horizString
+            font.family:        ScreenTools.normalFontFamily
+            font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+            color:              qgcPal.text
+            anchors.centerIn:   parent
+
+            property string _windvane_wind_speed_horizString: _activeVehicle ? _activeVehicle.windvane_speed_horiz_sensor.rawValue.toFixed(1) : "0"
+        }
+    }
+
+    QGCSensorVerWidget{
+        id:                 sensorver
+        anchors.leftMargin: _spacing
+        anchors.left:       parent.left
+        anchors.topMargin:  _topBottomMargin
+        anchors.top:        sensorhor.bottom
+        size:               _innerRadius * 2
+        vehicle:            _activeVehicle
+    }
+
+    QGCLabel {
+        id:                 windvane_speed_vert_sensor
+        anchors.leftMargin: _spacing
+        anchors.left:       sensorver.right
+        anchors.topMargin:  _topBottomMargin + sensorver.height / 2
+        anchors.top:        sensorhor.bottom
+        text:               "SVer"
+        font.family:        ScreenTools.normalFontFamily
+        font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+        color:              qgcPal.text
+    }
+
+    Rectangle {
+        anchors.leftMargin: _topBottomMargin
+        anchors.left:       windvane_speed_vert_sensor.right
+        anchors.topMargin: _topBottomMargin + sensorver.height / 2
+        anchors.top:        sensorhor.bottom
+        width:              _defaultSize * 0.35
+        height:             _defaultSize * 0.2
+        border.color:       qgcPal.text
+        color:              qgcPal.window
+        opacity:            0.65
+
+        QGCLabel {
+            text:               _windvane_wind_speed_horizString
+            font.family:        ScreenTools.normalFontFamily
+            font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+            color:              qgcPal.text
+            anchors.centerIn:   parent
+
+            property string _windvane_wind_speed_horizString: _activeVehicle ? _activeVehicle.windvane_speed_vert_sensor.rawValue.toFixed(1) : "0"
+        }
+    }
+
+    QGCLabel {
+        id:                 windvane_wind_speed_3d_x
+        anchors.leftMargin: _spacing
+        anchors.left:       parent.left
+        anchors.topMargin:  _topBottomMargin
+        anchors.top:        sensorver.bottom
+        text:               "Vwx"
+        font.family:        ScreenTools.normalFontFamily
+        font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+        color:              qgcPal.text
+    }
+
+    Rectangle {
+        anchors.leftMargin: _spacing
+        anchors.left:       windvane_wind_speed_3d_x.right
+        anchors.topMargin: _topBottomMargin
+        anchors.top:        sensorver.bottom
+        width:              _defaultSize * 0.35
+        height:             _defaultSize * 0.2
+        border.color:       qgcPal.text
+        color:              qgcPal.window
+        opacity:            0.65
+
+        QGCLabel {
+            text:               _windvane_wind_speed_3d_xString
+            font.family:        ScreenTools.normalFontFamily
+            font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+            color:              qgcPal.text
+            anchors.centerIn:   parent
+
+            property string _windvane_wind_speed_3d_xString: _activeVehicle ? _activeVehicle.windvane_wind_speed_3d_x.rawValue.toFixed(1) : "0"
+        }
+    }
+
+    QGCLabel {
+        id:                 windvane_wind_speed_3d_y
+        anchors.leftMargin: _spacing
+        anchors.left:       parent.left
+        anchors.topMargin:  _topBottomMargin
+        anchors.top:        windvane_wind_speed_3d_x.bottom
+        text:               "Vwy"
+        font.family:        ScreenTools.normalFontFamily
+        font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+        color:              qgcPal.text
+    }
+
+    Rectangle {
+        anchors.leftMargin: _spacing
+        anchors.left:      windvane_wind_speed_3d_y.right
+        anchors.topMargin: _topBottomMargin
+        anchors.top:        windvane_wind_speed_3d_x.bottom
+        width:              _defaultSize * 0.35
+        height:             _defaultSize * 0.2
+        border.color:       qgcPal.text
+        color:              qgcPal.window
+        opacity:            0.65
+
+        QGCLabel {
+            text:               windvane_wind_speed_3d_yString
+            font.family:        ScreenTools.normalFontFamily
+            font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+            color:              qgcPal.text
+            anchors.centerIn:   parent
+
+            property string windvane_wind_speed_3d_yString: _activeVehicle ? _activeVehicle.windvane_wind_speed_3d_y.rawValue.toFixed(1) : "0"
+        }
+    }
+
+    QGCLabel {
+        id:                 windvane_wind_speed_3d_z
+        anchors.leftMargin: _spacing
+        anchors.left:       parent.left
+        anchors.topMargin:  _topBottomMargin
+        anchors.top:        windvane_wind_speed_3d_y.bottom
+        text:               "Vwz"
+        font.family:        ScreenTools.normalFontFamily
+        font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+        color:              qgcPal.text
+    }
+
+    Rectangle {
+        anchors.leftMargin: _spacing
+        anchors.left:      windvane_wind_speed_3d_z.right
+        anchors.topMargin: _topBottomMargin
+        anchors.top:        windvane_wind_speed_3d_y.bottom
+        width:              _defaultSize * 0.35
+        height:             _defaultSize * 0.2
+        border.color:       qgcPal.text
+        color:              qgcPal.window
+        opacity:            0.65
+
+        QGCLabel {
+            text:               _windvane_wind_speed_3d_zString
+            font.family:        ScreenTools.normalFontFamily
+            font.pointSize:     ScreenTools.defaultFontPointSize * _sizeRatio < 8 ? 8 : ScreenTools.defaultFontPointSize * _sizeRatio;
+            color:              qgcPal.text
+            anchors.centerIn:   parent
+
+            property string _windvane_wind_speed_3d_zString: _activeVehicle ? _activeVehicle.windvane_wind_speed_3d_z.rawValue.toFixed(1) : "0"
+        }
     }
 
     Item {

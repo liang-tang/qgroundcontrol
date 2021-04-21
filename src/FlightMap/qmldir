@@ -15,6 +15,9 @@ QGCArtificialHorizon    1.0 QGCArtificialHorizon.qml
 QGCAttitudeHUD          1.0 QGCAttitudeHUD.qml
 QGCAttitudeWidget       1.0 QGCAttitudeWidget.qml
 QGCCompassWidget        1.0 QGCCompassWidget.qml
+QGCWindAngleWidget      1.0 QGCWindAngleWidget.qml
+QGCSensorHorWidget      1.0 QGCSensorHorWidget.qml
+QGCSensorVerWidget      1.0 QGCSensorVerWidget.qml
 QGCPitchIndicator       1.0 QGCPitchIndicator.qml
 
 # Map items
