@@ -76,6 +76,32 @@ const char* Vehicle::_headingToHomeFactName =       "headingToHome";
 const char* Vehicle::_distanceToGCSFactName =       "distanceToGCS";
 const char* Vehicle::_hobbsFactName =               "hobbs";
 
+//new add wind angle
+const char* Vehicle::_windvane_airspeedFactName =             "windvane_airspeed";
+//new add sensor hor
+const char* Vehicle::_windvane_wind_speed_horizFactName =             "windvane_wind_speed_horiz";
+//new add sensor ver
+const char* Vehicle::_windvane_wind_angle_horizFactName =             "windvane_wind_angle_horiz";
+const char*   Vehicle::_windvane_timeFactName = "windvane_time";
+const char*   Vehicle::_windvane_latFactName = "windvane_lat";
+const char*   Vehicle::_windvane_lonFactName = "windvane_lon";
+const char*   Vehicle::_windvane_altFactName = "windvane_alt";
+const char*   Vehicle::_windvane_groundspeed_xFactName = "windvane_groundspeed_x";
+const char*   Vehicle::_windvane_groundspeed_yFactName = "windvane_groundspeed_y";
+const char*   Vehicle::_windvane_groundspeed_zFactName = "windvane_groundspeed_z";
+const char*   Vehicle::_windvane_rollFactName = "windvane_roll";
+const char*   Vehicle::_windvane_pitchFactName = "windvane_pitch";
+const char*   Vehicle::_windvane_yawFactName = "windvane_yaw";
+const char*  Vehicle:: _windvane_voltageFactName = "windvane_voltage";
+const char*  Vehicle:: _windvane_voltage2FactName = "windvane_voltage2";
+const char*   Vehicle::_windvane_aoaFactName = "windvane_aoa";
+const char*  Vehicle:: _windvane_aosFactName = "windvane_aos";
+const char*   Vehicle::_windvane_wind_speed_3d_xFactName = "windvane_wind_speed_3d_x";
+const char*  Vehicle:: _windvane_wind_speed_3d_yFactName = "windvane_wind_speed_3d_y";
+const char*   Vehicle::_windvane_wind_speed_3d_zFactName = "windvane_wind_speed_3d_z";
+const char*   Vehicle::_windvane_differential_pressure_paFactName = "windvane_differential_pressure_pa";
+const char*   Vehicle::_windvane_baro_pressure_paFactName = "windvane_baro_pressure_pa";
+
 const char* Vehicle::_gpsFactGroupName =                "gps";
 const char* Vehicle::_battery1FactGroupName =           "battery";
 const char* Vehicle::_battery2FactGroupName =           "battery2";
@@ -202,6 +228,9 @@ Vehicle::Vehicle(LinkInterface*             link,
     , _headingToHomeFact    (0, _headingToHomeFactName,     FactMetaData::valueTypeDouble)
     , _distanceToGCSFact    (0, _distanceToGCSFactName,     FactMetaData::valueTypeDouble)
     , _hobbsFact            (0, _hobbsFactName,             FactMetaData::valueTypeString)
+    , _windvane_airspeedFact        (0, _windvane_airspeedFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_wind_speed_horizFact        (0, _windvane_wind_speed_horizFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_wind_angle_horizFact        (0, _windvane_wind_angle_horizFactName,         FactMetaData::valueTypeDouble)
     , _gpsFactGroup(this)
     , _battery1FactGroup(this)
     , _battery2FactGroup(this)
@@ -297,6 +326,10 @@ Vehicle::Vehicle(LinkInterface*             link,
     connect(&_adsbTimer, &QTimer::timeout, this, &Vehicle::_adsbTimerTimeout);
     _adsbTimer.setSingleShot(false);
     _adsbTimer.start(1000);
+
+    // Start csv logger
+//    connect(&_csvLogTimer, &QTimer::timeout, this, &Vehicle::_writeCsvLine);
+//    _csvLogTimer.start(1000);
 }
 
 // Disconnected Vehicle for offline editing
@@ -403,6 +436,28 @@ Vehicle::Vehicle(MAV_AUTOPILOT              firmwareType,
     , _headingToHomeFact    (0, _headingToHomeFactName,     FactMetaData::valueTypeDouble)
     , _distanceToGCSFact    (0, _distanceToGCSFactName,     FactMetaData::valueTypeDouble)
     , _hobbsFact            (0, _hobbsFactName,             FactMetaData::valueTypeString)
+    , _windvane_airspeedFact        (0, _windvane_airspeedFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_wind_speed_horizFact        (0, _windvane_wind_speed_horizFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_wind_angle_horizFact        (0, _windvane_wind_angle_horizFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_timeFact     (0, _windvane_timeFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_latFact     (0, _windvane_latFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_lonFact     (0, _windvane_lonFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_altFact     (0, _windvane_altFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_groundspeed_xFact     (0, _windvane_groundspeed_xFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_groundspeed_yFact     (0, _windvane_groundspeed_yFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_groundspeed_zFact     (0, _windvane_groundspeed_zFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_rollFact             (0, _windvane_rollFactName,              FactMetaData::valueTypeDouble)
+    , _windvane_pitchFact            (0, _windvane_pitchFactName,             FactMetaData::valueTypeDouble)
+    , _windvane_yawFact              (0, _windvane_yawFactName,           FactMetaData::valueTypeDouble)
+    , _windvane_voltageFact(0, _windvane_voltageFactName,             FactMetaData::valueTypeDouble)
+    , _windvane_voltage2Fact(0, _windvane_voltage2FactName,             FactMetaData::valueTypeDouble)
+    , _windvane_aoaFact(0, _windvane_aoaFactName,             FactMetaData::valueTypeDouble)
+    , _windvane_aosFact(0, _windvane_aosFactName,             FactMetaData::valueTypeDouble)
+    , _windvane_wind_speed_3d_xFact     (0, _windvane_wind_speed_3d_xFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_wind_speed_3d_yFact     (0, _windvane_wind_speed_3d_yFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_wind_speed_3d_zFact     (0, _windvane_wind_speed_3d_zFactName,         FactMetaData::valueTypeDouble)
+    , _windvane_differential_pressure_paFact(0, _windvane_differential_pressure_paFactName,             FactMetaData::valueTypeDouble)
+    , _windvane_baro_pressure_paFact(0, _windvane_baro_pressure_paFactName,             FactMetaData::valueTypeDouble)
     , _gpsFactGroup(this)
     , _battery1FactGroup(this)
     , _battery2FactGroup(this)
@@ -476,6 +531,30 @@ void Vehicle::_commonInit(void)
     _addFact(&_distanceToHomeFact,      _distanceToHomeFactName);
     _addFact(&_headingToHomeFact,       _headingToHomeFactName);
     _addFact(&_distanceToGCSFact,       _distanceToGCSFactName);
+
+    //add new data
+    _addFact(&_windvane_airspeedFact,           _windvane_airspeedFactName);
+    _addFact(&_windvane_wind_speed_horizFact,           _windvane_wind_speed_horizFactName);
+    _addFact(&_windvane_wind_angle_horizFact,           _windvane_wind_angle_horizFactName);
+    _addFact(&_windvane_timeFact     , _windvane_timeFactName);
+    _addFact(&_windvane_latFact     , _windvane_latFactName);
+    _addFact(&_windvane_lonFact     , _windvane_lonFactName);
+    _addFact(&_windvane_altFact     , _windvane_altFactName);
+    _addFact(&_windvane_groundspeed_xFact    , _windvane_groundspeed_xFactName);
+    _addFact(&_windvane_groundspeed_yFact     , _windvane_groundspeed_yFactName);
+    _addFact(&_windvane_groundspeed_zFact     , _windvane_groundspeed_zFactName);
+    _addFact(&_windvane_rollFact             , _windvane_rollFactName);
+    _addFact(&_windvane_pitchFact           , _windvane_pitchFactName);
+    _addFact(&_windvane_yawFact              , _windvane_yawFactName);
+    _addFact(&_windvane_voltageFact, _windvane_voltageFactName);
+    _addFact(&_windvane_voltage2Fact, _windvane_voltage2FactName);
+    _addFact(&_windvane_aoaFact, _windvane_aoaFactName);
+    _addFact(&_windvane_aosFact, _windvane_aosFactName);
+    _addFact(&_windvane_wind_speed_3d_xFact     , _windvane_wind_speed_3d_xFactName);
+    _addFact(&_windvane_wind_speed_3d_yFact     , _windvane_wind_speed_3d_yFactName);
+    _addFact(&_windvane_wind_speed_3d_zFact     , _windvane_wind_speed_3d_zFactName);
+    _addFact(&_windvane_differential_pressure_paFact, _windvane_differential_pressure_paFactName);
+    _addFact(&_windvane_baro_pressure_paFact, _windvane_baro_pressure_paFactName);
 
     _hobbsFact.setRawValue(QVariant(QString("0000:00:00")));
     _addFact(&_hobbsFact,               _hobbsFactName);
@@ -779,6 +858,9 @@ void Vehicle::_mavlinkMessageReceived(LinkInterface* link, mavlink_message_t mes
     case MAVLINK_MSG_ID_ATTITUDE_TARGET:
         _handleAttitudeTarget(message);
         break;
+    case MAVLINK_MSG_ID_DATA96:
+        _handleData96(message);
+        break;
     case MAVLINK_MSG_ID_DISTANCE_SENSOR:
         _handleDistanceSensor(message);
         break;
@@ -1050,10 +1132,6 @@ void Vehicle::_handleAttitudeTarget(mavlink_message_t& message)
     float roll, pitch, yaw;
     mavlink_quaternion_to_euler(attitudeTarget.q, &roll, &pitch, &yaw);
 
-    _setpointFactGroup.roll()->setRawValue(qRadiansToDegrees(roll));
-    _setpointFactGroup.pitch()->setRawValue(qRadiansToDegrees(pitch));
-    _setpointFactGroup.yaw()->setRawValue(qRadiansToDegrees(yaw));
-
     _setpointFactGroup.rollRate()->setRawValue(qRadiansToDegrees(attitudeTarget.body_roll_rate));
     _setpointFactGroup.pitchRate()->setRawValue(qRadiansToDegrees(attitudeTarget.body_pitch_rate));
     _setpointFactGroup.yawRate()->setRawValue(qRadiansToDegrees(attitudeTarget.body_yaw_rate));
@@ -1092,6 +1170,261 @@ void Vehicle::_handleAttitude(mavlink_message_t& message)
     mavlink_msg_attitude_decode(&message, &attitude);
 
     _handleAttitudeWorker(attitude.roll, attitude.pitch, attitude.yaw);
+}
+
+void Vehicle::_handleData96(mavlink_message_t& message)
+{
+    mavlink_data96_t data96;
+    mavlink_msg_data96_decode(&message, &data96);
+
+    uint64_t timestamp;
+    double lat,lon;
+    float alt;
+    int16_t attitude[3],ground_speed[3];
+    int16_t voltage[2];
+    int16_t aoa,aos,airspeed;
+    float differential_pressure_pa, baro_pressure_pa;
+    float wind_speed_3d[3];
+    float wind_speed_horiz,wind_angle_horiz;
+
+    uint64_t addru64 = (uint64_t)data96.data[0] << 0 | (uint64_t) data96.data[1] << 8 |
+                (uint64_t)data96.data[2] << 16 | (uint64_t)data96.data[3] << 24 |
+                (uint64_t)data96.data[4] << 32 | (uint64_t)data96.data[5] << 40 |
+                (uint64_t)data96.data[6] << 48 | (uint64_t)data96.data[7] << 56;
+
+    timestamp = *(uint64_t *)&addru64;
+
+    int64_t addr64  =(uint64_t)data96.data[8] << 0 | (uint64_t) data96.data[9] << 8 |
+             (uint64_t)data96.data[10] << 16 | (uint64_t) data96.data[11] << 24 |
+             (uint64_t)data96.data[12] << 32 | (uint64_t) data96.data[13] << 40 |
+             (uint64_t)data96.data[14] << 48 | (uint64_t) data96.data[15] << 56;
+
+    lat = *(double *)&addr64;
+
+    addr64 = (uint64_t)data96.data[16] << 0 | (uint64_t) data96.data[17] << 8 |
+             (uint64_t)data96.data[18] << 16 | (uint64_t) data96.data[19] << 24 |
+             (uint64_t)data96.data[20] << 32 | (uint64_t) data96.data[21] << 40 |
+             (uint64_t)data96.data[22] << 48 | (uint64_t) data96.data[23] << 56;
+
+    lon = *(double *)&addr64;
+
+    uint32_t addr = (uint32_t)data96.data[24] << 0 | (uint32_t) data96.data[25] << 8 |
+                    (uint32_t)data96.data[26] << 16 | (uint32_t) data96.data[27] << 24;
+
+    alt =*(float *)&addr;
+
+    addr = (uint32_t)data96.data[28] << 0 | (uint32_t) data96.data[29] << 8 |
+           (uint32_t)data96.data[30] << 16 | (uint32_t) data96.data[31] << 24;
+
+    differential_pressure_pa = *(float *)&addr;
+
+    addr = (uint32_t)data96.data[32] << 0 | (uint32_t) data96.data[33] << 8 |
+           (uint32_t)data96.data[34] << 16 | (uint32_t) data96.data[35] << 24;
+
+    baro_pressure_pa = *(float *)&addr;
+
+
+    for(uint8_t i = 0; i< 3; i++)
+    {
+        addr = (uint32_t)data96.data[36+i*4] << 0 | (uint32_t) data96.data[37+i*4] << 8 |
+               (uint32_t)data96.data[38+i*4] << 16 | (uint32_t) data96.data[39+i*4] << 24;
+
+        wind_speed_3d[i] = *(float *)&addr;
+    }
+
+    addr =          (uint32_t)data96.data[48] << 0 | (uint32_t) data96.data[49] << 8 |
+                    (uint32_t)data96.data[50] << 16 | (uint32_t) data96.data[51] << 24;
+
+    wind_speed_horiz = *(float *)&addr;
+
+    addr =          (uint32_t)data96.data[52] << 0 | (uint32_t) data96.data[53] << 8 |
+                    (uint32_t)data96.data[54] << 16 | (uint32_t) data96.data[55] << 24;
+
+    wind_angle_horiz = *(float *)&addr;
+
+    for(uint8_t i = 0; i< 3; i++)
+    {
+        int16_t addr16 = (uint16_t)data96.data[56+i*2] << 0 | (uint16_t) data96.data[57+i*2] << 8 ;
+
+        ground_speed[i] = *(int16_t *)&addr16;
+    }
+
+    for(uint8_t i = 0; i< 3; i++)
+    {
+        int16_t addr16 = (uint16_t)data96.data[62+i*2] << 0 | (uint16_t) data96.data[63+i*2] << 8 ;
+
+        attitude[i] = *(int16_t *)&addr16;
+    }
+
+    for(uint8_t i = 0; i< 2; i++)
+    {
+        int16_t addr16 = (uint16_t)data96.data[68+i*2] << 0 | (uint16_t) data96.data[69+i*2] << 8 ;
+
+        voltage[i] = *(int16_t *)&addr16;
+    }
+
+    int16_t addr16 = (uint16_t)data96.data[72] << 0 | (uint16_t) data96.data[73] << 8 ;
+
+    aoa = *(int16_t *)&addr16;
+
+    addr16 =          (uint16_t)data96.data[74] << 0 | (uint16_t) data96.data[75] << 8 ;
+
+    aos = *(int16_t *)&addr16;
+
+    addr16 = (uint16_t)data96.data[76] << 0 | (uint16_t) data96.data[77] << 8 ;
+
+    airspeed = *(int16_t *)&addr16;
+
+//    qDebug()<< "timestamp" << timestamp ;
+//    qDebug()<< "lat" << (QString::number(lat, 10, 7));
+//    qDebug()<< "lon" << (QString::number(lon, 10, 7));
+//    qDebug()<< "alt" << alt;
+//    qDebug()<< "speed_hor" << speed_hor;
+//    qDebug()<< "angle_hor" << angle_hor;
+//    qDebug()<< "speed_ver" << speed_ver;
+//    qDebug()<< "angle_ver" << angle_ver;
+//    qDebug()<< "attitude0" << attitude[0];
+//    qDebug()<< "attitude1" << attitude[1];
+//    qDebug()<< "attitude2" << attitude[2];
+//    qDebug()<< "ground_speed0" << ground_speed[0];
+//    qDebug()<< "ground_speed1" << ground_speed[1];
+//    qDebug()<< "ground_speed2" << ground_speed[2];
+//    qDebug()<< "wind_speed_calulated0" << wind_speed_calulated[0];
+//    qDebug()<< "wind_speed_calulated1" << wind_speed_calulated[1];
+//    qDebug()<< "wind_speed_calulated2" << wind_speed_calulated[2];
+//    qDebug()<< "wind_speed_hor_calulated" << wind_speed_hor_calulated;
+//    qDebug()<< "wind_angle_hor_calulated" << wind_angle_hor_calulated;
+
+    _windvane_timeFact.setRawValue(timestamp);
+    _windvane_latFact.setRawValue(lat);
+    _windvane_lonFact.setRawValue(lon);
+    _windvane_altFact.setRawValue(alt);
+    _windvane_groundspeed_xFact.setRawValue(ground_speed[0]/100.0);
+    _windvane_groundspeed_yFact.setRawValue(ground_speed[1]/100.0);
+    _windvane_groundspeed_zFact.setRawValue(ground_speed[2]/100.0);
+    _windvane_rollFact.setRawValue(attitude[0]/100.0);
+    _windvane_pitchFact.setRawValue(attitude[1]/100.0);
+    _windvane_yawFact.setRawValue(attitude[2]/100.0);
+    _windvane_voltageFact.setRawValue(voltage[0]/100.0);
+    _windvane_voltage2Fact.setRawValue(voltage[1]/100.0);
+    _windvane_aoaFact.setRawValue(aoa/100.0);
+    _windvane_aosFact.setRawValue(aos/100.0);
+    _windvane_airspeedFact.setRawValue(airspeed/100.0);
+    _windvane_wind_speed_3d_xFact.setRawValue(wind_speed_3d[0]);
+    _windvane_wind_speed_3d_yFact.setRawValue(wind_speed_3d[1]);
+    _windvane_wind_speed_3d_zFact.setRawValue(wind_speed_3d[2]);
+    _windvane_differential_pressure_paFact.setRawValue(differential_pressure_pa);
+    _windvane_baro_pressure_paFact.setRawValue(baro_pressure_pa);
+    _windvane_wind_speed_horizFact.setRawValue(wind_speed_horiz);
+    _windvane_wind_angle_horizFact.setRawValue(wind_angle_horiz);
+    _writeCsvLine();
+
+//    _windvane_airspeedFact.setRawValue(wind_angle_hor_calulated);
+}
+
+void Vehicle::_initializeCsv()
+{
+//    if(!_toolbox->settingsManager()->appSettings()->saveCsvTelemetry()->rawValue().toBool()){
+//        return;
+//    }
+    QString now = QDateTime::currentDateTime().toString("yyyy-MM-dd hh-mm-ss");
+    QString fileName = QString("%1 vehicle%2.csv").arg(now).arg(_id);
+    QDir saveDir(_toolbox->settingsManager()->appSettings()->telemetrySavePath());
+    _csvLogFile.setFileName(saveDir.absoluteFilePath(fileName));
+
+    if (!_csvLogFile.open(QIODevice::Append)) {
+        qCWarning(VehicleLog) << "unable to open file for csv logging, Stopping csv logging!";
+        return;
+    }
+
+    QTextStream stream(&_csvLogFile);
+    QStringList allFactNames;
+    //allFactNames << factNames();
+
+    allFactNames.append("Lat");
+    allFactNames.append("Lon");
+    allFactNames.append("Alt");
+    allFactNames.append("ground_speed.x");
+    allFactNames.append("ground_speed.y");
+    allFactNames.append("ground_speed.z");
+    allFactNames.append("Roll");
+    allFactNames.append("Pitch");
+    allFactNames.append("Yaw");
+    allFactNames.append("voltage1");
+    allFactNames.append("voltage2");
+    allFactNames.append("aoa");
+    allFactNames.append("aos");
+    allFactNames.append("airspeed");
+    allFactNames.append("differential_pressure_pa");
+    allFactNames.append("baro_pressure_pa");
+    allFactNames.append("wind_speed_3d.x");
+    allFactNames.append("wind_speed_3d.y");
+    allFactNames.append("wind_speed_3d.z");
+    allFactNames.append("wind_speed_horiz");
+    allFactNames.append("wind_angle_horiz");
+
+    qCDebug(VehicleLog) << "Facts logged to csv:" << allFactNames;
+    stream << "Time," << allFactNames.join(",") << "\n";
+}
+
+void Vehicle::_writeCsvLine()
+{
+    // Only save the logs after the the vehicle gets armed, unless "Save logs even if vehicle was not armed" is checked
+    if(!_csvLogFile.isOpen()/* &&
+            (_armed || _toolbox->settingsManager()->appSettings()->telemetrySaveNotArmed()->rawValue().toBool())*/){
+        _initializeCsv();
+    }
+
+    if(!_csvLogFile.isOpen()){
+        return;
+    }
+
+    QStringList allFactValues;
+    QTextStream stream(&_csvLogFile);
+    QStringList allFactNames;
+    allFactNames.append("windvane_time");
+    allFactNames.append("windvane_lat");
+    allFactNames.append("windvane_lon");
+    allFactNames.append("windvane_alt");
+    allFactNames.append("windvane_groundspeed_x");
+    allFactNames.append("windvane_groundspeed_y");
+    allFactNames.append("windvane_groundspeed_z");
+    allFactNames.append("windvane_roll");
+    allFactNames.append("windvane_pitch");
+    allFactNames.append("windvane_yaw");
+    allFactNames.append("windvane_voltage");
+    allFactNames.append("windvane_voltage2");
+    allFactNames.append("windvane_aoa");
+    allFactNames.append("windvane_aos");
+    allFactNames.append("windvane_airspeed");
+    allFactNames.append("windvane_differential_pressure_pa");
+    allFactNames.append("windvane_baro_pressure_pa");
+    allFactNames.append("windvane_wind_speed_3d_x");
+    allFactNames.append("windvane_wind_speed_3d_y");
+    allFactNames.append("windvane_wind_speed_3d_z");
+    allFactNames.append("windvane_wind_speed_horiz");
+    allFactNames.append("windvane_wind_angle_horiz");
+
+
+    // Write timestamp to csv file
+    //allFactValues << QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd hh:mm:ss.zzz"));
+    // Write Vehicle's own facts
+    for (const QString& factName : allFactNames) {
+        QString string;
+        double value = getFact(factName)->rawValue().toDouble();
+        if(factName == "windvane_lat" || factName == "windvane_lon")
+        {
+            string = QString::number(value, 10, 7);
+        }
+        else
+        {
+            string = QString::number(value, 20, 2);
+        }
+        allFactValues << string;
+//        allFactValues << getFact(factName)->cookedValueString();
+    }
+
+    stream << allFactValues.join(",") << "\n";
 }
 
 void Vehicle::_handleAttitudeQuaternion(mavlink_message_t& message)
@@ -4002,6 +4335,10 @@ const char* VehicleSetpointFactGroup::_rollRateFactName =   "rollRate";
 const char* VehicleSetpointFactGroup::_pitchRateFactName =  "pitchRate";
 const char* VehicleSetpointFactGroup::_yawRateFactName =    "yawRate";
 
+const char* VehicleSetpointFactGroup::_windvane_airspeedFactName =  "windvane_airspeed";
+const char* VehicleSetpointFactGroup::_windvane_wind_speed_horizFactName =  "windvane_wind_speed_horiz";
+const char* VehicleSetpointFactGroup::_windvane_wind_angle_horizFactName =  "windvane_wind_angle_horiz";
+
 VehicleSetpointFactGroup::VehicleSetpointFactGroup(QObject* parent)
     : FactGroup     (1000, ":/json/Vehicle/SetpointFact.json", parent)
     , _rollFact     (0, _rollFactName,      FactMetaData::valueTypeDouble)
@@ -4010,6 +4347,9 @@ VehicleSetpointFactGroup::VehicleSetpointFactGroup(QObject* parent)
     , _rollRateFact (0, _rollRateFactName,  FactMetaData::valueTypeDouble)
     , _pitchRateFact(0, _pitchRateFactName, FactMetaData::valueTypeDouble)
     , _yawRateFact  (0, _yawRateFactName,   FactMetaData::valueTypeDouble)
+    , _windvane_airspeedFact(0, _windvane_airspeedFactName, FactMetaData::valueTypeDouble)
+    , _windvane_wind_speed_horizFact(0, _windvane_wind_speed_horizFactName, FactMetaData::valueTypeDouble)
+    , _windvane_wind_angle_horizFact(0, _windvane_wind_angle_horizFactName, FactMetaData::valueTypeDouble)
 {
     _addFact(&_rollFact,        _rollFactName);
     _addFact(&_pitchFact,       _pitchFactName);
@@ -4017,6 +4357,9 @@ VehicleSetpointFactGroup::VehicleSetpointFactGroup(QObject* parent)
     _addFact(&_rollRateFact,    _rollRateFactName);
     _addFact(&_pitchRateFact,   _pitchRateFactName);
     _addFact(&_yawRateFact,     _yawRateFactName);
+    _addFact(&_windvane_airspeedFact,   _windvane_airspeedFactName);
+    _addFact(&_windvane_wind_speed_horizFact,   _windvane_wind_speed_horizFactName);
+    _addFact(&_windvane_wind_angle_horizFact,   _windvane_wind_angle_horizFactName);
 
     // Start out as not available "--.--"
     _rollFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
@@ -4025,6 +4368,10 @@ VehicleSetpointFactGroup::VehicleSetpointFactGroup(QObject* parent)
     _rollRateFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
     _pitchRateFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
     _yawRateFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
+
+    _windvane_airspeedFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
+    _windvane_wind_speed_horizFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
+    _windvane_wind_angle_horizFact.setRawValue(std::numeric_limits<float>::quiet_NaN());
 }
 
 const char* VehicleDistanceSensorFactGroup::_rotationNoneFactName =     "rotationNone";

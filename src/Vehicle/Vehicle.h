@@ -119,12 +119,59 @@ public:
     Q_PROPERTY(Fact* pitchRate  READ pitchRate  CONSTANT)
     Q_PROPERTY(Fact* yawRate    READ yawRate    CONSTANT)
 
+    //new add data
+    Q_PROPERTY(Fact* windvane_airspeed  READ windvane_airspeed  CONSTANT)
+    Q_PROPERTY(Fact* windvane_wind_speed_horiz  READ windvane_wind_speed_horiz  CONSTANT)
+    Q_PROPERTY(Fact* windvane_wind_angle_horiz  READ windvane_wind_angle_horiz  CONSTANT)
+    Q_PROPERTY(Fact* windvane_time READ windvane_time  CONSTANT)
+    Q_PROPERTY(Fact* windvane_lat READ windvane_lat  CONSTANT)
+    Q_PROPERTY(Fact* windvane_lon READ windvane_lon  CONSTANT)
+    Q_PROPERTY(Fact* windvane_alt READ windvane_alt  CONSTANT)
+    Q_PROPERTY(Fact* windvane_groundspeed_x READ windvane_groundspeed_x  CONSTANT)
+    Q_PROPERTY(Fact* windvane_groundspeed_y READ windvane_groundspeed_y  CONSTANT)
+    Q_PROPERTY(Fact* windvane_groundspeed_z READ windvane_groundspeed_z  CONSTANT)
+    Q_PROPERTY(Fact* windvane_roll READ windvane_roll  CONSTANT)
+    Q_PROPERTY(Fact* windvane_pitch READ windvane_pitch  CONSTANT)
+    Q_PROPERTY(Fact* windvane_yaw READ windvane_yaw  CONSTANT)
+    Q_PROPERTY(Fact* windvane_voltage READ windvane_voltage  CONSTANT)
+    Q_PROPERTY(Fact* windvane_voltage2 READ windvane_voltage2  CONSTANT)
+    Q_PROPERTY(Fact* windvane_aoa READ windvane_aoa  CONSTANT)
+    Q_PROPERTY(Fact* windvane_aos READ windvane_aos  CONSTANT)
+    Q_PROPERTY(Fact* windvane_wind_speed_3d_x READ windvane_wind_speed_3d_x  CONSTANT)
+    Q_PROPERTY(Fact* windvane_wind_speed_3d_y READ windvane_wind_speed_3d_y  CONSTANT)
+    Q_PROPERTY(Fact* windvane_wind_speed_3d_z READ windvane_wind_speed_3d_z  CONSTANT)
+    Q_PROPERTY(Fact* windvane_differential_pressure_pa READ windvane_differential_pressure_pa  CONSTANT)
+    Q_PROPERTY(Fact* windvane_baro_pressure_pa READ windvane_baro_pressure_pa  CONSTANT)
+
     Fact* roll      (void) { return &_rollFact; }
     Fact* pitch     (void) { return &_pitchFact; }
     Fact* yaw       (void) { return &_yawFact; }
     Fact* rollRate  (void) { return &_rollRateFact; }
     Fact* pitchRate (void) { return &_pitchRateFact; }
     Fact* yawRate   (void) { return &_yawRateFact; }
+
+    Fact* windvane_airspeed (void) { return &_windvane_airspeedFact; }
+    Fact* windvane_wind_speed_horiz (void) { return &_windvane_wind_speed_horizFact; }
+    Fact* windvane_wind_angle_horiz (void) { return &_windvane_wind_angle_horizFact; }
+    Fact* windvane_time      (void) { return &_windvane_timeFact; }
+    Fact* windvane_lat      (void) { return &_windvane_latFact; }
+    Fact* windvane_lon      (void) { return &_windvane_lonFact; }
+    Fact* windvane_alt      (void) { return &_windvane_altFact; }
+    Fact* windvane_groundspeed_x (void) { return &_windvane_groundspeed_xFact; }
+    Fact* windvane_groundspeed_y(void) { return &_windvane_groundspeed_yFact; }
+    Fact* windvane_groundspeed_z(void) { return &_windvane_groundspeed_zFact; }
+    Fact* windvane_roll(void) { return &_windvane_rollFact; }
+    Fact* windvane_pitch(void) { return &_windvane_pitchFact; }
+    Fact* windvane_yaw(void) { return &_windvane_yawFact; }
+    Fact* windvane_voltage(void) { return &_windvane_voltageFact; }
+    Fact* windvane_voltage2(void) { return &_windvane_voltage2Fact; }
+    Fact* windvane_aoa(void) { return &_windvane_aoaFact; }
+    Fact* windvane_aos(void) { return &_windvane_aosFact; }
+    Fact* windvane_wind_speed_3d_x(void) { return &_windvane_wind_speed_3d_xFact; }
+    Fact* windvane_wind_speed_3d_y(void) { return &_windvane_wind_speed_3d_yFact; }
+    Fact* windvane_wind_speed_3d_z(void) { return &_windvane_wind_speed_3d_zFact; }
+    Fact* windvane_differential_pressure_pa(void) { return &_windvane_differential_pressure_paFact; }
+    Fact* windvane_baro_pressure_pa(void) { return &_windvane_baro_pressure_paFact; }
 
     static const char* _rollFactName;
     static const char* _pitchFactName;
@@ -133,6 +180,10 @@ public:
     static const char* _pitchRateFactName;
     static const char* _yawRateFactName;
 
+    static const char* _windvane_airspeedFactName;
+    static const char* _windvane_wind_speed_horizFactName;
+    static const char* _windvane_wind_angle_horizFactName;
+
 private:
     Fact _rollFact;
     Fact _pitchFact;
@@ -140,6 +191,30 @@ private:
     Fact _rollRateFact;
     Fact _pitchRateFact;
     Fact _yawRateFact;
+
+    //new add data
+    Fact _windvane_airspeedFact;
+    Fact _windvane_wind_speed_horizFact;
+    Fact _windvane_wind_angle_horizFact;
+    Fact _windvane_timeFact;
+    Fact _windvane_latFact;
+    Fact _windvane_lonFact;
+    Fact _windvane_altFact;
+    Fact _windvane_groundspeed_xFact;
+    Fact _windvane_groundspeed_yFact;
+    Fact _windvane_groundspeed_zFact;
+    Fact _windvane_rollFact;
+    Fact _windvane_pitchFact;
+    Fact _windvane_yawFact;
+    Fact _windvane_voltageFact;
+    Fact _windvane_voltage2Fact;
+    Fact _windvane_aoaFact;
+    Fact _windvane_aosFact;
+    Fact _windvane_wind_speed_3d_xFact;
+    Fact _windvane_wind_speed_3d_yFact;
+    Fact _windvane_wind_speed_3d_zFact;
+    Fact _windvane_differential_pressure_paFact;
+    Fact _windvane_baro_pressure_paFact;
 };
 
 class VehicleVibrationFactGroup : public FactGroup
@@ -666,6 +741,29 @@ public:
     Q_PROPERTY(Fact* distanceToGCS      READ distanceToGCS      CONSTANT)
     Q_PROPERTY(Fact* hobbs              READ hobbs              CONSTANT)
 
+    Q_PROPERTY(Fact* windvane_airspeed          READ windvane_airspeed          CONSTANT)
+    Q_PROPERTY(Fact* windvane_wind_speed_horiz          READ windvane_wind_speed_horiz          CONSTANT)
+    Q_PROPERTY(Fact* windvane_wind_angle_horiz          READ windvane_wind_angle_horiz          CONSTANT)
+    Q_PROPERTY(Fact* windvane_time READ windvane_time  CONSTANT)
+    Q_PROPERTY(Fact* windvane_lat READ windvane_lat  CONSTANT)
+    Q_PROPERTY(Fact* windvane_lon READ windvane_lon  CONSTANT)
+    Q_PROPERTY(Fact* windvane_alt READ windvane_alt  CONSTANT)
+    Q_PROPERTY(Fact* windvane_groundspeed_x READ windvane_groundspeed_x  CONSTANT)
+    Q_PROPERTY(Fact* windvane_groundspeed_y READ windvane_groundspeed_y  CONSTANT)
+    Q_PROPERTY(Fact* windvane_groundspeed_z READ windvane_groundspeed_z  CONSTANT)
+    Q_PROPERTY(Fact* windvane_roll READ windvane_roll  CONSTANT)
+    Q_PROPERTY(Fact* windvane_pitch READ windvane_pitch  CONSTANT)
+    Q_PROPERTY(Fact* windvane_yaw READ windvane_yaw  CONSTANT)
+    Q_PROPERTY(Fact* windvane_voltage READ windvane_voltage  CONSTANT)
+    Q_PROPERTY(Fact* windvane_voltage2 READ windvane_voltage2  CONSTANT)
+    Q_PROPERTY(Fact* windvane_aoa READ windvane_aoa  CONSTANT)
+    Q_PROPERTY(Fact* windvane_aos READ windvane_aos  CONSTANT)
+    Q_PROPERTY(Fact* windvane_wind_speed_3d_x READ windvane_wind_speed_3d_x  CONSTANT)
+    Q_PROPERTY(Fact* windvane_wind_speed_3d_y READ windvane_wind_speed_3d_y  CONSTANT)
+    Q_PROPERTY(Fact* windvane_wind_speed_3d_z READ windvane_wind_speed_3d_z  CONSTANT)
+    Q_PROPERTY(Fact* windvane_differential_pressure_pa READ windvane_differential_pressure_pa  CONSTANT)
+    Q_PROPERTY(Fact* windvane_baro_pressure_pa READ windvane_baro_pressure_pa  CONSTANT)
+
     Q_PROPERTY(FactGroup* gps               READ gpsFactGroup               CONSTANT)
     Q_PROPERTY(FactGroup* battery           READ battery1FactGroup          CONSTANT)
     Q_PROPERTY(FactGroup* battery2          READ battery2FactGroup          CONSTANT)
@@ -953,6 +1051,29 @@ public:
     Fact* headingToHome     (void) { return &_headingToHomeFact; }
     Fact* distanceToGCS     (void) { return &_distanceToGCSFact; }
     Fact* hobbs             (void) { return &_hobbsFact; }
+
+    Fact* windvane_airspeed         (void) { return &_windvane_airspeedFact; }
+    Fact* windvane_wind_speed_horiz         (void) { return &_windvane_wind_speed_horizFact; }
+    Fact* windvane_wind_angle_horiz         (void) { return &_windvane_wind_angle_horizFact; }
+    Fact* windvane_time      (void) { return &_windvane_timeFact; }
+    Fact* windvane_lat      (void) { return &_windvane_latFact; }
+    Fact* windvane_lon      (void) { return &_windvane_lonFact; }
+    Fact* windvane_alt      (void) { return &_windvane_altFact; }
+    Fact* windvane_groundspeed_x (void) { return &_windvane_groundspeed_xFact; }
+    Fact* windvane_groundspeed_y(void) { return &_windvane_groundspeed_yFact; }
+    Fact* windvane_groundspeed_z(void) { return &_windvane_groundspeed_zFact; }
+    Fact* windvane_roll(void) { return &_windvane_rollFact; }
+    Fact* windvane_pitch(void) { return &_windvane_pitchFact; }
+    Fact* windvane_yaw(void) { return &_windvane_yawFact; }
+    Fact* windvane_voltage(void) { return &_windvane_voltageFact; }
+    Fact* windvane_voltage2(void) { return &_windvane_voltage2Fact; }
+    Fact* windvane_aoa(void) { return &_windvane_aoaFact; }
+    Fact* windvane_aos(void) { return &_windvane_aosFact; }
+    Fact* windvane_wind_speed_3d_x(void) { return &_windvane_wind_speed_3d_xFact; }
+    Fact* windvane_wind_speed_3d_y(void) { return &_windvane_wind_speed_3d_yFact; }
+    Fact* windvane_wind_speed_3d_z(void) { return &_windvane_wind_speed_3d_zFact; }
+    Fact* windvane_differential_pressure_pa(void) { return &_windvane_differential_pressure_paFact; }
+    Fact* windvane_baro_pressure_pa(void) { return &_windvane_baro_pressure_paFact; }
 
     FactGroup* gpsFactGroup             (void) { return &_gpsFactGroup; }
     FactGroup* battery1FactGroup        (void) { return &_battery1FactGroup; }
@@ -1251,6 +1372,7 @@ private:
     void _handleHighLatency2(mavlink_message_t& message);
     void _handleAttitudeWorker(double rollRadians, double pitchRadians, double yawRadians);
     void _handleAttitude(mavlink_message_t& message);
+    void _handleData96(mavlink_message_t& message);
     void _handleAttitudeQuaternion(mavlink_message_t& message);
     void _handleAttitudeTarget(mavlink_message_t& message);
     void _handleDistanceSensor(mavlink_message_t& message);
@@ -1283,6 +1405,8 @@ private:
     void _setCapabilities(uint64_t capabilityBits);
     void _updateArmed(bool armed);
     bool _apmArmingNotRequired(void);
+    void _initializeCsv                 ();
+    void _writeCsvLine                  ();
 
     int     _id;                    ///< Mavlink system id
     int     _defaultComponentId;
@@ -1298,6 +1422,9 @@ private:
     bool                _soloFirmware;
     QGCToolbox*         _toolbox;
     SettingsManager*    _settingsManager;
+
+    QTimer              _csvLogTimer;
+    QFile               _csvLogFile;
 
     QList<LinkInterface*> _links;
 
@@ -1485,6 +1612,30 @@ private:
     Fact _distanceToGCSFact;
     Fact _hobbsFact;
 
+    //add new data
+    Fact _windvane_timeFact;
+    Fact _windvane_latFact;
+    Fact _windvane_lonFact;
+    Fact _windvane_altFact;
+    Fact _windvane_groundspeed_xFact;
+    Fact _windvane_groundspeed_yFact;
+    Fact _windvane_groundspeed_zFact;
+    Fact _windvane_rollFact;
+    Fact _windvane_pitchFact;
+    Fact _windvane_yawFact;
+    Fact _windvane_voltageFact;
+    Fact _windvane_voltage2Fact;
+    Fact _windvane_aoaFact;
+    Fact _windvane_aosFact;
+    Fact _windvane_wind_speed_3d_xFact;
+    Fact _windvane_wind_speed_3d_yFact;
+    Fact _windvane_wind_speed_3d_zFact;
+    Fact _windvane_differential_pressure_paFact;
+    Fact _windvane_baro_pressure_paFact;
+    Fact _windvane_airspeedFact;
+    Fact _windvane_wind_speed_horizFact;
+    Fact _windvane_wind_angle_horizFact;
+
     VehicleGPSFactGroup             _gpsFactGroup;
     VehicleBatteryFactGroup         _battery1FactGroup;
     VehicleBatteryFactGroup         _battery2FactGroup;
@@ -1513,6 +1664,30 @@ private:
     static const char* _headingToHomeFactName;
     static const char* _distanceToGCSFactName;
     static const char* _hobbsFactName;
+
+    //new add data
+    static const char* _windvane_airspeedFactName;
+    static const char* _windvane_wind_speed_horizFactName;
+    static const char* _windvane_wind_angle_horizFactName;
+    static const char*  _windvane_timeFactName;
+    static const char*  _windvane_latFactName;
+    static const char*  _windvane_lonFactName;
+    static const char*  _windvane_altFactName;
+    static const char*  _windvane_groundspeed_xFactName;
+    static const char*  _windvane_groundspeed_yFactName;
+    static const char*  _windvane_groundspeed_zFactName;
+    static const char*  _windvane_rollFactName;
+    static const char*  _windvane_pitchFactName;
+    static const char*  _windvane_yawFactName;
+    static const char*  _windvane_voltageFactName;
+    static const char*  _windvane_voltage2FactName;
+    static const char*  _windvane_aoaFactName;
+    static const char*  _windvane_aosFactName;
+    static const char*  _windvane_wind_speed_3d_xFactName;
+    static const char*  _windvane_wind_speed_3d_yFactName;
+    static const char*  _windvane_wind_speed_3d_zFactName;
+    static const char*  _windvane_differential_pressure_paFactName;
+    static const char*  _windvane_baro_pressure_paFactName;
 
     static const char* _gpsFactGroupName;
     static const char* _battery1FactGroupName;
